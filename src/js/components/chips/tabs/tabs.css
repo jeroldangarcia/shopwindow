@@ -1,0 +1,32 @@
+.tabbar {
+  min-height: 5rem;
+  display: flex;
+  background-color: #FFF;
+  margin-bottom: 1px;
+}
+
+.tab {
+  flex:1;
+  color: #000;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0 1.2rem 0 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab:active {
+  font-size:1.4rem;
+}
+
+.tab > label {
+  font-size: 1.4rem !important;
+}
+
+.tab.selected {
+  color: blue;
+  border-bottom: solid 2px blue;
+}
