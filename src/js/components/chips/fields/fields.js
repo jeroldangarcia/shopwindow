@@ -51,4 +51,30 @@ Select.propTypes = {
   value: React.PropTypes.string,
 };
 
-export { FieldGroup, Field, Select };
+const Checkbox = (props) => {
+  const checked = props.checked ? 'checked' : '';
+  const label = props.checkedLabel ? (props.checked ? props.checkedLabel : props.label) : props.label;
+  const handleChange = (event) => {
+    props.onChange(props.id, event.target.checked);
+  };
+  return (
+    <div className="field">
+      <div className="checkbox mui-checkbox">
+        <label>
+          <input id={props.id} type="checkbox" checked={checked} onClick={handleChange} />
+          {label}
+        </label>
+      </div>
+    </div>
+  );
+};
+
+Checkbox.propTypes = {
+  id: React.PropTypes.string,
+  label: React.PropTypes.string,
+  checked: React.PropTypes.bool,
+  checkedLabel: React.PropTypes.string,
+  onChange: React.PropTypes.func,
+};
+
+export { FieldGroup, Field, Select, Checkbox };

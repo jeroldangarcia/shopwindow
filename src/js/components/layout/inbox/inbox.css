@@ -1,0 +1,11 @@
+.inbox {
+  display: flex;
+}
+
+.inbox-list {
+
+}
+
+.inbox-viewer {
+  flex:1;
+}

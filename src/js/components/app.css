@@ -12,7 +12,7 @@ body {
   color: #000;
   background-color: #FFF;
   font-size: 1.4rem;
-  font-family: 'Overlock', 'Roboto', sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
   text-rendering: geometricPrecision;
 }
 
@@ -26,4 +26,17 @@ a:focus {
 
 a:hover {
   text-decoration:none;
+}
+
+
+.flex {
+  display: flex;
+}
+
+.expand {
+  flex:1;
+}
+
+.centred {
+  align-items: center;
 }

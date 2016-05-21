@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import './buttons.css';
 
 const materialIcon = (icon) => (
-  <i className="material-icons md-24">{icon}</i>
+  <i className="material-icons">{icon}</i>
 );
 
 const Icon = (props) => (
@@ -44,4 +44,4 @@ FAB.propTypes = {
   onMouseUp: React.PropTypes.func,
 };
 
-export { Icon, Button, FAB };
+export { Icon, Button, FAB, materialIcon };

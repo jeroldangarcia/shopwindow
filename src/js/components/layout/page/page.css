@@ -20,14 +20,6 @@
   display: none;
 }
 
-.page > header .title {
-  flex:1;
-  font-size: 1.8rem;
-  font-weight: 500;
-  line-height: 5.6rem;
-  white-space: nowrap;
-}
-
 .page > main {
   flex:1;
   background-color: #EEE;

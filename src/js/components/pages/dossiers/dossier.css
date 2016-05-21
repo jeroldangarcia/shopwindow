@@ -1,0 +1,17 @@
+.checklist {
+  display: flex;
+  flex-direction: column;
+}
+
+.checklist > .line {
+  display: flex;
+  align-items: center;
+}
+
+.line > label {
+  flex:1;
+}
+
+.line > .field {
+  min-width: 10rem;
+}

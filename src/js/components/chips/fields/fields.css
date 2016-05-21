@@ -22,3 +22,12 @@
 h5 > i {
   padding: 0px 15px 0px 15px;
 }
+
+
+.field > .checkbox {
+  display: flex;
+}
+
+.field > .checkbox > .label {
+  flex:1;
+}
