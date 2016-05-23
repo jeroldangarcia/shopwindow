@@ -11,6 +11,11 @@
   overflow: hidden;
 }
 
+.inbox-list > .filter {
+  background-color: #FFF;
+  padding: 2.5rem 0.8rem 1rem 3rem;
+}
+
 .inbox-list .fab {
   position: absolute;
   bottom: 4rem;

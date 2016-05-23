@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '../../chips/buttons/buttons';
+import { Icon, Button } from '../../chips/buttons/buttons';
 import './list.css';
 
 const ListItem = ({ id, title, subtitle, info, icon, children, selected, onSelected }) => {
@@ -32,4 +32,4 @@ const List = (props) => {
   );
 };
 
-export { List, ListItem, ListDivider };
+export { List, ListItem };

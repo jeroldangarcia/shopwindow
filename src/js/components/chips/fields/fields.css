@@ -19,6 +19,10 @@
   padding: 1rem;
 }
 
+.field {
+  flex:1;
+}
+
 h5 > i {
   padding: 0px 15px 0px 15px;
 }

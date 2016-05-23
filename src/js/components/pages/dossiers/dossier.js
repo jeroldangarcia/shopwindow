@@ -1,6 +1,9 @@
 import React from 'react';
-import { Checkbox } from '../../chips/fields/fields';
+import { Page } from '../../layout/page/page';
+import { Field, Checkbox } from '../../chips/fields/fields';
 import { Tabs, Tab } from '../../chips/tabs/tabs';
+import { FAB } from '../../chips/buttons/buttons';
+import Stepper from '../../chips/buttons/steps';
 
 import './dossier.css';
 
@@ -82,23 +85,28 @@ class DossierReport extends React.Component {
     return (
       <div className="report">
         <h5>Valoraciones y Observaciones</h5>
-        <p>
+        <div className="observations mui-textfield">
+          <textarea placeholder="Observaciones.....">
+
+
           PRODUCTO REFERENCIADO:
-          <br />
+
           EN ESTA OCASIÓN HEMOS TENIDO MÁS PROBLEMAS CON LOS COMPLEMENTOS QUE
           CON LA ROPA, O NO HAY, O NO HAY TALLAS, O NO HAY COLORES....
           SE HA SUSTITUIDO POR PRODUCTOS SIMILARES.
-          <br />
+
           A DESTACAR:
-          <br />
+
           EL VESTIDO BLANCO DE TINTORETTO DEL ESCAPARATE DE CHICA NO SE HA
           RECIBIDO EN NINGÚN CENTRO, SE HA SUSTITUIDO POR OTRO DE LA MISMA
           COLECCIÓN.
-          <br />
+
           EL SUJETADOR DE ES ESCAPARATE DE MUJER SÓLO SE HA PODIDO COLOCAR EN
           PINTOR SOROLLA Y AVENIDA FRANCIA Y EL TOP SEGUNDA OPCIÓN TAMPOCO SE
           HABÍA RECIBIDO, SE HA SUSTITUÍDO POR UN PRODUCTO SIMILAR.
-        </p>
+
+          </textarea>
+        </div>
       </div>
     );
   }
@@ -129,7 +137,6 @@ class Dossier extends React.Component {
 
   render() {
     return (
-
       <div className="dossier">
         <header>
           <h3>Primavera 75 Aniversario</h3>
@@ -142,10 +149,32 @@ class Dossier extends React.Component {
         </header>
         <main>
           {this.renderContent()}
+          <FAB icon="subdirectory_arrow_left" to="" onMouseUp={this.props.done}/>
         </main>
       </div>
     );
   }
 }
 
-export default Dossier;
+class NewDossier extends React.Component {
+  render() {
+    return (
+      <Page title="New Dossier" icon="folder_open" to="/">
+        <div className="dossier">
+          <main className="flex">
+            <div>
+            <Field label="Name" />
+            <Field label="Description" />
+            </div>
+            <DossierCheckin />
+            <DossierReport />
+            <FAB icon="arrow_forward" to="/" onMouseUp={this.props.done}/>
+          </main>
+          <Stepper />
+        </div>
+      </Page>
+    );
+  }
+}
+
+export { Dossier, NewDossier };

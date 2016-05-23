@@ -34,7 +34,7 @@ Button.propTypes = {
 
 const FAB = (props) => (
   <Link to={props.to}>
-    <Button icon={props.icon} classes="fab" onMouseUp={props.onMouseUp}/>
+    <Button icon={props.icon} classes="fab" onMouseUp={props.onMouseUp} />
   </Link>
 );
 

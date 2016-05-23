@@ -13,7 +13,7 @@ class InboxList extends React.Component {
     return (
       <div className={`inbox-list ${openClass}`}>
         {this.props.children}
-        <FAB icon="add" to="" onMouseLeave={this.handleAddItem()} />
+        
       </div>
     );
   }

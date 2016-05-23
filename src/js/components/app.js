@@ -6,6 +6,7 @@ import './app.css';
 // Pages
 import Login from './pages/login/login';
 import Dossiers from './pages/dossiers/dossiers';
+import { NewDossier } from './pages/dossiers/dossier';
 
 const auth = {
 
@@ -62,14 +63,14 @@ class LoginRequired extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <Router history={browserHistory}>
         <Route path="/" component={LoginRequired}>
           <IndexRoute component={Dossiers} />
+          <Route path="/new" component={NewDossier} />
         </Route>
       </Router>
     );
   }
 }
-
 
 export default App;

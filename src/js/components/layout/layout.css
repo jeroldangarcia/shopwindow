@@ -6,6 +6,7 @@
 .layout > * {
   border: dashed 1px red;
 }
+
 .drawer {
   display: flex;
   position: absolute;
@@ -138,12 +139,6 @@
 
 .centred {
   justify-content: center;
-  align-items: center;
-}
-
-.flex {
-  display: flex;
-  padding-right: 1.6rem;
   align-items: center;
 }
 
