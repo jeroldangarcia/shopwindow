@@ -14,7 +14,7 @@ const Header = (props) => {
   const backButton = props.to ? <Button id="back-button" icon="arrow_back" onMouseUp={goBack} /> : "";
   const logoutButton = <Button id="logout-button" icon="exit_to_app" onMouseUp={logout} />
   return (
-    <header>{drawerButton} {backButton} {icon} <span className="title">{props.title}</span>{searchButton}{logoutButton}</header>
+    <header className="header">{drawerButton} {backButton} {icon} <span className="title">{props.title}</span>{searchButton}{logoutButton}</header>
   );
 };
 

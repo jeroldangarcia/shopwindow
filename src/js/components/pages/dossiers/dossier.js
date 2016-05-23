@@ -1,5 +1,7 @@
 import React from 'react';
 import { Checkbox } from '../../chips/fields/fields';
+import { Tabs, Tab } from '../../chips/tabs/tabs';
+
 import './dossier.css';
 
 class DossierCheckin extends React.Component {
@@ -103,14 +105,44 @@ class DossierReport extends React.Component {
 }
 
 class Dossier extends React.Component {
+
+  state = {
+    tab: 'checkin',
+  }
+
+  handleChangeTab = (id) => {
+    this.setState({ tab: id });
+  }
+
+  renderContent() {
+    switch (this.state.tab) {
+      case 'checkin':
+        return (<DossierCheckin />);
+      case 'gallery':
+        return (<DossierShopWindow />);
+      case 'report':
+        return (<DossierReport />);
+      default:
+        return (<DossierCheckin />);
+    }
+  }
+
   render() {
     return (
-      <div>
-        <h3>Escaparates Primavera 75 Aniversario</h3>
-        <h4>3o Cambio</h4>
-        <DossierCheckin />
-        <DossierShopWindow />
-        <DossierReport />
+
+      <div className="dossier">
+        <header>
+          <h3>Primavera 75 Aniversario</h3>
+          <h4>3er Cambio</h4>
+          <Tabs onChanged={this.handleChangeTab}>
+            <Tab id="checkin" label="Check-In" active={this.state.tab === 'checkin'} />
+            <Tab id="gallery" label="Gallery" active={this.state.tab === 'gallery'} />
+            <Tab id="report" label="Report" active={this.state.tab === 'report'} />
+          </Tabs>
+        </header>
+        <main>
+          {this.renderContent()}
+        </main>
       </div>
     );
   }

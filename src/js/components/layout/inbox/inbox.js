@@ -9,25 +9,26 @@ class InboxList extends React.Component {
   }
 
   render() {
+    const openClass = this.props.open ? 'open' : '';
     return (
-      <div className="inbox-list">
+      <div className={`inbox-list ${openClass}`}>
         {this.props.children}
         <FAB icon="add" to="" onMouseLeave={this.handleAddItem()} />
-      </div>
-    );
-  };
-}
-
-class InboxViewer extends React.Component {
-  render() {
-    return (
-      <div className="inbox-viewer">
-        {this.props.children}
       </div>
     );
   }
 }
 
+class InboxViewer extends React.Component {
+  render() {
+    const openClass = this.props.open ? 'open' : '';
+    return (
+      <div className={`inbox-viewer ${openClass}`}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 class Inbox extends React.Component {
   render() {
@@ -39,4 +40,4 @@ class Inbox extends React.Component {
   }
 }
 
-export { Inbox, InboxList, InboxViewer};
+export { Inbox, InboxList, InboxViewer };

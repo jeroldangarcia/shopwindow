@@ -1,3 +1,31 @@
+.dossier {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dossier header {
+  color: #000;
+  color: rgba(0, 0, 0, 0.8);
+  background-color : #FFF;
+}
+
+.dossier header > h3 {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
+.dossier header > h4 {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
+.dossier main {
+  padding: 0 1.6rem;
+  flex:1;
+  overflow-y: auto;
+}
+
 .checklist {
   display: flex;
   flex-direction: column;

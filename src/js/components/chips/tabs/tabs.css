@@ -1,7 +1,7 @@
 .tabbar {
   min-height: 5rem;
   display: flex;
-  background-color: #FFF;
+  background-color: inherit;
   margin-bottom: 1px;
 }
 

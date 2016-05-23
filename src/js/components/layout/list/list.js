@@ -2,12 +2,14 @@ import React from 'react';
 import { Icon } from '../../chips/buttons/buttons';
 import './list.css';
 
-const ListItem = ({ id, title, subtitle, info, icon, children, selected, onClick }) => {
-  const clicked = () => {
-    onClick(id);
+const ListItem = ({ id, title, subtitle, info, icon, children, selected, onSelected }) => {
+
+  const handleSelected = () => {
+    onSelected(id);
   };
+
   return (
-    <li className={`listitem ${selected}`} onClick={clicked}>
+    <li className={`listitem ${selected}`} onMouseUp={handleSelected}>
       <Icon icon={icon} />
       <div className="content">
         <div className="title">{title}</div>

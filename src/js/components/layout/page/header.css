@@ -1,9 +1,9 @@
-header {
+.header {
   color: #FFF;
-  background-color: #BBB;
+  background-color: #555;
 }
 
-header .title {
+.header .title {
   flex:1;
   font-size: 1.8rem;
   font-weight: 700;
