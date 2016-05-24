@@ -77,4 +77,26 @@ Checkbox.propTypes = {
   onChange: React.PropTypes.func,
 };
 
-export { FieldGroup, Field, Select, Checkbox };
+
+class Slider extends React.Component {
+
+  state = {
+    checked: true,
+  }
+
+  toggleSlider = () => {
+    this.setState({ checked: !this.state.checked });
+  }
+
+  render() {
+    const selectedClass = this.state.checked ? 'selected' : '';
+    return (
+      <div className={`slider ${selectedClass}`} onMouseUp={this.toggleSlider}>
+        <div className="slider-ball"></div>
+      </div>
+    );
+  }
+
+};
+
+export { FieldGroup, Field, Select, Checkbox, Slider };

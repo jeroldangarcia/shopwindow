@@ -2,7 +2,7 @@ import React from 'react';
 import { Page } from '../../layout/page/page';
 import { Inbox, InboxList, InboxViewer } from '../../layout/inbox/inbox';
 import { List, ListItem } from '../../layout/list/list';
-import { Field, Select } from '../../chips/fields/fields';
+import { Field, Select, Slider } from '../../chips/fields/fields';
 import { Button, FAB } from '../../chips/buttons/buttons';
 
 import { Dossier } from './dossier';
@@ -94,6 +94,8 @@ class Dossiers extends React.Component {
         <Select options={this.options} onChange={this.handleFilterCriteriaChanged} />
         <Field label="Filter..." value={this.state.filter.value} onChange={this.handleFilterValueChanged} />
         <Button icon="close" onMouseUp={this.handleClearFilter} />
+        <Slider label="" valueOn="" valueOff="" checked={true} />
+        <Slider label="" valueOn="" valueOff="" checked={false} />
       </div>
     );
   }

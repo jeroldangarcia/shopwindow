@@ -1,3 +1,11 @@
+.step {
+  display: none;
+}
+
+.step.selected {
+  display:flex;
+}
+
 .stepper {
   display:flex;
   justify-content: space-between;

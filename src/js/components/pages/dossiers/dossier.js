@@ -3,7 +3,7 @@ import { Page } from '../../layout/page/page';
 import { Field, Checkbox } from '../../chips/fields/fields';
 import { Tabs, Tab } from '../../chips/tabs/tabs';
 import { FAB } from '../../chips/buttons/buttons';
-import { Stepper, Step } from '../../chips/buttons/steps';
+import { Stepper, Step } from '../../chips/tabs/steps';
 
 import './dossier.css';
 
@@ -156,6 +156,11 @@ class Dossier extends React.Component {
 }
 
 class NewDossier extends React.Component {
+
+  handleStepChanged = (steps) => {
+    console.log(step);
+  }
+
   render() {
     return (
       <Page title="New Dossier" icon="folder_open" to="/">
@@ -175,7 +180,7 @@ class NewDossier extends React.Component {
             </Step>
             <FAB icon="arrow_forward" to="/" onMouseUp={this.props.done}/>
           </main>
-          <Stepper steps={['step1', 'step1', 'step3']} />
+          <Stepper steps={['step1', 'step1', 'step3']} onStepChanged={this.handleStepChanged}/>
         </div>
       </Page>
     );

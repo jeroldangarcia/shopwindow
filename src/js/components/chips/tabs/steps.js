@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './buttons.js';
+import { Button } from '../buttons/buttons';
 import './steps.css';
 
 const Step = (props) => (
@@ -15,6 +15,24 @@ Step.propTypes = {
 
 class Stepper extends React.Component {
 
+  defaultProps = {
+    step: 1,
+  }
+
+  state = {
+    step : this.defaultProps.step,
+  }
+
+  handleBack = () => {
+    this.props.onStepChanged(this.state.step - 1);
+    this.setState({ step: this.state.step - 1});
+  }
+
+  handleNext = () => {
+    this.props.onStepChanged(this.state.step + 1);
+    this.setState({ step: this.state.step + 1});
+  }
+
   renderDots = () => {
     return this.props.steps.map((item) => {
       const selectedClass = item === 3 ? 'selected' : '';
@@ -25,9 +43,9 @@ class Stepper extends React.Component {
   render() {
     return (
       <div className="stepper">
-        <Button icon="arrow_left" label="BACK" />
+        <Button icon="arrow_left" label="BACK" onMouseUp={this.handleBack}/>
         <div className="flex">{this.renderDots()}</div>
-        <Button icon="arrow_right" label="NEXT" />
+        <Button icon="arrow_right" label="NEXT" onMouseUp={this.handleNext}/>
       </div>
     );
   }
