@@ -1,11 +1,11 @@
 import React from 'react';
-import { FAB } from '../../chips/buttons/buttons';
 import './inbox.css';
 
 class InboxList extends React.Component {
 
-  handleAddItem() {
-    // TODO
+  static propTypes = {
+    open: React.PropTypes.bool,
+    children: React.PropTypes.node,
   }
 
   render() {
@@ -13,13 +13,18 @@ class InboxList extends React.Component {
     return (
       <div className={`inbox-list ${openClass}`}>
         {this.props.children}
-        
       </div>
     );
   }
 }
 
 class InboxViewer extends React.Component {
+
+  static propTypes = {
+    open: React.PropTypes.bool,
+    children: React.PropTypes.node,
+  }
+
   render() {
     const openClass = this.props.open ? 'open' : '';
     return (
@@ -31,6 +36,11 @@ class InboxViewer extends React.Component {
 }
 
 class Inbox extends React.Component {
+
+  static propTypes = {
+    children: React.PropTypes.node,
+  }
+
   render() {
     return (
       <div className="inbox">

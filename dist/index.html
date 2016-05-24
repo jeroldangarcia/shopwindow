@@ -12,6 +12,18 @@
     <link href='https://fonts.googleapis.com/css?family=Overlock:400,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="//cdn.muicss.com/mui-0.5.8/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script defer src="//cdn.muicss.com/mui-0.5.8/js/mui.min.js"></script>
+    <script type="text/javascript">
+
+    // enable vibration support
+    navigator.vibrate =
+      navigator.vibrate || navigator.webkitVibrate ||
+      navigator.mozVibrate || navigator.msVibrate;
+
+      if (navigator.vibrate) {
+        
+      }
+
+    </script>
     <style>
       body {
         background-image: url("../../img/background-1.jpg");

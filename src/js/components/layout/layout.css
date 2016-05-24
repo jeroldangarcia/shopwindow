@@ -3,10 +3,6 @@
   display: flex;
 }
 
-.layout > * {
-  border: dashed 1px red;
-}
-
 .drawer {
   display: flex;
   position: absolute;

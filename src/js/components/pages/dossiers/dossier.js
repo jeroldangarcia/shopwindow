@@ -3,7 +3,7 @@ import { Page } from '../../layout/page/page';
 import { Field, Checkbox } from '../../chips/fields/fields';
 import { Tabs, Tab } from '../../chips/tabs/tabs';
 import { FAB } from '../../chips/buttons/buttons';
-import Stepper from '../../chips/buttons/steps';
+import { Stepper, Step } from '../../chips/buttons/steps';
 
 import './dossier.css';
 
@@ -30,7 +30,6 @@ class DossierCheckin extends React.Component {
   render() {
     return (
       <div className="checklist">
-        <h5>Check-List</h5>
         <div className="line">
           <label>Recepcion Materiales Motivo / Ambientacion</label>
           <Checkbox id="reception" label="No" checkedLabel="Yes" onChange={this.handleChecked} checked={this.state.reception}/>
@@ -139,8 +138,8 @@ class Dossier extends React.Component {
     return (
       <div className="dossier">
         <header>
-          <h3>Primavera 75 Aniversario</h3>
-          <h4>3er Cambio</h4>
+          <h1>Primavera 75 Aniversario</h1>
+          <h2>3er Cambio</h2>
           <Tabs onChanged={this.handleChangeTab}>
             <Tab id="checkin" label="Check-In" active={this.state.tab === 'checkin'} />
             <Tab id="gallery" label="Gallery" active={this.state.tab === 'gallery'} />
@@ -162,15 +161,21 @@ class NewDossier extends React.Component {
       <Page title="New Dossier" icon="folder_open" to="/">
         <div className="dossier">
           <main className="flex">
-            <div>
-            <Field label="Name" />
-            <Field label="Description" />
-            </div>
-            <DossierCheckin />
-            <DossierReport />
+            <Step id="step1">
+              <div>
+                <Field label="Name" />
+                <Field label="Description" />
+              </div>
+            </Step>
+            <Step id="step2">
+              <DossierCheckin />
+            </Step>
+            <Step id="step3">
+              <DossierReport />
+            </Step>
             <FAB icon="arrow_forward" to="/" onMouseUp={this.props.done}/>
           </main>
-          <Stepper />
+          <Stepper steps={['step1', 'step1', 'step3']} />
         </div>
       </Page>
     );

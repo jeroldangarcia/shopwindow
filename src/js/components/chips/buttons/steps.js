@@ -2,13 +2,23 @@ import React from 'react';
 import { Button } from './buttons.js';
 import './steps.css';
 
+const Step = (props) => (
+  <div id={props.id} className="step">
+    {props.children}
+  </div>
+);
+
+Step.propTypes = {
+  id: React.PropTypes.string,
+  children: React.PropTypes.node,
+};
+
 class Stepper extends React.Component {
 
   renderDots = () => {
-    const dots = [1,2,3,4,5];
-    return dots.map((item) => {
+    return this.props.steps.map((item) => {
       const selectedClass = item === 3 ? 'selected' : '';
-      return (<div className={`dot ${selectedClass}`} />)
+      return (<div className={`dot ${selectedClass}`} />);
     });
   }
 
@@ -23,4 +33,4 @@ class Stepper extends React.Component {
   }
 }
 
-export default Stepper;
+export { Step, Stepper };

@@ -2,10 +2,11 @@ import React from 'react';
 import { Page } from '../../layout/page/page';
 import { Inbox, InboxList, InboxViewer } from '../../layout/inbox/inbox';
 import { List, ListItem } from '../../layout/list/list';
-import { Field } from '../../chips/fields/fields';
+import { Field, Select } from '../../chips/fields/fields';
 import { Button, FAB } from '../../chips/buttons/buttons';
 
 import { Dossier } from './dossier';
+import DossierStore from '../../../stores/dossiers';
 
 class Dossiers extends React.Component {
 
@@ -14,9 +15,12 @@ class Dossiers extends React.Component {
   }
 
   defaultProps = {
-    dossiers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    dossiers: DossierStore.all(),
     dossier: null,
-    filter: '',
+    filter: {
+      criteria: 'center',
+      value: '',
+    },
   };
 
   state = {
@@ -25,12 +29,34 @@ class Dossiers extends React.Component {
     filter: this.defaultProps.filter,
   };
 
-  handleSelected = (id) => {
+  options = [
+    { label: 'Cent', value: 'CENTER' },
+    { label: 'Prov', value: 'PROV' },
+    { label: 'Date', value: 'DATE' },
+  ]
+
+  handleDossierSelected = (id) => {
     this.setState({ dossier: id });
   }
 
-  handleFilterChanged = (value) => {
-    this.setState({ filter: value });
+  filterDossiers = (criteria, value) => {
+    return DossierStore.byFilter(criteria, value);
+  }
+
+  handleFilterValueChanged = (newValue) => {
+    const result = this.filterDossiers(this.state.filter.criteria, newValue);
+    this.setState({
+      dossiers: result,
+      filter: { criteria: this.state.filter.criteria, value: newValue },
+    });
+  }
+
+  handleFilterCriteriaChanged = (newCriteria) => {
+    const result = this.filterDossiers(newcriteria, this.state.filter.value);
+    this.setState({
+      dossiers: result,
+      filter: { criteria: newCriteria, value: this.state.filter.value },
+    });
   }
 
   handleDossierClosed = () => {
@@ -38,20 +64,44 @@ class Dossiers extends React.Component {
   }
 
   handleClearFilter = () => {
-    this.setState({ filter: '' });
+    this.handleFilterValueChanged('');
   }
 
-  renderListItem = (item) => {
-    const selected = this.state.dossier === null ? '' : this.state.dossier === item ? 'selected' : '';
-    return (<ListItem
-      id={item}
-      icon="folder_open"
-      title="Primavera 75 Aniv"
-      subtitle="3er cambio"
-      info="18/04/2016"
-      selected={selected}
-      onSelected={this.handleSelected}
-    />);
+  renderDossierItem = (dossier) => {
+    const selected =
+      this.state.dossier === null ?
+        '' : this.state.dossier === dossier ?
+          'selected' : '';
+
+    return (
+      <ListItem
+        id={dossier}
+        icon="folder_open"
+        title={dossier.title}
+        subtitle={dossier.subtitle}
+        info={dossier.date}
+        selected={selected}
+        onSelected={this.handleDossierSelected}
+      >
+        <h4>{dossier.center}</h4>
+      </ListItem>
+    );
+  }
+
+  renderFilter = () => {
+    return (
+      <div className="filter flex">
+        <Select options={this.options} onChange={this.handleFilterCriteriaChanged} />
+        <Field label="Filter..." value={this.state.filter.value} onChange={this.handleFilterValueChanged} />
+        <Button icon="close" onMouseUp={this.handleClearFilter} />
+      </div>
+    );
+  }
+
+  renderDossier = () => {
+    return this.state.dossier === null ? '' : (
+      <Dossier id={this.state.dossier.id} done={this.handleDossierClosed} />
+    );
   }
 
   render() {
@@ -59,17 +109,14 @@ class Dossiers extends React.Component {
       <Page title="DOSSIERS" icon="content_copy" toggleDrawer={this.props.toggleDrawer}>
         <Inbox>
           <InboxList open={this.state.dossier == null}>
-            <div className="filter flex expand">
-              <Field label="Filter by Center ..." value={this.state.filter} onChange={this.handleFilterChanged} />
-              <Button icon="close" onMouseUp={this.handleClearFilter}/>
-            </div>
+            {this.renderFilter()}
             <List selected={this.state.dossier}>
-              {this.state.dossiers.map(this.renderListItem)}
+              {this.state.dossiers.map(this.renderDossierItem)}
             </List>
             <FAB icon="add" to="/new" />
           </InboxList>
           <InboxViewer open={this.state.dossier != null}>
-            <Dossier id="this.state.dossier" done={this.handleDossierClosed} />
+            {this.renderDossier()}
           </InboxViewer>
         </Inbox>
       </Page>

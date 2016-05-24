@@ -14,7 +14,14 @@
 
 .inbox-list > .filter {
   background-color: #FFF;
-  padding: 2.5rem 0.8rem 1rem 3rem;
+  padding: 1rem;
+  min-height: 6rem;
+}
+
+.inbox-list > .filter > .select {
+  max-width: 6rem;
+  margin-left: 1rem;
+  margin-right: 2rem;
 }
 
 .inbox-list .fab {

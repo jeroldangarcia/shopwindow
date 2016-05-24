@@ -2,9 +2,19 @@ import React from 'react';
 import { Icon, Button } from '../../chips/buttons/buttons';
 import './list.css';
 
+const ListItemLine = ({text, info}) => {
+  return (
+    <div className="subtitle">
+      <span className="flex expand">{text}</span>
+      <span>{info}</span>
+    </div>
+  );
+};
+
 const ListItem = ({ id, title, subtitle, info, icon, children, selected, onSelected }) => {
 
   const handleSelected = () => {
+    navigator.vibrate(1000);
     onSelected(id);
   };
 
@@ -32,4 +42,4 @@ const List = (props) => {
   );
 };
 
-export { List, ListItem };
+export { List, ListItem, ListItemLine };

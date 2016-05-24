@@ -9,11 +9,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  -o-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
   -webkit-transition-timming-function: ease-in-out;
-  transition: all 0.2s easy-in-out;
+  transition: all 0.4s easy-in-out;
 }
 
 .button {
@@ -27,11 +27,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  -o-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
   -webkit-transition-timming-function: ease-in-out;
-  transition: all 0.2s easy-in-out;
+  transition: all 0.4s easy-in-out;
 }
 
 .button:focus {
@@ -58,11 +58,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  -o-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
   -webkit-transition-timming-function: ease-in-out;
-  transition: all 0.2s easy-in-out;
+  transition: all 0.4s easy-in-out;
 }
 
 .fab:active {

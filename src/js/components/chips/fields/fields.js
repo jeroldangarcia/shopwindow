@@ -36,9 +36,9 @@ class Field extends React.Component {
 }
 
 const Select = (props) => {
-  const options = props.options.map(option => (<option>{option}</option>));
+  const options = props.options.map(option => (<option>{option.label}</option>));
   return (
-    <div className="field mui-select">
+    <div className="field select mui-select">
       <select className="mui-select" value={props.value}>
         {options}
       </select>
@@ -47,7 +47,7 @@ const Select = (props) => {
 };
 
 Select.propTypes = {
-  options: React.PropTypes.array,
+  options: React.PropTypes.array.isRequired,
   value: React.PropTypes.string,
 };
 
