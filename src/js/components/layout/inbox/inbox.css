@@ -31,6 +31,7 @@
 
 .inbox-viewer {
   flex:1;
+  display:flex;
 }
 
 .page .inbox > .viewer {
@@ -59,5 +60,13 @@
 
 }
 
-@media (min-width: 960px) and (max-width:1279px) and (orientation: landscape) {}
-@media (min-width: 1280px) {}
+@media (min-width: 960px) and (max-width:1279px) and (orientation: landscape) {
+  .inbox-list .fab {
+    left: 58rem;
+  }
+}
+@media (min-width: 1280px) {
+  .inbox-list .fab {
+    left: 40rem;
+  }
+}

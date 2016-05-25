@@ -1,9 +1,11 @@
 import React from 'react';
 import { Page } from '../../layout/page/page';
-import { Field, Checkbox } from '../../chips/fields/fields';
+import { Field, Slider } from '../../chips/fields/fields';
 import { Tabs, Tab } from '../../chips/tabs/tabs';
 import { FAB } from '../../chips/buttons/buttons';
 import { Stepper, Step } from '../../chips/tabs/steps';
+import { Cards, Card } from '../../layout/cards/cards';
+import Dialog from '../../layout/dialogs/dialogs';
 
 import './dossier.css';
 
@@ -32,28 +34,28 @@ class DossierCheckin extends React.Component {
       <div className="checklist">
         <div className="line">
           <label>Recepcion Materiales Motivo / Ambientacion</label>
-          <Checkbox id="reception" label="No" checkedLabel="Yes" onChange={this.handleChecked} checked={this.state.reception}/>
-          <Checkbox id="receptionOK" label="Correct" checkedLabel="Incorrect" onChange={this.handleChecked} checked={this.state.receptionOK}/>
+          <Slider id="reception" valueOn="Yes" valueOff="No" checked={this.state.reception} />
+          <Slider id="receptionOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.receptionOK} />
         </div>
         <div className="line">
           <label>Producto / Surtido</label>
-          <Checkbox id="product" label="No" checkedLabel="Yes" onChange={this.handleChecked} checked={this.state.product}/>
-          <Checkbox id="productOK" label="Correct" checkedLabel="Incorrect" onChange={this.handleChecked} checked={this.state.productOK}/>
+          <Slider id="product" valueOn="Yes" valueOff="No" checked={this.state.product} />
+          <Slider id="productOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.productOK} />
         </div>
         <div className="line">
           <label>Perfilado / Composicion</label>
-          <Checkbox id="profiled" label="No" checkedLabel="Yes" onChange={this.handleChecked} checked={this.state.profiled}/>
-          <Checkbox id="profiledOK" label="Correct" checkedLabel="Incorrect" onChange={this.handleChecked} checked={this.state.profiledOK}/>
+          <Slider id="profiled" valueOn="Yes" valueOff="No" checked={this.state.profiled} />
+          <Slider id="profiledOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.profiledOK} />
         </div>
         <div className="line">
           <label>Iluminacion</label>
-          <Checkbox id="lighting" label="No" checkedLabel="Yes" onChange={this.handleChecked} checked={this.state.lighting}/>
-          <Checkbox id="lightingOK" label="Correct" checkedLabel="Incorrect" onChange={this.handleChecked} checked={this.state.lightingOK}/>
+          <Slider id="lighting" valueOn="Yes" valueOff="No" checked={this.state.lighting} />
+          <Slider id="lightingOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.lightingOK} />
         </div>
         <div className="line">
           <label>Fecha Apertura</label>
-          <Checkbox id="opening" label="No" checkedLabel="Yes" onChange={this.handleChecked} checked={this.state.opening}/>
-          <Checkbox id="openingOK" label="Correct" checkedLabel="Incorrect" onChange={this.handleChecked} checked={this.state.openingOK}/>
+          <Slider id="opening" valueOn="Yes" valueOff="No" checked={this.state.opening} />
+          <Slider id="openingOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.openingOK} />
         </div>
       </div>
     );
@@ -61,19 +63,38 @@ class DossierCheckin extends React.Component {
 }
 
 class DossierShopWindow extends React.Component {
+
+  handleAddPhoto = () => {
+    const dialog = (<Dialog>xxx</Dialog>);
+    this.props.onAddPhoto(dialog);
+  }
+
   render() {
     return (
       <div className="shopwindow">
-        <div className="snapshot">
-          <img src="" />
-        </div>
-        <div className="comment">
-          <h5>Observaciones</h5>
-          <p>
-            Escaparate mujer JUANJO OLIVA Primavera 75 Aniversarion 3o Cambio
-            con DIN A4 Guia de la moda. Marco lona abatible
-          </p>
-        </div>
+        <Cards>
+          <Card>
+            <p>
+              ESCAPARATE CHICA
+              <br />
+              PRIMAVERA 75 ANIVERSARIO. 3er CAMBIO
+              <br />
+              CON DIN A4 GUIA DE LA MODA
+            </p>
+          </Card>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </Cards>
+        <FAB icon="add_a_photo" to="" onMouseUp={this.handleAddPhoto}/>
       </div>
     );
   }
@@ -121,12 +142,16 @@ class Dossier extends React.Component {
     this.setState({ tab: id });
   }
 
+  handleAddPhoto = () => {
+    alert();
+  }
+
   renderContent() {
     switch (this.state.tab) {
       case 'checkin':
         return (<DossierCheckin />);
       case 'gallery':
-        return (<DossierShopWindow />);
+        return (<DossierShopWindow onAddPhoto={this.handleAddPhoto}/>);
       case 'report':
         return (<DossierReport />);
       default:

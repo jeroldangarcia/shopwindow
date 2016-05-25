@@ -91,7 +91,6 @@
     flex-direction: row;
   }
 
-
   .page .inbox > .inbox-list{
     max-width: 40rem;
     box-shadow: 2px -3px 2px 1px rgba(0,0,0,0.3);
@@ -100,10 +99,6 @@
 
   .page .inbox > .viewer {
     padding: 10px;
-  }
-
-  .inbox-list .fab {
-    left: 41rem;
   }
 
 }
@@ -138,7 +133,4 @@
     z-index: auto;
   }
 
-  .inbox-list .fab {
-    left: 56rem;
-  }
 }

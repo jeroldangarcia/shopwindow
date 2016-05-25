@@ -40,6 +40,12 @@
   margin-bottom: 1.2rem;
 }
 
+.shopwindow .fab {
+  position: absolute;
+  bottom: 12rem;
+  right: 4rem;
+}
+
 .report {
   flex: 1;
   display: flex;

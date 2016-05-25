@@ -62,7 +62,7 @@
   right: -6rem;
   height: 100vh;
   z-index: 1001;
-  min-width: 6rem;
+  min-width: 7.5rem;
 
   -webkit-transition: right 0.5s;
   -webkit-transition-timming-function: ease-in-out;
@@ -97,14 +97,12 @@
 }
 
 @media (min-width: 1280px) {
-
   .drawer {
     position:relative;
     left:0px;
-    min-width: 24rem;
+    min-width: 7rem;
     padding-top: 0px;
   }
-
   .toolbar {
     display: flex;
     position: relative;
