@@ -20184,6 +20184,10 @@
 
 	var _dossier = __webpack_require__(263);
 
+	var _shopwindow = __webpack_require__(275);
+
+	var _shopwindow2 = _interopRequireDefault(_shopwindow);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20283,7 +20287,8 @@
 	          _reactRouter.Route,
 	          { path: '/', component: LoginRequired },
 	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _dossiers2.default }),
-	          _react2.default.createElement(_reactRouter.Route, { path: '/new', component: _dossier.NewDossier })
+	          _react2.default.createElement(_reactRouter.Route, { path: '/new', component: _dossier.NewDossier }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/shopwindow', component: _shopwindow2.default })
 	        )
 	      );
 	    }
@@ -25941,7 +25946,7 @@
 
 
 	// module
-	exports.push([module.id, ".layout {\n  height: 100vh;\n  display: flex;\n}\n\n.drawer {\n  display: flex;\n  position: absolute;\n  left:-28rem;\n  height: 100vh;\n  z-index: 1001;\n\n  -webkit-transition: left 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: left 0.5s ease-in-out;\n\n  -webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  -moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n}\n\n.drawer > * {\n  flex:1;\n}\n\n.dialog {\n    display:flex;\n    z-index: 1002;\n    min-width: 10rem;\n    min-height: 10rem;\n    background-color: #FFF;\n}\n\n.overlay {\n  display: flex;\n  position: absolute;\n  width:100%;\n  height:100%;\n  z-index: 1000;\n  background-color: rgba(100,100,100,0.7);\n}\n\n.container {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n}\n\n.container > #searchbar {\n  display:none;\n  padding: 15px;\n  min-height: 10rem;\n}\n\n.container > .page {\n  flex:1;\n}\n\n.toolbar {\n  display:none;\n  position:absolute;\n  right: -6rem;\n  height: 100vh;\n  z-index: 1001;\n  min-width: 7.5rem;\n\n  -webkit-transition: right 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: right 0.5s ease-in-out;\n\n}\n\n\n@media (min-width: 960px) and (orientation:landscape) {\n\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 8rem;\n    max-width: 8rem;\n    overflow: hidden;\n    padding-top: 5.6rem;\n    box-shadow: inherit;\n  }\n\n  .drawer.uncoverleft {\n    min-width: 24rem;\n  }\n\n  .overlay {\n    display:none;\n  }\n\n  .toolbar {\n    display:none;\n  }\n}\n\n@media (min-width: 1280px) {\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 7rem;\n    padding-top: 0px;\n  }\n  .toolbar {\n    display: flex;\n    position: relative;\n    right:0px;\n  }\n  .drawer {\n    background-color: inherit;\n    box-shadow: inherit;\n  }\n  .container > #searchbar {\n    display: flex;\n  }\n}\n\n/* -------------- */\n\n.uncoverleft {\n  left:0rem;\n}\n\n.uncoverright {\n  right:0px;\n}\n\n.hidden {\n  display: none;\n}\n\n.centred {\n  justify-content: center;\n  align-items: center;\n}\n\n.up {\n  align-self: flex-start;\n  margin-top: 2rem;\n}\n\n.expand {\n  flex:1;\n}\n", ""]);
+	exports.push([module.id, ".layout {\n  height: 100vh;\n  display: flex;\n}\n\n.drawer {\n  display: flex;\n  position: absolute;\n  left:-28rem;\n  height: 100vh;\n  z-index: 1001;\n\n  -webkit-transition: left 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: left 0.5s ease-in-out;\n\n  -webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  -moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n}\n\n.drawer > * {\n  flex:1;\n}\n\n.dialog {\n    display:flex;\n    z-index: 1002;\n    min-width: 10rem;\n    min-height: 10rem;\n    background-color: #FFF;\n}\n\n.overlay {\n  display: flex;\n  position: absolute;\n  width:100%;\n  height:100%;\n  z-index: 1000;\n  background-color: rgba(100,100,100,0.7);\n}\n\n.container {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n}\n\n.container > #searchbar {\n  display:none;\n  padding: 15px;\n  min-height: 6rem;\n}\n\n.container > .page {\n  flex:1;\n}\n\n.toolbar {\n  display:none;\n  position:absolute;\n  right: -6rem;\n  height: 100vh;\n  z-index: 1001;\n  min-width: 7.5rem;\n\n  -webkit-transition: right 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: right 0.5s ease-in-out;\n\n}\n\n\n@media (min-width: 960px) and (orientation:landscape) {\n\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 8rem;\n    max-width: 8rem;\n    overflow: hidden;\n    padding-top: 5.6rem;\n    box-shadow: inherit;\n  }\n\n  .drawer.uncoverleft {\n    min-width: 24rem;\n  }\n\n  .overlay {\n    display:none;\n  }\n\n  .toolbar {\n    display:none;\n  }\n}\n\n@media (min-width: 1280px) {\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 7rem;\n    padding-top: 0px;\n  }\n  .toolbar {\n    display: flex;\n    position: relative;\n    right:0px;\n  }\n  .drawer {\n    background-color: inherit;\n    box-shadow: inherit;\n  }\n  .container > #searchbar {\n    display: flex;\n  }\n}\n\n/* -------------- */\n\n.uncoverleft {\n  left:0rem;\n}\n\n.uncoverright {\n  right:0px;\n}\n\n.hidden {\n  display: none;\n}\n\n.centred {\n  justify-content: center;\n  align-items: center;\n}\n\n.up {\n  align-self: flex-start;\n  margin-top: 2rem;\n}\n\n.expand {\n  flex:1;\n}\n", ""]);
 
 	// exports
 
@@ -27697,6 +27702,8 @@
 
 	var _dialogs2 = _interopRequireDefault(_dialogs);
 
+	var _reactRouter = __webpack_require__(169);
+
 	__webpack_require__(272);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27822,19 +27829,32 @@
 	      args[_key2] = arguments[_key2];
 	    }
 
-	    return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(DossierShopWindow)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this2), _this2.handleAddPhoto = function () {
+	    return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(DossierShopWindow)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this2), _this2.handleAddShopWindow = function () {
 	      var dialog = _react2.default.createElement(
 	        _dialogs2.default,
 	        null,
 	        'xxx'
 	      );
 	      _this2.props.onAddPhoto(dialog);
+	    }, _this2.handleCardSelected = function () {
+	      _reactRouter.browserHistory.push('/shopwindow');
 	    }, _temp2), _possibleConstructorReturn(_this2, _ret2);
 	  }
 
 	  _createClass(DossierShopWindow, [{
 	    key: 'render',
 	    value: function render() {
+
+	      var info = _react2.default.createElement(
+	        'p',
+	        null,
+	        'ESCAPARATE CHICA',
+	        _react2.default.createElement('br', null),
+	        'PRIMAVERA 75 ANIVERSARIO. 3er CAMBIO',
+	        _react2.default.createElement('br', null),
+	        'CON DIN A4 GUIA DE LA MODA'
+	      );
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'shopwindow' },
@@ -27843,30 +27863,81 @@
 	          null,
 	          _react2.default.createElement(
 	            _cards.Card,
-	            null,
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'ESCAPARATE CHICA',
-	              _react2.default.createElement('br', null),
-	              'PRIMAVERA 75 ANIVERSARIO. 3er CAMBIO',
-	              _react2.default.createElement('br', null),
-	              'CON DIN A4 GUIA DE LA MODA'
-	            )
+	            { onSelected: this.handleCardSelected },
+	            info
 	          ),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null),
-	          _react2.default.createElement(_cards.Card, null)
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          ),
+	          _react2.default.createElement(
+	            _cards.Card,
+	            { onSelected: this.handleCardSelected },
+	            info
+	          )
 	        ),
-	        _react2.default.createElement(_buttons.FAB, { icon: 'add_a_photo', to: '', onMouseUp: this.handleAddPhoto })
+	        _react2.default.createElement(_buttons.FAB, { icon: 'add_a_photo', to: '/shopwindow', onMouseUp: this.handleAddShopWindow })
 	      );
 	    }
 	  }]);
@@ -28232,9 +28303,19 @@
 	  _inherits(Card, _React$Component);
 
 	  function Card() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
 	    _classCallCheck(this, Card);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Card).apply(this, arguments));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Card)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.handleCardSelected = function () {
+	      _this.props.onSelected();
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(Card, [{
@@ -28242,7 +28323,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'card-box' },
+	        { className: 'card-box', onMouseUp: this.handleCardSelected },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'card mui-panel' },
@@ -28372,7 +28453,7 @@
 
 
 	// module
-	exports.push([module.id, ".cards {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.card-box {\n  flex:1;\n  min-width: 30rem;\n  width: 33.333333%;\n  height: 30rem;\n  padding: 1rem;\n  display: flex;\n}\n\n.card {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.card > .image {\n  width:100%;\n  min-height: 18rem;\n  height: auto important!;\n}\n\n.card-info {\n  padding: 1rem;\n}\n", ""]);
+	exports.push([module.id, ".cards {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.card-box {\n  flex:1;\n  min-width: 30rem;\n  width: 33.333333%;\n  height: 30rem;\n  padding: 1rem;\n  display: flex;\n}\n\n.card {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.card > .image {\n  width:100%;\n  min-height: 18rem;\n  height: auto important!;\n}\n\n.card-info {\n  padding: 1rem;\n}\n\n.card:active {\n  background-color: red;\n  font-size: 1.6rem;\n}\n", ""]);
 
 	// exports
 
@@ -28526,6 +28607,120 @@
 
 	DossierStore.init();
 	exports.default = DossierStore;
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _page = __webpack_require__(251);
+
+	var _images = __webpack_require__(268);
+
+	var _images2 = _interopRequireDefault(_images);
+
+	__webpack_require__(276);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ShopWindow = function (_React$Component) {
+	  _inherits(ShopWindow, _React$Component);
+
+	  function ShopWindow() {
+	    _classCallCheck(this, ShopWindow);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ShopWindow).apply(this, arguments));
+	  }
+
+	  _createClass(ShopWindow, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _page.Page,
+	        { title: 'ShopWindow', to: '/' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'cinema' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'screen-box' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'screen' },
+	              _react2.default.createElement('img', { src: '/images/escaparate1.jpg', width: '100%' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'cinema-info' },
+	            'xxxxx'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ShopWindow;
+	}(_react2.default.Component);
+
+	exports.default = ShopWindow;
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(277);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(234)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./cinema.css", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./cinema.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(233)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".cinema {\n  display: flex;\n  flex-wrap: wrap;\n  background-color: rgba(0, 0, 0, 0.5);\n  flex: 1;\n  flex-direction: column;\n  align-items: center;\n}\n\n.screen-box {\n  min-width: 30rem;\n  width: 100%;\n  padding: 1rem;\n  display: flex;\n  border: solid 2px red;\n  overflow: auto;\n}\n\n.screen {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\n.screen > .image {\n  width:100%;\n  min-height: 18rem;\n  flex:1;\n}\n\n.cinema-info {\n  flex: 1;\n  padding: 1rem;\n  max-height: 10rem;\n}\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);
