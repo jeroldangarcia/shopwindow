@@ -6,6 +6,7 @@ import { FAB } from '../../chips/buttons/buttons';
 import { Stepper, Step } from '../../chips/tabs/steps';
 import { Cards, Card } from '../../layout/cards/cards';
 import Dialog from '../../layout/dialogs/dialogs';
+import { browserHistory } from 'react-router';
 
 import './dossier.css';
 
@@ -64,37 +65,47 @@ class DossierCheckin extends React.Component {
 
 class DossierShopWindow extends React.Component {
 
-  handleAddPhoto = () => {
+  handleAddShopWindow = () => {
     const dialog = (<Dialog>xxx</Dialog>);
     this.props.onAddPhoto(dialog);
   }
 
+  handleCardSelected = () => {
+    browserHistory.push('/shopwindow');
+  }
+
   render() {
+
+    const info = (
+      <p>
+        ESCAPARATE CHICA
+        <br />
+        PRIMAVERA 75 ANIVERSARIO. 3er CAMBIO
+        <br />
+        CON DIN A4 GUIA DE LA MODA
+      </p>
+    )
+
     return (
       <div className="shopwindow">
         <Cards>
-          <Card>
-            <p>
-              ESCAPARATE CHICA
-              <br />
-              PRIMAVERA 75 ANIVERSARIO. 3er CAMBIO
-              <br />
-              CON DIN A4 GUIA DE LA MODA
-            </p>
-          </Card>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected}>{info}</Card>
         </Cards>
-        <FAB icon="add_a_photo" to="" onMouseUp={this.handleAddPhoto}/>
+        <FAB icon="add_a_photo" to="/shopwindow" onMouseUp={this.handleAddShopWindow}/>
       </div>
     );
   }

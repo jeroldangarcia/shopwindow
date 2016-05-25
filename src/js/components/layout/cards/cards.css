@@ -27,3 +27,8 @@
 .card-info {
   padding: 1rem;
 }
+
+.card:active {
+  background-color: red;
+  font-size: 1.6rem;
+}
