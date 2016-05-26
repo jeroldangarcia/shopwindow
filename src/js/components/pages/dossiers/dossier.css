@@ -5,9 +5,9 @@
 }
 
 .dossier header {
-  color: #000;
-  color: rgba(0, 0, 0, 0.8);
-  background-color : #FFF;
+  color: #FFF;
+  color: rgba(255, 255, 255, 0.8);
+  background-color : #1B1B1B;
 }
 
 .dossier header > h1 {
@@ -21,7 +21,7 @@
 }
 
 .dossier main {
-  padding: 0 1.6rem;
+  padding: 2rem;
   flex:1;
   overflow-y: auto;
   display:flex;
@@ -31,7 +31,6 @@
 .checklist {
   display: flex;
   flex-direction: column;
-  margin: 1.6rem;
 }
 
 .checklist > .line {
@@ -66,4 +65,68 @@
 
 .line > .field {
   min-width: 10rem;
+}
+
+.dossier.printer > main {
+  display: block;
+}
+
+.dossier.printer   h1 {
+  margin-top: 0;
+}
+
+.dossier.printer   h2 {
+  margin-top: 0;
+}
+
+.dossier.printer main {
+  padding: 2rem 8rem;
+}
+
+article {
+  min-height: 55rem;
+}
+@media print {
+
+  @page {
+    margin: 1cm;
+  }
+
+  body * {
+      color : #000;
+      background-color: #FFF;
+  }
+
+  .drawer, .searchbar, .fab, .menu {
+    display: none;
+  }
+
+  .container, .dossier, .dossier main {
+    display: block;
+  }
+
+  .page .header {
+    display: none;
+  }
+
+  .dossier header {
+    background: #FFF;
+    border-bottom: solid 2px #000;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .mui-panel {
+    border: 0;
+    box-shadow: none;
+  }
+
+  article {
+    break-after: always;
+    page-break-after: always;
+    background-color: #EEE;
+  }
+
 }

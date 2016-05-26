@@ -100,7 +100,7 @@
   .drawer {
     position:relative;
     left:0px;
-    min-width: 7rem;
+    min-width: 20rem;
     padding-top: 0px;
   }
   .toolbar {

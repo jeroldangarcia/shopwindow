@@ -32,7 +32,7 @@ class DossierCheckin extends React.Component {
 
   render() {
     return (
-      <div className="checklist">
+      <article className="page checklist mui-panel">
         <div className="line">
           <label>Recepcion Materiales Motivo / Ambientacion</label>
           <Slider id="reception" valueOn="Yes" valueOff="No" checked={this.state.reception} />
@@ -58,7 +58,7 @@ class DossierCheckin extends React.Component {
           <Slider id="opening" valueOn="Yes" valueOff="No" checked={this.state.opening} />
           <Slider id="openingOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.openingOK} />
         </div>
-      </div>
+      </article>
     );
   }
 }
@@ -89,21 +89,21 @@ class DossierShopWindow extends React.Component {
     return (
       <div className="shopwindow">
         <Cards>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
-          <Card onSelected={this.handleCardSelected}>{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
+          <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
         </Cards>
         <FAB icon="add_a_photo" to="/shopwindow" onMouseUp={this.handleAddShopWindow}/>
       </div>
@@ -114,11 +114,10 @@ class DossierShopWindow extends React.Component {
 class DossierReport extends React.Component {
   render() {
     return (
-      <div className="report">
+      <article className="page report mui-panel">
         <h5>Valoraciones y Observaciones</h5>
         <div className="observations mui-textfield">
-          <textarea placeholder="Observaciones.....">
-
+          <p>
 
           PRODUCTO REFERENCIADO:
 
@@ -136,9 +135,9 @@ class DossierReport extends React.Component {
           PINTOR SOROLLA Y AVENIDA FRANCIA Y EL TOP SEGUNDA OPCIÓN TAMPOCO SE
           HABÍA RECIBIDO, SE HA SUSTITUÍDO POR UN PRODUCTO SIMILAR.
 
-          </textarea>
+          </p>
         </div>
-      </div>
+      </article>
     );
   }
 }
@@ -160,7 +159,7 @@ class Dossier extends React.Component {
   renderContent() {
     switch (this.state.tab) {
       case 'checkin':
-        return (<DossierCheckin />);
+        return (<div><DossierCheckin /><DossierReport /></div>);
       case 'gallery':
         return (<DossierShopWindow onAddPhoto={this.handleAddPhoto}/>);
       case 'report':
@@ -175,7 +174,12 @@ class Dossier extends React.Component {
       <div className="dossier">
         <header>
           <h1>Primavera 75 Aniversario</h1>
-          <h2>3er Cambio</h2>
+
+          <div className="flex expand" style={{padding:'0 2rem'}}>
+            <span className="flex expand"><h2>3er Cambio</h2></span>
+            <span><h2>18 / 04 / 2016</h2></span>
+          </div>
+
           <Tabs onChanged={this.handleChangeTab}>
             <Tab id="checkin" label="Check-In" active={this.state.tab === 'checkin'} />
             <Tab id="gallery" label="Gallery" active={this.state.tab === 'gallery'} />
@@ -197,9 +201,11 @@ class NewDossier extends React.Component {
     console.log(step);
   }
 
+  print = () => <Button icon="print" />;
+
   render() {
     return (
-      <Page title="New Dossier" icon="folder_open" to="/">
+      <Page title="New Dossier" icon="folder_open" to="/" action={print}>
         <div className="dossier">
           <main className="flex">
             <Step id="step1">
@@ -223,4 +229,71 @@ class NewDossier extends React.Component {
   }
 }
 
-export { Dossier, NewDossier };
+class PrintDossier extends React.Component {
+
+  print = () => {
+    window.print();
+  }
+
+  renderHeader() {
+    return (
+      <header>
+        <h1>Primavera 75 Aniversario</h1>
+        <div className="flex expand" style={{ padding: '0 2rem' }}>
+          <span className="flex expand"><h2>3er Cambio</h2></span>
+          <span><h2>18 / 04 / 2016</h2></span>
+        </div>
+      </header>
+    );
+  }
+
+  renderWindow = () => {
+    return (
+      <article >
+        {this.renderHeader()}
+        <table className="mui-panel">
+          <tr>
+            <td>
+              <img src="/images/escaparate1.jpg" width="99%" />
+            </td>
+            <td style={{ minWidth: '26rem', verticalAlign: 'top' , padding: '1rem'}}>
+              <h3 style={{ textTransform: 'uppercase' }}>
+                Observaciones
+              </h3>
+            </td>
+          </tr>
+        </table>
+      </article>
+    );
+  }
+
+  render() {
+    return (
+      <Page title="Print Dossier" icon="printer" to="/">
+        <div className="dossier printer">
+          <main>
+
+            {this.renderHeader()}
+            <DossierCheckin />
+            <br />
+            {this.renderWindow()}
+            <br />
+            {this.renderWindow()}
+            <br />
+            {this.renderWindow()}
+            <br />
+            {this.renderWindow()}
+            <br />
+            {this.renderHeader()}
+            <DossierReport />
+            <br />
+            <FAB icon="print" to="" onMouseUp={this.print} />
+
+          </main>
+        </div>
+      </Page>
+    );
+  }
+}
+
+export { Dossier, NewDossier, PrintDossier };

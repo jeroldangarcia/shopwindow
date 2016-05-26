@@ -6,9 +6,8 @@ import './app.css';
 // Pages
 import Login from './pages/login/login';
 import Dossiers from './pages/dossiers/dossiers';
-import { NewDossier } from './pages/dossiers/dossier';
+import { NewDossier, PrintDossier } from './pages/dossiers/dossier';
 import ShopWindow from './pages/dossiers/shopwindow';
-
 
 const auth = {
 
@@ -70,6 +69,7 @@ class App extends React.Component {
           <IndexRoute component={Dossiers} />
           <Route path="/new" component={NewDossier} />
           <Route path="/shopwindow" component={ShopWindow} />
+          <Route path="/print" component={PrintDossier} />
         </Route>
       </Router>
     );

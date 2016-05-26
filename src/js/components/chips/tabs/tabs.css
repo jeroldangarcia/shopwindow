@@ -3,12 +3,13 @@
   display: flex;
   background-color: inherit;
   margin-bottom: 1px;
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);
 }
 
 .tab {
   flex:1;
-  color: #000;
-  color: rgba(0, 0, 0, 0.65);
   font-size: 1.3rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -27,6 +28,14 @@
 }
 
 .tab.selected {
-  color: blue;
-  border-bottom: solid 2px blue;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 1280px) and (orientation: landscape) {
+  .tab {
+    flex:0;
+    min-width: 20rem;
+  }
 }

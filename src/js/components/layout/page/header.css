@@ -1,6 +1,9 @@
 .header {
-  color: #FFF;
-  background-color: #555;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #3a3a3a;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
 }
 
 .header .title {
@@ -9,4 +12,16 @@
   font-weight: 700;
   line-height: 5.6rem;
   white-space: nowrap;
+}
+
+@media (min-width: 960px) and (orientation: landscape) {
+  .header {
+
+  }
+}
+
+@media (min-width: 1280px) and (orientation: landscape) {
+  .header {
+
+  }
 }
