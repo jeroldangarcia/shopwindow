@@ -20288,7 +20288,8 @@
 	          { path: '/', component: LoginRequired },
 	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _dossiers2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/new', component: _dossier.NewDossier }),
-	          _react2.default.createElement(_reactRouter.Route, { path: '/shopwindow', component: _shopwindow2.default })
+	          _react2.default.createElement(_reactRouter.Route, { path: '/shopwindow', component: _shopwindow2.default }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/print', component: _dossier.PrintDossier })
 	        )
 	      );
 	    }
@@ -25946,7 +25947,7 @@
 
 
 	// module
-	exports.push([module.id, ".layout {\n  height: 100vh;\n  display: flex;\n}\n\n.drawer {\n  display: flex;\n  position: absolute;\n  left:-28rem;\n  height: 100vh;\n  z-index: 1001;\n\n  -webkit-transition: left 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: left 0.5s ease-in-out;\n\n  -webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  -moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n}\n\n.drawer > * {\n  flex:1;\n}\n\n.dialog {\n    display:flex;\n    z-index: 1002;\n    min-width: 10rem;\n    min-height: 10rem;\n    background-color: #FFF;\n}\n\n.overlay {\n  display: flex;\n  position: absolute;\n  width:100%;\n  height:100%;\n  z-index: 1000;\n  background-color: rgba(100,100,100,0.7);\n}\n\n.container {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n}\n\n.container > #searchbar {\n  display:none;\n  padding: 15px;\n  min-height: 6rem;\n}\n\n.container > .page {\n  flex:1;\n}\n\n.toolbar {\n  display:none;\n  position:absolute;\n  right: -6rem;\n  height: 100vh;\n  z-index: 1001;\n  min-width: 7.5rem;\n\n  -webkit-transition: right 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: right 0.5s ease-in-out;\n\n}\n\n\n@media (min-width: 960px) and (orientation:landscape) {\n\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 8rem;\n    max-width: 8rem;\n    overflow: hidden;\n    padding-top: 5.6rem;\n    box-shadow: inherit;\n  }\n\n  .drawer.uncoverleft {\n    min-width: 24rem;\n  }\n\n  .overlay {\n    display:none;\n  }\n\n  .toolbar {\n    display:none;\n  }\n}\n\n@media (min-width: 1280px) {\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 7rem;\n    padding-top: 0px;\n  }\n  .toolbar {\n    display: flex;\n    position: relative;\n    right:0px;\n  }\n  .drawer {\n    background-color: inherit;\n    box-shadow: inherit;\n  }\n  .container > #searchbar {\n    display: flex;\n  }\n}\n\n/* -------------- */\n\n.uncoverleft {\n  left:0rem;\n}\n\n.uncoverright {\n  right:0px;\n}\n\n.hidden {\n  display: none;\n}\n\n.centred {\n  justify-content: center;\n  align-items: center;\n}\n\n.up {\n  align-self: flex-start;\n  margin-top: 2rem;\n}\n\n.expand {\n  flex:1;\n}\n", ""]);
+	exports.push([module.id, ".layout {\n  height: 100vh;\n  display: flex;\n}\n\n.drawer {\n  display: flex;\n  position: absolute;\n  left:-28rem;\n  height: 100vh;\n  z-index: 1001;\n\n  -webkit-transition: left 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: left 0.5s ease-in-out;\n\n  -webkit-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  -moz-box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n  box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.26);\n}\n\n.drawer > * {\n  flex:1;\n}\n\n.dialog {\n    display:flex;\n    z-index: 1002;\n    min-width: 10rem;\n    min-height: 10rem;\n    background-color: #FFF;\n}\n\n.overlay {\n  display: flex;\n  position: absolute;\n  width:100%;\n  height:100%;\n  z-index: 1000;\n  background-color: rgba(100,100,100,0.7);\n}\n\n.container {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n}\n\n.container > #searchbar {\n  display:none;\n  padding: 15px;\n  min-height: 6rem;\n}\n\n.container > .page {\n  flex:1;\n}\n\n.toolbar {\n  display:none;\n  position:absolute;\n  right: -6rem;\n  height: 100vh;\n  z-index: 1001;\n  min-width: 7.5rem;\n\n  -webkit-transition: right 0.5s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: right 0.5s ease-in-out;\n\n}\n\n\n@media (min-width: 960px) and (orientation:landscape) {\n\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 8rem;\n    max-width: 8rem;\n    overflow: hidden;\n    padding-top: 5.6rem;\n    box-shadow: inherit;\n  }\n\n  .drawer.uncoverleft {\n    min-width: 24rem;\n  }\n\n  .overlay {\n    display:none;\n  }\n\n  .toolbar {\n    display:none;\n  }\n}\n\n@media (min-width: 1280px) {\n  .drawer {\n    position:relative;\n    left:0px;\n    min-width: 20rem;\n    padding-top: 0px;\n  }\n  .toolbar {\n    display: flex;\n    position: relative;\n    right:0px;\n  }\n  .drawer {\n    background-color: inherit;\n    box-shadow: inherit;\n  }\n  .container > #searchbar {\n    display: flex;\n  }\n}\n\n/* -------------- */\n\n.uncoverleft {\n  left:0rem;\n}\n\n.uncoverright {\n  right:0px;\n}\n\n.hidden {\n  display: none;\n}\n\n.centred {\n  justify-content: center;\n  align-items: center;\n}\n\n.up {\n  align-self: flex-start;\n  margin-top: 2rem;\n}\n\n.expand {\n  flex:1;\n}\n", ""]);
 
 	// exports
 
@@ -26294,7 +26295,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size:62.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #CCC;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; }\nh2 { font-size: 1.75rem; }\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.centred { align-items: center; }\n", ""]);
+	exports.push([module.id, "html {\n  font-size:52.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; }\nh2 { font-size: 1.75rem; }\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.centred { align-items: center; }\n", ""]);
 
 	// exports
 
@@ -26520,7 +26521,7 @@
 
 
 	// module
-	exports.push([module.id, ".tabbar {\n  min-height: 5rem;\n  display: flex;\n  background-color: inherit;\n  margin-bottom: 1px;\n}\n\n.tab {\n  flex:1;\n  color: #000;\n  color: rgba(0, 0, 0, 0.65);\n  font-size: 1.3rem;\n  font-weight: 500;\n  text-transform: uppercase;\n  padding: 0 1.2rem 0 1.2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.tab:active {\n  font-size:1.4rem;\n}\n\n.tab > label {\n  font-size: 1.4rem !important;\n}\n\n.tab.selected {\n  color: blue;\n  border-bottom: solid 2px blue;\n}\n", ""]);
+	exports.push([module.id, ".tabbar {\n  min-height: 5rem;\n  display: flex;\n  background-color: inherit;\n  margin-bottom: 1px;\n  -webkit-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n  -moz-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n}\n\n.tab {\n  flex:1;\n  font-size: 1.3rem;\n  font-weight: 500;\n  text-transform: uppercase;\n  padding: 0 1.2rem 0 1.2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.tab:active {\n  font-size:1.4rem;\n}\n\n.tab > label {\n  font-size: 1.4rem !important;\n}\n\n.tab.selected {\n  font-size: 1.5rem;\n  font-weight: 600;\n  border-bottom: solid 2px rgba(255, 255, 255, 0.8);\n}\n\n@media (min-width: 1280px) and (orientation: landscape) {\n  .tab {\n    flex:0;\n    min-width: 20rem;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -26735,7 +26736,7 @@
 
 
 	// module
-	exports.push([module.id, ".icon {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button:focus {\n  outline: 0;\n}\n\n.button:active {\n  background-color: #CCC;\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.fab {\n  box-sizing: border-box;\n  position:absolute;\n  bottom: 4rem;\n  right: 4rem;\n  width: 5.5rem;\n  height: 5.5rem;\n  color: #FFF;\n  background-color: #FF4081;\n  border:solid 0;\n  border-radius: 4rem;\n  box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.fab:active {\n  background-color: #ff5a92;\n  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);\n}\n\n.fab:focus {\n  outline: 0;\n}\n", ""]);
+	exports.push([module.id, ".icon {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button:focus {\n  outline: 0;\n}\n\n.button:active {\n  background-color: #CCC;\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.fab {\n  z-index: 3000;\n  box-sizing: border-box;\n  position:absolute;\n  bottom: 4rem;\n  right: 4rem;\n  width: 5.5rem;\n  height: 5.5rem;\n  color: #FFF;\n  background-color: #FF4081;\n  border:solid 0;\n  border-radius: 4rem;\n  box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.fab:active {\n  background-color: #ff5a92;\n  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);\n}\n\n.fab:focus {\n  outline: 0;\n}\n", ""]);
 
 	// exports
 
@@ -27255,12 +27256,17 @@
 	  var logout = function logout() {
 	    delete localStorage.token;
 	  };
+	  var print = function print() {
+	    _reactRouter.browserHistory.push('print');
+	  };
 
 	  var searchButton = _react2.default.createElement(_buttons.Button, { id: 'search-button', icon: 'search', onClick: goSearch });
 	  var icon = props.to ? '' : _react2.default.createElement(_buttons.Icon, { id: 'header-icon', icon: props.icon });
 	  var drawerButton = props.to ? '' : _react2.default.createElement(_buttons.Button, { id: 'drawer-button', icon: 'menu', onMouseUp: props.toggleDrawer });
 	  var backButton = props.to ? _react2.default.createElement(_buttons.Button, { id: 'back-button', icon: 'arrow_back', onMouseUp: goBack }) : "";
 	  var logoutButton = _react2.default.createElement(_buttons.Button, { id: 'logout-button', icon: 'exit_to_app', onMouseUp: logout });
+	  var printButton = _react2.default.createElement(_buttons.Button, { id: 'print-button', icon: 'print', onMouseUp: print });
+
 	  return _react2.default.createElement(
 	    'header',
 	    { className: 'header' },
@@ -27276,6 +27282,7 @@
 	      props.title
 	    ),
 	    searchButton,
+	    printButton,
 	    logoutButton
 	  );
 	};
@@ -27317,7 +27324,7 @@
 
 
 	// module
-	exports.push([module.id, ".header {\n  color: #FFF;\n  background-color: #555;\n}\n\n.header .title {\n  flex:1;\n  font-size: 1.8rem;\n  font-weight: 700;\n  line-height: 5.6rem;\n  white-space: nowrap;\n}\n", ""]);
+	exports.push([module.id, ".header {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #3a3a3a;\n  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n}\n\n.header .title {\n  flex:1;\n  font-size: 1.8rem;\n  font-weight: 700;\n  line-height: 5.6rem;\n  white-space: nowrap;\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n  .header {\n\n  }\n}\n\n@media (min-width: 1280px) and (orientation: landscape) {\n  .header {\n\n  }\n}\n", ""]);
 
 	// exports
 
@@ -27357,7 +27364,7 @@
 
 
 	// module
-	exports.push([module.id, ".page {\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page > header {\n  min-height: 5.6rem;\n  max-height: 5.6rem;\n  padding: 0.4rem 1.6rem 0.4rem 1.6rem;\n  display: flex;\n  align-items: center;;\n\n  z-index: 1;\n  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n}\n\n.page > header #header-icon {\n  display: none;\n}\n\n.page > main {\n  flex:1;\n  background-color: #EEE;\n  display:flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page .scrollpane {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  padding: 1rem;\n  overflow-y: auto;\n}\n\n\n\n@media (max-width: 960px) {\n\n  .inbox-list .fab {\n    position: absolute;\n    right: 4rem;\n    bottom: 4rem;\n  }\n\n  .inbox-list.selected .fab {\n    display: none;\n  }\n\n  .inbox-list.selected > .tabbar {\n    display:none;\n  }\n\n  .inbox-list.selected > .list > .textfield {\n    display:none;\n  }\n\n  .inbox-list.selected .listitem.unselected {\n    display: none;\n  }\n\n  .inbox-list.selected {\n    min-height: 12.5rem;\n    margin-bottom: 1rem;\n  }\n\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n\n  .page > header {\n    position: fixed;\n    z-index: 2000;\n    width: 100%;\n    left:0px;\n  }\n\n  .page > main {\n    z-index: 1999;\n    margin-top: 5.6rem;\n    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);\n    padding-left:0px;\n    padding-top: 0px;\n  }\n\n  .page .inbox {\n    flex-direction: row;\n  }\n\n  .page .inbox > .inbox-list{\n    max-width: 40rem;\n    box-shadow: 2px -3px 2px 1px rgba(0,0,0,0.3);\n    z-index: 500;\n  }\n\n  .page .inbox > .viewer {\n    padding: 10px;\n  }\n\n}\n\n\n@media (min-width: 1280px) {\n\n  .page > header {\n    position: relative;\n    z-index: auto;\n  }\n\n  .page > header {\n    color:rgba(0, 0, 0, 0.8);\n    background-color: rgba(255, 255, 255, 0.5);\n  }\n\n  .page > header #drawer-button {\n    display:none;\n  }\n\n  .page > header #header-icon {\n    display: flex;\n  }\n\n  .page > main {\n    margin-top: 0px;\n    z-index: auto;\n  }\n\n  .page .inbox > .inbox-list{\n    z-index: auto;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".page {\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page > header {\n  min-height: 5.6rem;\n  max-height: 5.6rem;\n  padding: 0.4rem 1.6rem 0.4rem 1.6rem;\n  display: flex;\n  align-items: center;;\n\n  z-index: 1;\n\n}\n\n.page > header #header-icon {\n  display: none;\n}\n\n.page > main {\n  flex:1;\n  background-color: #EEE;\n  display:flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page .scrollpane {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  padding: 1rem;\n  overflow-y: auto;\n}\n\n\n\n@media (max-width: 960px) {\n\n  .inbox-list .fab {\n    position: absolute;\n    right: 4rem;\n    bottom: 4rem;\n  }\n\n  .inbox-list.selected .fab {\n    display: none;\n  }\n\n  .inbox-list.selected > .tabbar {\n    display:none;\n  }\n\n  .inbox-list.selected > .list > .textfield {\n    display:none;\n  }\n\n  .inbox-list.selected .listitem.unselected {\n    display: none;\n  }\n\n  .inbox-list.selected {\n    min-height: 12.5rem;\n    margin-bottom: 1rem;\n  }\n\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n\n  .page > header {\n    position: fixed;\n    z-index: 2000;\n    width: 100%;\n    left:0px;\n  }\n\n  .page > main {\n    z-index: 1999;\n    margin-top: 5.6rem;\n    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);\n    padding-left:0px;\n    padding-top: 0px;\n  }\n\n  .page .inbox {\n    flex-direction: row;\n  }\n\n  .page .inbox > .inbox-list{\n    max-width: 40rem;\n    box-shadow: 2px -3px 2px 1px rgba(0,0,0,0.3);\n    z-index: 500;\n  }\n\n  .page .inbox > .viewer {\n    padding: 10px;\n  }\n\n}\n\n\n@media (min-width: 1280px) {\n\n  .page > header {\n    position: relative;\n    z-index: auto;\n  }\n\n  .page > header #drawer-button {\n    display:none;\n  }\n\n  .page > header #header-icon {\n    display: flex;\n  }\n\n  .page > main {\n    margin-top: 0px;\n    z-index: auto;\n  }\n\n  .page .inbox > .inbox-list{\n    z-index: auto;\n  }\n\n}\n", ""]);
 
 	// exports
 
@@ -27512,7 +27519,7 @@
 
 
 	// module
-	exports.push([module.id, ".inbox {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.inbox-list {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.inbox-list > .filter {\n  background-color: #FFF;\n  padding: 1rem;\n  min-height: 6rem;\n}\n\n.inbox-list > .filter > .select {\n  max-width: 6rem;\n  margin-left: 1rem;\n  margin-right: 2rem;\n}\n\n.inbox-list .fab {\n  position: absolute;\n  bottom: 4rem;\n}\n\n.inbox-viewer {\n  flex:1;\n  display:flex;\n}\n\n.page .inbox > .viewer {\n  padding: 0.8rem;\n  flex:1;\n  overflow-y: auto;\n}\n\n@media (max-width: 959px) {\n\n  .inbox-list {\n    display: none;\n  }\n\n  .inbox-list.open {\n    display:flex;\n  }\n\n  .inbox-viewer {\n    display: none;\n  }\n\n  .inbox-viewer.open {\n    display:flex;\n  }\n\n}\n\n@media (min-width: 960px) and (max-width:1279px) and (orientation: landscape) {\n  .inbox-list .fab {\n    left: 58rem;\n  }\n}\n@media (min-width: 1280px) {\n  .inbox-list .fab {\n    left: 40rem;\n  }\n}\n", ""]);
+	exports.push([module.id, ".inbox {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.inbox-list {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.inbox-list > .filter {\n  background-color: #FFF;\n  padding: 1rem;\n  min-height: 6rem;\n}\n\n.inbox-list > .filter > .select {\n  max-width: 6rem;\n  margin-left: 1rem;\n  margin-right: 2rem;\n}\n\n.inbox-list .fab {\n  position: absolute;\n  bottom: 4rem;\n}\n\n.inbox-viewer {\n  flex:1;\n  display:flex;\n}\n\n.page .inbox > .viewer {\n  padding: 0.8rem;\n  flex:1;\n  overflow-y: auto;\n}\n\n@media (max-width: 959px) {\n\n  .inbox-list {\n    display: none;\n  }\n\n  .inbox-list.open {\n    display:flex;\n  }\n\n  .inbox-viewer {\n    display: none;\n  }\n\n  .inbox-viewer.open {\n    display:flex;\n  }\n\n}\n\n@media (min-width: 960px) and (max-width:1279px) and (orientation: landscape) {\n  .inbox-list .fab {\n    left: 58rem;\n  }\n}\n@media (min-width: 1280px) {\n  .inbox-list .fab {\n    left: 52rem;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -27570,7 +27577,7 @@
 
 
 	  var handleSelected = function handleSelected() {
-	    navigator.vibrate(1000);
+	    if (navigator.vibrate) navigator.vibrate(1000);
 	    onSelected(id);
 	  };
 
@@ -27678,7 +27685,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.NewDossier = exports.Dossier = undefined;
+	exports.PrintDossier = exports.NewDossier = exports.Dossier = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -27751,8 +27758,8 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'checklist' },
+	        'article',
+	        { className: 'page checklist mui-panel' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'line' },
@@ -27863,77 +27870,77 @@
 	          null,
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          ),
 	          _react2.default.createElement(
 	            _cards.Card,
-	            { onSelected: this.handleCardSelected },
+	            { onSelected: this.handleCardSelected, className: 'page' },
 	            info
 	          )
 	        ),
@@ -27958,8 +27965,8 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'report' },
+	        'article',
+	        { className: 'page report mui-panel' },
 	        _react2.default.createElement(
 	          'h5',
 	          null,
@@ -27969,8 +27976,8 @@
 	          'div',
 	          { className: 'observations mui-textfield' },
 	          _react2.default.createElement(
-	            'textarea',
-	            { placeholder: 'Observaciones.....' },
+	            'p',
+	            null,
 	            'PRODUCTO REFERENCIADO: EN ESTA OCASIÓN HEMOS TENIDO MÁS PROBLEMAS CON LOS COMPLEMENTOS QUE CON LA ROPA, O NO HAY, O NO HAY TALLAS, O NO HAY COLORES.... SE HA SUSTITUIDO POR PRODUCTOS SIMILARES. A DESTACAR: EL VESTIDO BLANCO DE TINTORETTO DEL ESCAPARATE DE CHICA NO SE HA RECIBIDO EN NINGÚN CENTRO, SE HA SUSTITUIDO POR OTRO DE LA MISMA COLECCIÓN. EL SUJETADOR DE ES ESCAPARATE DE MUJER SÓLO SE HA PODIDO COLOCAR EN PINTOR SOROLLA Y AVENIDA FRANCIA Y EL TOP SEGUNDA OPCIÓN TAMPOCO SE HABÍA RECIBIDO, SE HA SUSTITUÍDO POR UN PRODUCTO SIMILAR.'
 	          )
 	        )
@@ -28009,7 +28016,12 @@
 	    value: function renderContent() {
 	      switch (this.state.tab) {
 	        case 'checkin':
-	          return _react2.default.createElement(DossierCheckin, null);
+	          return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(DossierCheckin, null),
+	            _react2.default.createElement(DossierReport, null)
+	          );
 	        case 'gallery':
 	          return _react2.default.createElement(DossierShopWindow, { onAddPhoto: this.handleAddPhoto });
 	        case 'report':
@@ -28033,9 +28045,26 @@
 	            'Primavera 75 Aniversario'
 	          ),
 	          _react2.default.createElement(
-	            'h2',
-	            null,
-	            '3er Cambio'
+	            'div',
+	            { className: 'flex expand', style: { padding: '0 2rem' } },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'flex expand' },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                '3er Cambio'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                '18 / 04 / 2016'
+	              )
+	            )
 	          ),
 	          _react2.default.createElement(
 	            _tabs.Tabs,
@@ -28074,6 +28103,8 @@
 
 	    return _ret4 = (_temp4 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO4 = Object.getPrototypeOf(NewDossier)).call.apply(_Object$getPrototypeO4, [this].concat(args))), _this5), _this5.handleStepChanged = function (steps) {
 	      console.log(step);
+	    }, _this5.print = function () {
+	      return _react2.default.createElement(Button, { icon: 'print' });
 	    }, _temp4), _possibleConstructorReturn(_this5, _ret4);
 	  }
 
@@ -28082,7 +28113,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _page.Page,
-	        { title: 'New Dossier', icon: 'folder_open', to: '/' },
+	        { title: 'New Dossier', icon: 'folder_open', to: '/', action: print },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'dossier' },
@@ -28120,8 +28151,127 @@
 	  return NewDossier;
 	}(_react2.default.Component);
 
+	var PrintDossier = function (_React$Component6) {
+	  _inherits(PrintDossier, _React$Component6);
+
+	  function PrintDossier() {
+	    var _Object$getPrototypeO5;
+
+	    var _temp5, _this6, _ret5;
+
+	    _classCallCheck(this, PrintDossier);
+
+	    for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+	      args[_key5] = arguments[_key5];
+	    }
+
+	    return _ret5 = (_temp5 = (_this6 = _possibleConstructorReturn(this, (_Object$getPrototypeO5 = Object.getPrototypeOf(PrintDossier)).call.apply(_Object$getPrototypeO5, [this].concat(args))), _this6), _this6.print = function () {
+	      window.print();
+	    }, _this6.renderWindow = function () {
+	      return _react2.default.createElement(
+	        'article',
+	        null,
+	        _this6.renderHeader(),
+	        _react2.default.createElement(
+	          'table',
+	          { className: 'mui-panel' },
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement('img', { src: '/images/escaparate1.jpg', width: '99%' })
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              { style: { minWidth: '26rem', verticalAlign: 'top', padding: '1rem' } },
+	              _react2.default.createElement(
+	                'h3',
+	                { style: { textTransform: 'uppercase' } },
+	                'Observaciones'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }, _temp5), _possibleConstructorReturn(_this6, _ret5);
+	  }
+
+	  _createClass(PrintDossier, [{
+	    key: 'renderHeader',
+	    value: function renderHeader() {
+	      return _react2.default.createElement(
+	        'header',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Primavera 75 Aniversario'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex expand', style: { padding: '0 2rem' } },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'flex expand' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '3er Cambio'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              '18 / 04 / 2016'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _page.Page,
+	        { title: 'Print Dossier', icon: 'printer', to: '/' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'dossier printer' },
+	          _react2.default.createElement(
+	            'main',
+	            null,
+	            this.renderHeader(),
+	            _react2.default.createElement(DossierCheckin, null),
+	            _react2.default.createElement('br', null),
+	            this.renderWindow(),
+	            _react2.default.createElement('br', null),
+	            this.renderWindow(),
+	            _react2.default.createElement('br', null),
+	            this.renderWindow(),
+	            _react2.default.createElement('br', null),
+	            this.renderWindow(),
+	            _react2.default.createElement('br', null),
+	            this.renderHeader(),
+	            _react2.default.createElement(DossierReport, null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(_buttons.FAB, { icon: 'print', to: '', onMouseUp: this.print })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return PrintDossier;
+	}(_react2.default.Component);
+
 	exports.Dossier = Dossier;
 	exports.NewDossier = NewDossier;
+	exports.PrintDossier = PrintDossier;
 
 /***/ },
 /* 264 */
@@ -28553,7 +28703,7 @@
 
 
 	// module
-	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #000;\n  color: rgba(0, 0, 0, 0.8);\n  background-color : #FFF;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  padding: 0 1.6rem;\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n  margin: 1.6rem;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n", ""]);
+	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #FFF;\n  color: rgba(255, 255, 255, 0.8);\n  background-color : #1B1B1B;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  padding: 2rem;\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n\n.dossier.printer > main {\n  display: block;\n}\n\n.dossier.printer   h1 {\n  margin-top: 0;\n}\n\n.dossier.printer   h2 {\n  margin-top: 0;\n}\n\n.dossier.printer main {\n  padding: 2rem 8rem;\n}\n\narticle {\n  min-height: 55rem;\n}\n@media print {\n\n  @page {\n    margin: 1cm;\n  }\n\n  body * {\n      color : #000;\n      background-color: #FFF;\n  }\n\n  .drawer, .searchbar, .fab, .menu {\n    display: none;\n  }\n\n  .container, .dossier, .dossier main {\n    display: block;\n  }\n\n  .page .header {\n    display: none;\n  }\n\n  .dossier header {\n    background: #FFF;\n    border-bottom: solid 2px #000;\n  }\n\n  h2 {\n    margin-top: 0;\n  }\n\n  .mui-panel {\n    border: 0;\n    box-shadow: none;\n  }\n\n  article {\n    break-after: always;\n    page-break-after: always;\n    background-color: #EEE;\n  }\n\n}\n", ""]);
 
 	// exports
 
