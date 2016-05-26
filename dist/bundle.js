@@ -28735,7 +28735,7 @@
 	      };
 	      this.dossiers.push(dossier);
 	    }
-	    console.table(this.dossiers);
+	    if (console.table) console.table(this.dossiers);
 	  },
 	  all: function all() {
 	    return this.dossiers;
