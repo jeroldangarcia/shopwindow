@@ -14,8 +14,6 @@ const ListItemLine = ({text, info}) => {
 const ListItem = ({ id, title, subtitle, info, icon, children, selected, onSelected }) => {
 
   const handleSelected = () => {
-    if (navigator.vibrate)
-      navigator.vibrate(1000);
     onSelected(id);
   };
 

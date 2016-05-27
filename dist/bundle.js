@@ -27621,7 +27621,6 @@
 
 
 	  var handleSelected = function handleSelected() {
-	    if (navigator.vibrate) navigator.vibrate(1000);
 	    onSelected(id);
 	  };
 
