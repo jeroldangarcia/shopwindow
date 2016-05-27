@@ -26295,7 +26295,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size:52.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; }\nh2 { font-size: 1.75rem; }\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.centred { align-items: center; }\n", ""]);
+	exports.push([module.id, "html {\n  font-size:52.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; }\nh2 { font-size: 1.75rem; }\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.center { justify-content: center; }\n.centred { align-items: center; }\n", ""]);
 
 	// exports
 
@@ -26384,7 +26384,7 @@
 	              'Dossiers'
 	            ),
 	            _react2.default.createElement(
-	              'h5',
+	              'h3',
 	              null,
 	              'Shop Window Reports'
 	            )
@@ -26632,7 +26632,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.materialIcon = exports.FAB = exports.Button = exports.Icon = undefined;
+	exports.materialIcon = exports.FAB = exports.CheckButton = exports.Button = exports.IconButton = exports.Icon = undefined;
 
 	var _react = __webpack_require__(1);
 
@@ -26666,9 +26666,12 @@
 	};
 
 	var Button = function Button(props) {
+
+	  var onMouseUp = props.classes === 'disabled' ? null : props.onMouseUp;
+
 	  return _react2.default.createElement(
 	    'button',
-	    { id: props.id, className: 'button ' + props.classes, onMouseUp: props.onMouseUp },
+	    { id: props.id, className: 'button ' + props.classes, onMouseUp: onMouseUp },
 	    props.icon ? materialIcon(props.icon) : null,
 	    props.label
 	  );
@@ -26682,11 +26685,26 @@
 	  classes: _react2.default.PropTypes.string
 	};
 
+	var IconButton = function IconButton(props) {
+	  return _react2.default.createElement(
+	    'button',
+	    { id: props.id, className: 'ibutton ' + props.classes, onMouseUp: props.onMouseUp },
+	    props.icon ? materialIcon(props.icon) : null
+	  );
+	};
+
+	IconButton.propTypes = {
+	  id: _react2.default.PropTypes.string,
+	  icon: _react2.default.PropTypes.string,
+	  onMouseUp: _react2.default.PropTypes.func,
+	  classes: _react2.default.PropTypes.string
+	};
+
 	var FAB = function FAB(props) {
 	  return _react2.default.createElement(
 	    _reactRouter.Link,
 	    { to: props.to },
-	    _react2.default.createElement(Button, { icon: props.icon, classes: 'fab', onMouseUp: props.onMouseUp })
+	    _react2.default.createElement(IconButton, { icon: props.icon, classes: 'fab', onMouseUp: props.onMouseUp })
 	  );
 	};
 
@@ -26696,8 +26714,29 @@
 	  onMouseUp: _react2.default.PropTypes.func
 	};
 
+	var CheckButton = function CheckButton(props) {
+
+	  var icons = {
+	    none: 'check_box_outline_blank',
+	    true: 'check',
+	    false: 'close'
+	  };
+
+	  var handleValueChange = function handleValueChange() {
+	    var v = Object.keys(icons).indexOf(props.value);
+	    var nextValue = Object.keys(icons)[(v + 1) % 3];
+	    props.onValueChanged(props.id, nextValue);
+	  };
+
+	  var icon = icons[props.value];
+
+	  return _react2.default.createElement(IconButton, { icon: icon, onMouseUp: handleValueChange });
+	};
+
 	exports.Icon = Icon;
+	exports.IconButton = IconButton;
 	exports.Button = Button;
+	exports.CheckButton = CheckButton;
 	exports.FAB = FAB;
 	exports.materialIcon = materialIcon;
 
@@ -26736,7 +26775,7 @@
 
 
 	// module
-	exports.push([module.id, ".icon {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button:focus {\n  outline: 0;\n}\n\n.button:active {\n  background-color: #CCC;\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.fab {\n  z-index: 3000;\n  box-sizing: border-box;\n  position:absolute;\n  bottom: 4rem;\n  right: 4rem;\n  width: 5.5rem;\n  height: 5.5rem;\n  color: #FFF;\n  background-color: #FF4081;\n  border:solid 0;\n  border-radius: 4rem;\n  box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.fab:active {\n  background-color: #ff5a92;\n  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);\n}\n\n.fab:focus {\n  outline: 0;\n}\n", ""]);
+	exports.push([module.id, ".icon {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n\n  align-self: center;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button {\n  box-sizing: border-box;\n  height: 4.811rem;\n  min-width: 8.8rem;\n  padding: 1rem;\n  border: 0;\n  border-radius: 0.2rem;\n  background-color: transparent;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button:hover {\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.button:focus {\n  outline: 0;\n}\n\n.button:active {\n  background-color: rgba(200, 200, 200, 0.7);\n}\n\n.button.disabled {\n  color: #CCC;\n  color: rgba(200, 200, 200, 0.7);\n}\n\n.button.raised {\n  box-shadow: 0 2px 3px rgba(0,0,0,.19),0 1px 1px rgba(0,0,0,.23);\n}\n\n.button.raised:active {\n  box-shadow: 0 4px 6px rgba(0,0,0,.19),0 3px 3px rgba(0,0,0,.23);\n}\n\n.ibutton {\n  background-color: transparent;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  border-radius: 5rem;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.ibutton:focus {\n  outline: 0;\n}\n\n.ibutton:active {\n  background-color: #CCC;\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.fab {\n  box-sizing: border-box;\n\n  color: #FFF;\n  background-color: #FF4081;\n\n  width: 5.5rem;\n  height: 5.5rem;\n  border: 0;\n  border-radius: 5rem;\n\n  position:absolute;\n  bottom: 4rem;\n  right: 4rem;\n  z-index: 3000;\n\n  box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.fab:active {\n  background-color: #ff5a92;\n  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);\n}\n\n.fab:focus {\n  outline: 0;\n}\n", ""]);
 
 	// exports
 
@@ -27012,7 +27051,7 @@
 
 
 	// module
-	exports.push([module.id, ".login {\n  color: #FFF;\n  background-color: #000;\n  height: 100vh;\n  display:flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.login .window {\n  position:relative;\n  background-color: #555;\n  background-color: rgba(100, 100, 100, 0.5);\n  min-width: 30rem;\n  min-height: 40rem;\n}\n\n.login .window > .header {\n  padding: 2rem;\n}\n\n.login .window > .tabbar {\n  color : #111;\n  color : rgba(0, 0, 0, 0.65);\n  background-color: #FFF;\n}\n\n.login .window > .form {\n  background-color: #FFF;\n  padding: 2rem 2rem 10rem 2rem;\n}\n\n.login .fab {\n  right: -2.8rem;\n  bottom: 2rem;\n}\n", ""]);
+	exports.push([module.id, ".login {\n  color: #FFF;\n  height: 100vh;\n  display:flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.login .window {\n  position:relative;\n  background-color: #555;\n  background-color: rgba(100, 100, 100, 0.5);\n  min-width: 30rem;\n  min-height: 40rem;\n}\n\n.login .window > .header {\n  padding: 2rem;\n  background-color: rgba(100, 100, 100, 0.4);\n}\n\n.login .window > .tabbar {\n  color : #111;\n  color : rgba(0, 0, 0, 0.65);\n  background-color: #FFF;\n}\n\n.login .window > .form {\n  background-color: #FFF;\n  padding: 2rem 2rem 10rem 2rem;\n}\n\n.login .fab {\n  right: -2.8rem;\n  bottom: 2rem;\n}\n", ""]);
 
 	// exports
 
@@ -27045,7 +27084,7 @@
 
 	var _dossier = __webpack_require__(263);
 
-	var _dossiers = __webpack_require__(274);
+	var _dossiers = __webpack_require__(272);
 
 	var _dossiers2 = _interopRequireDefault(_dossiers);
 
@@ -27103,7 +27142,12 @@
 	    }, _this.handleClearFilter = function () {
 	      _this.handleFilterValueChanged('');
 	    }, _this.renderDossierItem = function (dossier) {
-	      var selected = _this.state.dossier === null ? '' : _this.state.dossier === dossier ? 'selected' : '';
+
+	      /*const selected =
+	        this.state.dossier === null ?
+	          '' : this.state.dossier === dossier ?
+	            'selected' : '';*/
+	      var selected = '';
 
 	      return _react2.default.createElement(
 	        _list.ListItem,
@@ -27260,12 +27304,12 @@
 	    _reactRouter.browserHistory.push('print');
 	  };
 
-	  var searchButton = _react2.default.createElement(_buttons.Button, { id: 'search-button', icon: 'search', onClick: goSearch });
+	  var searchButton = _react2.default.createElement(_buttons.IconButton, { id: 'search-button', icon: 'search', onClick: goSearch });
 	  var icon = props.to ? '' : _react2.default.createElement(_buttons.Icon, { id: 'header-icon', icon: props.icon });
-	  var drawerButton = props.to ? '' : _react2.default.createElement(_buttons.Button, { id: 'drawer-button', icon: 'menu', onMouseUp: props.toggleDrawer });
-	  var backButton = props.to ? _react2.default.createElement(_buttons.Button, { id: 'back-button', icon: 'arrow_back', onMouseUp: goBack }) : "";
-	  var logoutButton = _react2.default.createElement(_buttons.Button, { id: 'logout-button', icon: 'exit_to_app', onMouseUp: logout });
-	  var printButton = _react2.default.createElement(_buttons.Button, { id: 'print-button', icon: 'print', onMouseUp: print });
+	  var drawerButton = props.to ? '' : _react2.default.createElement(_buttons.IconButton, { id: 'drawer-button', icon: 'menu', onMouseUp: props.toggleDrawer });
+	  var backButton = props.to ? _react2.default.createElement(_buttons.IconButton, { id: 'back-button', icon: 'arrow_back', onMouseUp: goBack }) : "";
+	  var logoutButton = _react2.default.createElement(_buttons.IconButton, { id: 'logout-button', icon: 'exit_to_app', onMouseUp: logout });
+	  var printButton = _react2.default.createElement(_buttons.IconButton, { id: 'print-button', icon: 'print', onMouseUp: print });
 
 	  return _react2.default.createElement(
 	    'header',
@@ -27324,7 +27368,7 @@
 
 
 	// module
-	exports.push([module.id, ".header {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #3a3a3a;\n  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n}\n\n.header .title {\n  flex:1;\n  font-size: 1.8rem;\n  font-weight: 700;\n  line-height: 5.6rem;\n  white-space: nowrap;\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n  .header {\n\n  }\n}\n\n@media (min-width: 1280px) and (orientation: landscape) {\n  .header {\n\n  }\n}\n", ""]);
+	exports.push([module.id, ".header {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #3a3a3a;\n  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);\n}\n\n.header .title {\n  flex:1;\n  font-size: 1.8rem;\n  font-weight: 700;\n  line-height: 5.6rem;\n  white-space: nowrap;\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n  .header {\n\n  }\n}\n\n@media (min-width: 1280px) and (orientation: landscape) {\n  .header {\n    background-color: rgba(100, 100, 100, 0.7);\n\n  }\n}\n", ""]);
 
 	// exports
 
@@ -27364,7 +27408,7 @@
 
 
 	// module
-	exports.push([module.id, ".page {\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page > header {\n  min-height: 5.6rem;\n  max-height: 5.6rem;\n  padding: 0.4rem 1.6rem 0.4rem 1.6rem;\n  display: flex;\n  align-items: center;;\n\n  z-index: 1;\n\n}\n\n.page > header #header-icon {\n  display: none;\n}\n\n.page > main {\n  flex:1;\n  background-color: #EEE;\n  display:flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page .scrollpane {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  padding: 1rem;\n  overflow-y: auto;\n}\n\n\n\n@media (max-width: 960px) {\n\n  .inbox-list .fab {\n    position: absolute;\n    right: 4rem;\n    bottom: 4rem;\n  }\n\n  .inbox-list.selected .fab {\n    display: none;\n  }\n\n  .inbox-list.selected > .tabbar {\n    display:none;\n  }\n\n  .inbox-list.selected > .list > .textfield {\n    display:none;\n  }\n\n  .inbox-list.selected .listitem.unselected {\n    display: none;\n  }\n\n  .inbox-list.selected {\n    min-height: 12.5rem;\n    margin-bottom: 1rem;\n  }\n\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n\n  .page > header {\n    position: fixed;\n    z-index: 2000;\n    width: 100%;\n    left:0px;\n  }\n\n  .page > main {\n    z-index: 1999;\n    margin-top: 5.6rem;\n    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);\n    padding-left:0px;\n    padding-top: 0px;\n  }\n\n  .page .inbox {\n    flex-direction: row;\n  }\n\n  .page .inbox > .inbox-list{\n    max-width: 40rem;\n    box-shadow: 2px -3px 2px 1px rgba(0,0,0,0.3);\n    z-index: 500;\n  }\n\n  .page .inbox > .viewer {\n    padding: 10px;\n  }\n\n}\n\n\n@media (min-width: 1280px) {\n\n  .page > header {\n    position: relative;\n    z-index: auto;\n  }\n\n  .page > header #drawer-button {\n    display:none;\n  }\n\n  .page > header #header-icon {\n    display: flex;\n  }\n\n  .page > main {\n    margin-top: 0px;\n    z-index: auto;\n  }\n\n  .page .inbox > .inbox-list{\n    z-index: auto;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".page {\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page > header {\n  min-height: 5.6rem;\n  max-height: 5.6rem;\n  padding: 0.4rem 1.6rem 0.4rem 1.6rem;\n  display: flex;\n  align-items: center;;\n\n  z-index: 1;\n\n}\n\n.page > header #header-icon {\n  display: none;\n}\n\n.page > main {\n  flex:1;\n  background-color: rgba(255, 255, 255, 0.6);\n  display:flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page .scrollpane {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  padding: 1rem;\n  overflow-y: auto;\n}\n\n\n\n@media (max-width: 960px) {\n\n  .inbox-list .fab {\n    position: absolute;\n    right: 4rem;\n    bottom: 4rem;\n  }\n\n  .inbox-list.selected .fab {\n    display: none;\n  }\n\n  .inbox-list.selected > .tabbar {\n    display:none;\n  }\n\n  .inbox-list.selected > .list > .textfield {\n    display:none;\n  }\n\n  .inbox-list.selected .listitem.unselected {\n    display: none;\n  }\n\n  .inbox-list.selected {\n    min-height: 12.5rem;\n    margin-bottom: 1rem;\n  }\n\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n\n  .page > header {\n    position: fixed;\n    z-index: 2000;\n    width: 100%;\n    left:0px;\n  }\n\n  .page > main {\n    z-index: 1999;\n    margin-top: 5.6rem;\n    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);\n    padding-left:0px;\n    padding-top: 0px;\n  }\n\n  .page .inbox {\n    flex-direction: row;\n  }\n\n  .page .inbox > .inbox-list{\n    max-width: 40rem;\n    box-shadow: 2px -3px 2px 1px rgba(0,0,0,0.3);\n    z-index: 500;\n  }\n\n  .page .inbox > .viewer {\n    padding: 10px;\n  }\n\n}\n\n\n@media (min-width: 1280px) {\n\n  .page > header {\n    position: relative;\n    z-index: auto;\n  }\n\n  .page > header #drawer-button {\n    display:none;\n  }\n\n  .page > header #header-icon {\n    display: flex;\n  }\n\n  .page > main {\n    margin-top: 0px;\n    z-index: auto;\n  }\n\n  .page .inbox > .inbox-list{\n    z-index: auto;\n  }\n\n}\n", ""]);
 
 	// exports
 
@@ -27616,10 +27660,6 @@
 	  );
 	};
 
-	var ListDivider = function ListDivider() {
-	  return _react2.default.createElement('li', { className: 'mui-divider' });
-	};
-
 	var List = function List(props) {
 	  return _react2.default.createElement(
 	    'div',
@@ -27671,7 +27711,7 @@
 
 
 	// module
-	exports.push([module.id, ".list {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  border-right: solid 1px #DDD;\n  border-left: solid 1px #DDD;\n}\n\n.list .button {\n  color: rgba(0, 0, 0, 0.5);\n}\n\n.list .fab {\n  position: absolute;\n  top: auto;\n  right: auto;\n  bottom:2rem;\n  left: 30rem;\n}\n\n.list > .textfield {\n  padding-top : 0.8rem;\n  padding-left: 1.4rem;\n  padding-right: 1.4rem;\n  padding-bottom: 1rem;\n  background-color: #FFF;\n  margin-bottom: 3px;\n  min-height: 6rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.list > ul {\n  flex:1;\n  overflow-y: auto;\n  list-style: none;\n  padding:0px;\n  margin: 0px;\n}\n\n.listitem:hover {\n  background-color: #EFEFEF;\n}\n\n.listitem.selected {\n  background-color: transparent;\n}\n\n@media all and (min-width:960px) and (orientation:landscape) {\n  .list .fab {\n    position: absolute;\n    bottom:2rem;\n    left: 38rem;\n  }\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n@media all and (min-width:1280px) {\n\n  .list .fab {\n    position: absolute;\n    bottom:2rem;\n    left: 38rem;\n  }\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n.listitem {\n  flex:1;\n  min-height: 9rem;\n  background-color: #FFF;\n  color: rgba(0, 0, 0, 0.8);\n  border-bottom: solid 1px #DDD;\n\n  display: flex;\n  align-items: center;\n  padding-left: 1.6rem;\n}\n\n.listitem .icon {\n  margin-top: 1.2rem;\n  margin-right: 1.2rem;\n  align-self: flex-start;\n}\n\n.listitem > .content {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n  padding-top: 1.6rem;\n  padding-bottom: 1rem;\n}\n\n.content > h4 {\n  margin: .5rem 0 0 0;\n}\n\n.listitem .title {\n  font-size: 1.6rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 2.4rem;\n  color: rgba(0, 0, 0, 0.8);\n}\n\n.listitem .subtitle {\n  font-size: 1.4rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 1.6rem;\n  color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  padding-right: 1.6rem;\n}\n\n.listitem .infoline {\n\n}\n", ""]);
+	exports.push([module.id, ".list {\n  height: 100vh;\n  display: flex;\n  flex-direction: column;\n  border-right: solid 1px #DDD;\n  border-left: solid 1px #DDD;\n}\n\n.list .button {\n  color: rgba(0, 0, 0, 0.5);\n}\n\n.list .fab {\n  position: absolute;\n  top: auto;\n  right: auto;\n  bottom:2rem;\n  left: 30rem;\n}\n\n.list > .textfield {\n  padding-top : 0.8rem;\n  padding-left: 1.4rem;\n  padding-right: 1.4rem;\n  padding-bottom: 1rem;\n  background-color: #FFF;\n  margin-bottom: 3px;\n  min-height: 6rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.list > ul {\n  flex:1;\n  overflow-y: auto;\n  list-style: none;\n  padding:0px;\n  margin: 0px;\n}\n\n.listitem:hover {\n  background-color: #EFEFEF;\n}\n\n.listitem.selected {\n  background-color: transparent;\n}\n\n@media all and (min-width:960px) and (orientation:landscape) {\n  .list .fab {\n    position: absolute;\n    bottom:2rem;\n    left: 38rem;\n  }\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n@media all and (min-width:1280px) {\n\n  .list .fab {\n    position: absolute;\n    bottom:2rem;\n    left: 38rem;\n  }\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n.listitem {\n  flex:1;\n  min-height: 9rem;\n  background-color: #FFF;\n  color: rgba(0, 0, 0, 0.8);\n  border-bottom: solid 1px #DDD;\n\n  display: flex;\n  align-items: center;\n  padding-left: 1.6rem;\n}\n\n.listitem .icon {\n  margin-top: 1.2rem;\n  margin-right: 1.2rem;\n  align-self: flex-start;\n}\n\n.listitem > .content {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n  padding-top: 1.6rem;\n  padding-bottom: 1rem;\n}\n\n.content > h4 {\n  margin: .5rem 0 0 0;\n}\n\n.listitem .title {\n  font-size: 1.6rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 2.4rem;\n  color: rgba(0, 0, 0, 0.8);\n}\n\n.listitem .subtitle {\n  font-size: 1.4rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 1.6rem;\n  color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  padding-right: 1.6rem;\n}\n\n.listitem .infoline {\n\n}\n", ""]);
 
 	// exports
 
@@ -27711,7 +27751,11 @@
 
 	var _reactRouter = __webpack_require__(169);
 
-	__webpack_require__(272);
+	var _dossiers = __webpack_require__(272);
+
+	var _dossiers2 = _interopRequireDefault(_dossiers);
+
+	__webpack_require__(273);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27738,16 +27782,16 @@
 	    }
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(DossierCheckin)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	      reception: false,
-	      receptionOK: false,
-	      product: false,
-	      productOK: false,
-	      profiled: false,
-	      profiledOK: false,
-	      lighting: false,
-	      lightingOK: false,
-	      opening: false,
-	      openingOK: false
+	      reception: 'none',
+	      receptionOK: 'none',
+	      product: 'none',
+	      productOK: 'none',
+	      profiled: 'none',
+	      profiledOK: 'none',
+	      lighting: 'none',
+	      lightingOK: 'none',
+	      opening: 'none',
+	      openingOK: 'none'
 	    }, _this.handleChecked = function (id, value) {
 	      console.log('checkbox id: ' + id + ' is ' + value);
 	      _this.setState(_defineProperty({}, id, value));
@@ -27763,13 +27807,28 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'line' },
+	          _react2.default.createElement('label', null),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'flex center' },
+	            'RECEIVED'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'flex center' },
+	            'CORRECT'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'line' },
 	          _react2.default.createElement(
 	            'label',
 	            null,
 	            'Recepcion Materiales Motivo / Ambientacion'
 	          ),
-	          _react2.default.createElement(_fields.Slider, { id: 'reception', valueOn: 'Yes', valueOff: 'No', checked: this.state.reception }),
-	          _react2.default.createElement(_fields.Slider, { id: 'receptionOK', valueOn: 'Correct', valueOff: 'Incorrect', checked: this.state.receptionOK })
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'reception', value: this.state.reception, onValueChanged: this.handleChecked }),
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'receptionOK', value: this.state.receptionOK, onValueChanged: this.handleChecked })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -27779,8 +27838,8 @@
 	            null,
 	            'Producto / Surtido'
 	          ),
-	          _react2.default.createElement(_fields.Slider, { id: 'product', valueOn: 'Yes', valueOff: 'No', checked: this.state.product }),
-	          _react2.default.createElement(_fields.Slider, { id: 'productOK', valueOn: 'Correct', valueOff: 'Incorrect', checked: this.state.productOK })
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'product', value: this.state.product, onValueChanged: this.handleChecked }),
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'productOK', value: this.state.productOK, onValueChanged: this.handleChecked })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -27790,8 +27849,8 @@
 	            null,
 	            'Perfilado / Composicion'
 	          ),
-	          _react2.default.createElement(_fields.Slider, { id: 'profiled', valueOn: 'Yes', valueOff: 'No', checked: this.state.profiled }),
-	          _react2.default.createElement(_fields.Slider, { id: 'profiledOK', valueOn: 'Correct', valueOff: 'Incorrect', checked: this.state.profiledOK })
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'profiled', value: this.state.profiled, onValueChanged: this.handleChecked }),
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'profiledOK', value: this.state.profiledOK, onValueChanged: this.handleChecked })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -27801,8 +27860,8 @@
 	            null,
 	            'Iluminacion'
 	          ),
-	          _react2.default.createElement(_fields.Slider, { id: 'lighting', valueOn: 'Yes', valueOff: 'No', checked: this.state.lighting }),
-	          _react2.default.createElement(_fields.Slider, { id: 'lightingOK', valueOn: 'Correct', valueOff: 'Incorrect', checked: this.state.lightingOK })
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'lighting', value: this.state.lighting, onValueChanged: this.handleChecked }),
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'lightingOK', value: this.state.lightingOK, onValueChanged: this.handleChecked })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -27812,8 +27871,8 @@
 	            null,
 	            'Fecha Apertura'
 	          ),
-	          _react2.default.createElement(_fields.Slider, { id: 'opening', valueOn: 'Yes', valueOff: 'No', checked: this.state.opening }),
-	          _react2.default.createElement(_fields.Slider, { id: 'openingOK', valueOn: 'Correct', valueOff: 'Incorrect', checked: this.state.openingOK })
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'opening', value: this.state.opening, onValueChanged: this.handleChecked }),
+	          _react2.default.createElement(_buttons.CheckButton, { id: 'openingOK', value: this.state.openingOK, onValueChanged: this.handleChecked })
 	        )
 	      );
 	    }
@@ -28101,10 +28160,24 @@
 	      args[_key4] = arguments[_key4];
 	    }
 
-	    return _ret4 = (_temp4 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO4 = Object.getPrototypeOf(NewDossier)).call.apply(_Object$getPrototypeO4, [this].concat(args))), _this5), _this5.handleStepChanged = function (steps) {
-	      console.log(step);
-	    }, _this5.print = function () {
-	      return _react2.default.createElement(Button, { icon: 'print' });
+	    return _ret4 = (_temp4 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO4 = Object.getPrototypeOf(NewDossier)).call.apply(_Object$getPrototypeO4, [this].concat(args))), _this5), _this5.defaultProps = {
+	      step: 1
+	    }, _this5.state = {
+	      step: _this5.defaultProps.step
+	    }, _this5.steps = {
+	      1: _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_fields.Field, { label: 'Name' }),
+	        _react2.default.createElement(_fields.Field, { label: 'Description' }),
+	        _react2.default.createElement(_fields.Select, { options: _dossiers2.default.centers }),
+	        _react2.default.createElement(_buttons.Button, { label: 'CANCEL', classes: 'raised' }),
+	        _react2.default.createElement(_buttons.Button, { label: 'OK' })
+	      ),
+	      2: _react2.default.createElement(DossierCheckin, null),
+	      3: _react2.default.createElement(DossierReport, null)
+	    }, _this5.handleStepChanged = function (newStep) {
+	      _this5.setState({ step: newStep });
 	    }, _temp4), _possibleConstructorReturn(_this5, _ret4);
 	  }
 
@@ -28113,7 +28186,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _page.Page,
-	        { title: 'New Dossier', icon: 'folder_open', to: '/', action: print },
+	        { title: 'New Dossier', icon: 'folder_open', to: '/' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'dossier' },
@@ -28122,27 +28195,15 @@
 	            { className: 'flex' },
 	            _react2.default.createElement(
 	              _steps.Step,
-	              { id: 'step1' },
-	              _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(_fields.Field, { label: 'Name' }),
-	                _react2.default.createElement(_fields.Field, { label: 'Description' })
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _steps.Step,
-	              { id: 'step2' },
-	              _react2.default.createElement(DossierCheckin, null)
-	            ),
-	            _react2.default.createElement(
-	              _steps.Step,
-	              { id: 'step3' },
-	              _react2.default.createElement(DossierReport, null)
-	            ),
-	            _react2.default.createElement(_buttons.FAB, { icon: 'arrow_forward', to: '/', onMouseUp: this.props.done })
+	              null,
+	              this.steps[this.state.step]
+	            )
 	          ),
-	          _react2.default.createElement(_steps.Stepper, { steps: ['step1', 'step1', 'step3'], onStepChanged: this.handleStepChanged })
+	          _react2.default.createElement(_steps.Stepper, {
+	            steps: [1, 2, 3],
+	            step: this.state.step,
+	            onStepChanged: this.handleStepChanged
+	          })
 	        )
 	      );
 	    }
@@ -28167,6 +28228,16 @@
 
 	    return _ret5 = (_temp5 = (_this6 = _possibleConstructorReturn(this, (_Object$getPrototypeO5 = Object.getPrototypeOf(PrintDossier)).call.apply(_Object$getPrototypeO5, [this].concat(args))), _this6), _this6.print = function () {
 	      window.print();
+	    }, _this6.renderCover = function () {
+	      return _react2.default.createElement(
+	        'article',
+	        { className: 'flex center centred' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Primavera 75 Aniversario'
+	        )
+	      );
 	    }, _this6.renderWindow = function () {
 	      return _react2.default.createElement(
 	        'article',
@@ -28245,6 +28316,9 @@
 	          _react2.default.createElement(
 	            'main',
 	            null,
+	            'xxx',
+	            this.renderCover(),
+	            _react2.default.createElement('br', null),
 	            this.renderHeader(),
 	            _react2.default.createElement(DossierCheckin, null),
 	            _react2.default.createElement('br', null),
@@ -28305,7 +28379,7 @@
 	var Step = function Step(props) {
 	  return _react2.default.createElement(
 	    'div',
-	    { id: props.id, className: 'step' },
+	    { id: props.id, className: 'step mui-panel' },
 	    props.children
 	  );
 	};
@@ -28329,19 +28403,13 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Stepper)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.defaultProps = {
-	      step: 1
-	    }, _this.state = {
-	      step: _this.defaultProps.step
-	    }, _this.handleBack = function () {
-	      _this.props.onStepChanged(_this.state.step - 1);
-	      _this.setState({ step: _this.state.step - 1 });
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Stepper)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.handleBack = function () {
+	      _this.props.onStepChanged(_this.props.step - 1);
 	    }, _this.handleNext = function () {
-	      _this.props.onStepChanged(_this.state.step + 1);
-	      _this.setState({ step: _this.state.step + 1 });
+	      _this.props.onStepChanged(_this.props.step + 1);
 	    }, _this.renderDots = function () {
 	      return _this.props.steps.map(function (item) {
-	        var selectedClass = item === 3 ? 'selected' : '';
+	        var selectedClass = item == _this.props.step ? 'selected' : '';
 	        return _react2.default.createElement('div', { className: 'dot ' + selectedClass });
 	      });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -28350,16 +28418,19 @@
 	  _createClass(Stepper, [{
 	    key: 'render',
 	    value: function render() {
+
+	      var backButtonClass = this.props.step === 1 ? 'disabled' : '';
+	      var nextButtonClass = this.props.step === this.props.steps.length ? 'disabled' : '';
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'stepper' },
-	        _react2.default.createElement(_buttons.Button, { icon: 'arrow_left', label: 'BACK', onMouseUp: this.handleBack }),
+	        _react2.default.createElement(_buttons.Button, { icon: 'arrow_left', label: 'BACK', onMouseUp: this.handleBack, classes: backButtonClass }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'flex' },
 	          this.renderDots()
 	        ),
-	        _react2.default.createElement(_buttons.Button, { icon: 'arrow_right', label: 'NEXT', onMouseUp: this.handleNext })
+	        _react2.default.createElement(_buttons.Button, { icon: 'arrow_right', label: 'NEXT', onMouseUp: this.handleNext, classes: nextButtonClass })
 	      );
 	    }
 	  }]);
@@ -28367,6 +28438,9 @@
 	  return Stepper;
 	}(_react2.default.Component);
 
+	Stepper.propTypes = {
+	  step: _react2.default.PropTypes.number.isRequired
+	};
 	exports.Step = Step;
 	exports.Stepper = Stepper;
 
@@ -28405,7 +28479,7 @@
 
 
 	// module
-	exports.push([module.id, ".step {\n  display: none;\n}\n\n.step.selected {\n  display:flex;\n}\n\n.stepper {\n  display:flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.dot {\n  width: .6rem;\n  height: .6rem;\n  background-color: rgba(100, 100, 100, 0.65);\n  border: solid 4px rgba(100, 100, 100, 0.65);\n  border-radius: 1rem;\n  margin-right: 2rem;\n}\n\n.dot.selected {\n  background-color: blue;\n  border: solid 0.6rem blue;\n}\n\n.dot.success {\n  background-color: green;\n  border: solid 0.6rem green;\n}\n\n.dot.error {\n  background-color: red;\n  border: solid 0.6rem red;\n}\n", ""]);
+	exports.push([module.id, ".step {\n  display:flex;\n}\n\n.stepper {\n  padding: 1rem 2rem;\n  background-color: #FFF;\n  display:flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.dot {\n  width: .6rem;\n  height: .6rem;\n  background-color: rgba(100, 100, 100, 0.65);\n  border: solid 4px rgba(100, 100, 100, 0.65);\n  border-radius: 1rem;\n  margin-right: 2rem;\n}\n\n.dot.selected {\n  background-color: blue;\n  border: solid 0.6rem blue;\n}\n\n.dot.success {\n  background-color: green;\n  border: solid 0.6rem green;\n}\n\n.dot.error {\n  background-color: red;\n  border: solid 0.6rem red;\n}\n", ""]);
 
 	// exports
 
@@ -28603,7 +28677,7 @@
 
 
 	// module
-	exports.push([module.id, ".cards {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.card-box {\n  flex:1;\n  min-width: 30rem;\n  width: 33.333333%;\n  height: 30rem;\n  padding: 1rem;\n  display: flex;\n}\n\n.card {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.card > .image {\n  width:100%;\n  min-height: 18rem;\n  height: auto important!;\n}\n\n.card-info {\n  padding: 1rem;\n}\n\n.card:active {\n  background-color: red;\n  font-size: 1.6rem;\n}\n", ""]);
+	exports.push([module.id, ".cards {\n  flex:1;\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.card-box {\n  flex:1 0 auto;\n  min-width: 30rem;\n  width: 33.333333%;\n  height: 30rem;\n  padding: 1rem;\n  display: flex;\n}\n\n.card:hover {\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);\n}\n\n.card {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  margin-top:1rem;\n  margin-bottom:0rem;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n}\n\n.card > .image {\n  width:100%;\n  min-height: 18rem;\n  height: auto important!;\n}\n\n.card-info {\n  padding: 1rem;\n}\n\n.card:active {\n  background-color: rgba(200, 200, 200, 0.5);\n  font-size: 1.6rem;\n}\n", ""]);
 
 	// exports
 
@@ -28670,12 +28744,63 @@
 
 /***/ },
 /* 272 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var Centers = ['0008', '0009', '0010', '0011'];
+
+	var DossierStore = {
+
+	  dossiers: [],
+
+	  centers: [{ label: 'Hermosilla', value: '0008' }, { label: 'Castellana', value: '0009' }, { label: 'Valencia', value: '0010' }],
+
+	  init: function init() {
+	    for (var i = 0; i < 14; i++) {
+	      var dossier = {
+	        id: i,
+	        title: 'Dossier Title ' + i,
+	        subtitle: 'Subtitle ' + i,
+	        center: Centers[i % 4],
+	        date: new Date().toLocaleDateString()
+	      };
+	      this.dossiers.push(dossier);
+	    }
+	  },
+	  all: function all() {
+	    return this.dossiers;
+	  },
+	  byId: function byId(id) {
+	    return Array.find(this.dossiers, function (dossier) {
+	      return dossier.id === id;
+	    });
+	  },
+	  byFilter: function byFilter(criteria, value) {
+	    var result = this.dossiers.filter(function (dossier) {
+	      return dossier[criteria].toUpperCase().indexOf(value.toUpperCase()) > -1;
+	    });
+	    /*console.log(` dossiers where ${criteria} = ${value}`);
+	    console.log(result);*/
+	    return result;
+	  }
+	};
+
+	DossierStore.init();
+	exports.default = DossierStore;
+
+/***/ },
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(273);
+	var content = __webpack_require__(274);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(234)(content, {});
@@ -28695,7 +28820,7 @@
 	}
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(233)();
@@ -28703,60 +28828,10 @@
 
 
 	// module
-	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #FFF;\n  color: rgba(255, 255, 255, 0.8);\n  background-color : #1B1B1B;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  padding: 2rem;\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n\n.dossier.printer > main {\n  display: block;\n}\n\n.dossier.printer   h1 {\n  margin-top: 0;\n}\n\n.dossier.printer   h2 {\n  margin-top: 0;\n}\n\n.dossier.printer main {\n  padding: 2rem 8rem;\n}\n\narticle {\n  min-height: 55rem;\n}\n@media print {\n\n  @page {\n    margin: 1cm;\n  }\n\n  body * {\n      color : #000;\n      background-color: #FFF;\n  }\n\n  .drawer, .searchbar, .fab, .menu {\n    display: none;\n  }\n\n  .container, .dossier, .dossier main {\n    display: block;\n  }\n\n  .page .header {\n    display: none;\n  }\n\n  .dossier header {\n    background: #FFF;\n    border-bottom: solid 2px #000;\n  }\n\n  h2 {\n    margin-top: 0;\n  }\n\n  .mui-panel {\n    border: 0;\n    box-shadow: none;\n  }\n\n  article {\n    break-after: always;\n    page-break-after: always;\n    background-color: #EEE;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #FFF;\n  color: rgba(255, 255, 255, 0.8);\n  background-color : #1B1B1B;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  padding: 2rem;\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n  padding-top: 3rem;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n  min-width: 50rem;\n  align-self: center;\n}\n\n.checklist > .line > button, span {\n  min-width: 10rem;\n}\n\n.shopwindow {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n\n.dossier.printer > main {\n  display: block;\n}\n\n.dossier.printer   h1 {\n  margin-top: 0;\n}\n\n.dossier.printer   h2 {\n  margin-top: 0;\n}\n\n.dossier.printer main {\n  padding: 2rem 0rem;\n}\n\n.dossier.printer main  > * {\n  max-width: 100rem;\n  margin: auto;\n}\n\n\narticle {\n  min-height: 55rem;\n  background-color: #FFF;\n}\n\n@media print {\n\n  @page {\n    margin: 1cm;\n    size: landscape;\n  }\n\n  body * {\n      color : #000;\n      background-color: #FFF;\n  }\n\n  .drawer, .searchbar, .fab, .menu {\n    display: none;\n  }\n\n  .container, .dossier, .dossier main {\n    display: block;\n  }\n\n  .page .header {\n    display: none;\n  }\n\n  .dossier header {\n    background: #FFF;\n    border-bottom: solid 2px #000;\n  }\n\n  h2 {\n    margin-top: 0;\n  }\n\n  .mui-panel {\n    border: 0;\n    box-shadow: none;\n  }\n\n  article {\n    break-after: always;\n    page-break-after: always;\n    background-color: #EEE;\n  }\n\n}\n", ""]);
 
 	// exports
 
-
-/***/ },
-/* 274 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var Centers = ['0008', '0009', '0010', '0011'];
-
-	var DossierStore = {
-
-	  dossiers: [],
-
-	  init: function init() {
-	    for (var i = 0; i < 10; i++) {
-	      var dossier = {
-	        id: i,
-	        title: 'Dossier Title ' + i,
-	        subtitle: 'Subtitle ' + i,
-	        center: Centers[i % 4],
-	        date: new Date().toLocaleDateString()
-	      };
-	      this.dossiers.push(dossier);
-	    }
-	    if (console.table) console.table(this.dossiers);
-	  },
-	  all: function all() {
-	    return this.dossiers;
-	  },
-	  byId: function byId(id) {
-	    return Array.find(this.dossiers, function (dossier) {
-	      return dossier.id === id;
-	    });
-	  },
-	  byFilter: function byFilter(criteria, value) {
-	    var result = this.dossiers.filter(function (dossier) {
-	      return dossier[criteria].toUpperCase().indexOf(value.toUpperCase()) > -1;
-	    });
-	    console.log(' dossiers where ' + criteria + ' = ' + value);
-	    console.log(result);
-	    return result;
-	  }
-	};
-
-	DossierStore.init();
-	exports.default = DossierStore;
 
 /***/ },
 /* 275 */
