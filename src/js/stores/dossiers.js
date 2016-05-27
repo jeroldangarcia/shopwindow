@@ -5,6 +5,12 @@ const DossierStore = {
 
   dossiers: [],
 
+  centers: [
+    { label: 'Hermosilla', value: '0008' },
+    { label: 'Castellana', value: '0009' },
+    { label: 'Valencia', value: '0010' },
+  ],
+
   init() {
     for (let i = 0; i < 10; i++) {
       const dossier = {
@@ -32,8 +38,8 @@ const DossierStore = {
     const result = this.dossiers.filter((dossier) =>
       dossier[criteria].toUpperCase().indexOf(value.toUpperCase()) > -1
     );
-    console.log(` dossiers where ${criteria} = ${value}`);
-    console.log(result);
+    /*console.log(` dossiers where ${criteria} = ${value}`);
+    console.log(result);*/
     return result;
   },
 

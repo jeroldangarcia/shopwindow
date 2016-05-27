@@ -66,7 +66,7 @@ class App extends React.Component {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={LoginRequired}>
-          <IndexRoute component={Dossiers} />
+          <IndexRoute component={NewDossier} />
           <Route path="/new" component={NewDossier} />
           <Route path="/shopwindow" component={ShopWindow} />
           <Route path="/print" component={PrintDossier} />

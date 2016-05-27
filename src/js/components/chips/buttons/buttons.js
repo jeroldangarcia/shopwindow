@@ -17,12 +17,17 @@ Icon.propTypes = {
   icon: React.PropTypes.string,
 };
 
-const Button = (props) => (
-  <button id={props.id} className={`button ${props.classes}`} onMouseUp={props.onMouseUp}>
-    {props.icon ? materialIcon(props.icon) : null}
-    {props.label}
-  </button>
-);
+const Button = (props) => {
+
+  const onMouseUp = props.classes === 'disabled' ? null : props.onMouseUp;
+
+  return (
+    <button id={props.id} className={`button ${props.classes}`} onMouseUp={onMouseUp}>
+      {props.icon ? materialIcon(props.icon) : null}
+      {props.label}
+    </button>
+  );
+};
 
 Button.propTypes = {
   id: React.PropTypes.string,
@@ -32,9 +37,22 @@ Button.propTypes = {
   classes: React.PropTypes.string,
 };
 
+const IconButton = (props) => (
+  <button id={props.id} className={`ibutton ${props.classes}`} onMouseUp={props.onMouseUp}>
+    {props.icon ? materialIcon(props.icon) : null}
+  </button>
+);
+
+IconButton.propTypes = {
+  id: React.PropTypes.string,
+  icon: React.PropTypes.string,
+  onMouseUp: React.PropTypes.func,
+  classes: React.PropTypes.string,
+};
+
 const FAB = (props) => (
   <Link to={props.to}>
-    <Button icon={props.icon} classes="fab" onMouseUp={props.onMouseUp} />
+    <IconButton icon={props.icon} classes="fab" onMouseUp={props.onMouseUp} />
   </Link>
 );
 
@@ -44,4 +62,4 @@ FAB.propTypes = {
   onMouseUp: React.PropTypes.func,
 };
 
-export { Icon, Button, FAB, materialIcon };
+export { Icon, IconButton, Button, FAB, materialIcon };

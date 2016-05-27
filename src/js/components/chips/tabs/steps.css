@@ -1,12 +1,10 @@
 .step {
-  display: none;
-}
-
-.step.selected {
   display:flex;
 }
 
 .stepper {
+  padding: 1rem 2rem;
+  background-color: #FFF;
   display:flex;
   justify-content: space-between;
   align-items: center;
