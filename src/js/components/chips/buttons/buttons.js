@@ -62,4 +62,25 @@ FAB.propTypes = {
   onMouseUp: React.PropTypes.func,
 };
 
-export { Icon, IconButton, Button, FAB, materialIcon };
+const CheckButton = (props) => {
+
+  const icons = {
+    none: 'check_box_outline_blank',
+    true: 'check',
+    false: 'close',
+  };
+
+  const handleValueChange = () => {
+    const v = Object.keys(icons).indexOf(props.value);
+    const nextValue = Object.keys(icons)[(v + 1)%3];
+    props.onValueChanged(props.id, nextValue);
+  }
+
+  const icon = icons[props.value];
+
+  return (
+    <IconButton icon={icon} onMouseUp={handleValueChange} />
+  );
+};
+
+export { Icon, IconButton, Button, CheckButton, FAB, materialIcon };

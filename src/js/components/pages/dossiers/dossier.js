@@ -2,7 +2,7 @@ import React from 'react';
 import { Page } from '../../layout/page/page';
 import { Field, Slider, Select } from '../../chips/fields/fields';
 import { Tabs, Tab } from '../../chips/tabs/tabs';
-import { Button, FAB } from '../../chips/buttons/buttons';
+import { Button, FAB, CheckButton } from '../../chips/buttons/buttons';
 import { Stepper, Step } from '../../chips/tabs/steps';
 import { Cards, Card } from '../../layout/cards/cards';
 import Dialog from '../../layout/dialogs/dialogs';
@@ -15,16 +15,16 @@ import './dossier.css';
 class DossierCheckin extends React.Component {
 
   state = {
-    reception: false,
-    receptionOK: false,
-    product: false,
-    productOK: false,
-    profiled: false,
-    profiledOK: false,
-    lighting: false,
-    lightingOK: false,
-    opening: false,
-    openingOK: false,
+    reception: 'none',
+    receptionOK: 'none',
+    product: 'none',
+    productOK: 'none',
+    profiled: 'none',
+    profiledOK: 'none',
+    lighting: 'none',
+    lightingOK: 'none',
+    opening: 'none',
+    openingOK: 'none',
   }
 
   handleChecked = (id, value) => {
@@ -36,29 +36,34 @@ class DossierCheckin extends React.Component {
     return (
       <article className="page checklist mui-panel">
         <div className="line">
+          <label></label>
+          <span className="flex center">RECEIVED</span>
+          <span className="flex center">CORRECT</span>
+        </div>
+        <div className="line">
           <label>Recepcion Materiales Motivo / Ambientacion</label>
-          <Slider id="reception" valueOn="Yes" valueOff="No" checked={this.state.reception} />
-          <Slider id="receptionOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.receptionOK} />
+          <CheckButton id="reception" value={this.state.reception} onValueChanged={this.handleChecked}/>
+          <CheckButton id="receptionOK" value={this.state.receptionOK} onValueChanged={this.handleChecked}/>
         </div>
         <div className="line">
           <label>Producto / Surtido</label>
-          <Slider id="product" valueOn="Yes" valueOff="No" checked={this.state.product} />
-          <Slider id="productOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.productOK} />
+          <CheckButton id="product" value={this.state.product} onValueChanged={this.handleChecked}/>
+          <CheckButton id="productOK" value={this.state.productOK} onValueChanged={this.handleChecked}/>
         </div>
         <div className="line">
           <label>Perfilado / Composicion</label>
-          <Slider id="profiled" valueOn="Yes" valueOff="No" checked={this.state.profiled} />
-          <Slider id="profiledOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.profiledOK} />
+          <CheckButton id="profiled" value={this.state.profiled} onValueChanged={this.handleChecked}/>
+          <CheckButton id="profiledOK" value={this.state.profiledOK} onValueChanged={this.handleChecked}/>
         </div>
         <div className="line">
           <label>Iluminacion</label>
-          <Slider id="lighting" valueOn="Yes" valueOff="No" checked={this.state.lighting} />
-          <Slider id="lightingOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.lightingOK} />
+          <CheckButton id="lighting" value={this.state.lighting} onValueChanged={this.handleChecked}/>
+          <CheckButton id="lightingOK" value={this.state.lightingOK} onValueChanged={this.handleChecked}/>
         </div>
         <div className="line">
           <label>Fecha Apertura</label>
-          <Slider id="opening" valueOn="Yes" valueOff="No" checked={this.state.opening} />
-          <Slider id="openingOK" valueOn="Correct" valueOff="Incorrect" checked={this.state.openingOK} />
+          <CheckButton id="opening" value={this.state.opening} onValueChanged={this.handleChecked}/>
+          <CheckButton id="openingOK" value={this.state.openingOK} onValueChanged={this.handleChecked}/>
         </div>
       </article>
     );
@@ -229,7 +234,6 @@ class NewDossier extends React.Component {
         <div className="dossier">
           <main className="flex">
             <Step>{this.steps[this.state.step]}</Step>
-            <FAB icon="arrow_forward" to="/" onMouseUp={this.props.done}/>
           </main>
           <Stepper
             steps={[1, 2, 3]}
@@ -260,6 +264,14 @@ class PrintDossier extends React.Component {
     );
   }
 
+  renderCover = () => {
+    return (
+      <article className="flex center centred">
+        <h1>Primavera 75 Aniversario</h1>
+      </article>
+    );
+  };
+
   renderWindow = () => {
     return (
       <article >
@@ -284,8 +296,9 @@ class PrintDossier extends React.Component {
     return (
       <Page title="Print Dossier" icon="printer" to="/">
         <div className="dossier printer">
-          <main>
-
+          <main>xxx
+            {this.renderCover()}
+            <br />
             {this.renderHeader()}
             <DossierCheckin />
             <br />

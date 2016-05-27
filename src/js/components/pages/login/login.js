@@ -45,7 +45,7 @@ class LoginPage extends React.Component {
         <div className="window">
           <div className="header">
             <h1>Dossiers</h1>
-            <h5>Shop Window Reports</h5>
+            <h3>Shop Window Reports</h3>
           </div>
           <Tabs onChanged={this.handleTabChanged}>
             <Tab id="SIGNIN" label="Sign In" active={this.state.tab === 'SIGNIN'} />

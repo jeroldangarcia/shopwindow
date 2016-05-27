@@ -77,7 +77,6 @@ Checkbox.propTypes = {
   onChange: React.PropTypes.func,
 };
 
-
 class Slider extends React.Component {
 
   state = {

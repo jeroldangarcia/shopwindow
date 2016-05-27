@@ -26,4 +26,5 @@ a:hover { text-decoration:none; }
 
 .flex { display: flex; }
 .expand { flex:1; }
+.center { justify-content: center; }
 .centred { align-items: center; }

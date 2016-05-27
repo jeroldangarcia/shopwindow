@@ -12,7 +12,7 @@ const DossierStore = {
   ],
 
   init() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 14; i++) {
       const dossier = {
         id: i,
         title: `Dossier Title ${i}`,
@@ -22,8 +22,7 @@ const DossierStore = {
       };
       this.dossiers.push(dossier);
     }
-    if (console.table)
-      console.table(this.dossiers);
+
   },
 
   all() {

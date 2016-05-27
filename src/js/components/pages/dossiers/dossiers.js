@@ -68,10 +68,12 @@ class Dossiers extends React.Component {
   }
 
   renderDossierItem = (dossier) => {
-    const selected =
+
+    /*const selected =
       this.state.dossier === null ?
         '' : this.state.dossier === dossier ?
-          'selected' : '';
+          'selected' : '';*/
+    const selected = '';
 
     return (
       <ListItem

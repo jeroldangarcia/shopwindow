@@ -33,7 +33,6 @@ const ListItem = ({ id, title, subtitle, info, icon, children, selected, onSelec
   );
 };
 
-const ListDivider = () => <li className="mui-divider" />;
 
 const List = (props) => {
   return (

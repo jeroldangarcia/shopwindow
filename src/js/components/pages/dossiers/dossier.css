@@ -31,12 +31,25 @@
 .checklist {
   display: flex;
   flex-direction: column;
+  padding-top: 3rem;
 }
 
 .checklist > .line {
   display: flex;
   align-items: center;
   margin-bottom: 1.2rem;
+  min-width: 50rem;
+  align-self: center;
+}
+
+.checklist > .line > button, span {
+  min-width: 10rem;
+}
+
+.shopwindow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .shopwindow .fab {
@@ -80,16 +93,25 @@
 }
 
 .dossier.printer main {
-  padding: 2rem 8rem;
+  padding: 2rem 0rem;
 }
+
+.dossier.printer main  > * {
+  max-width: 100rem;
+  margin: auto;
+}
+
 
 article {
   min-height: 55rem;
+  background-color: #FFF;
 }
+
 @media print {
 
   @page {
     margin: 1cm;
+    size: landscape;
   }
 
   body * {

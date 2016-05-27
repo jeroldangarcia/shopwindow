@@ -1,10 +1,11 @@
 .cards {
+  flex:1;
   display: flex;
   flex-wrap: wrap;
 }
 
 .card-box {
-  flex:1;
+  flex:1 0 auto;
   min-width: 30rem;
   width: 33.333333%;
   height: 30rem;
