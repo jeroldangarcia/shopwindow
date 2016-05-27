@@ -26447,9 +26447,10 @@
 	  var selectTab = function selectTab() {
 	    if (props.onMouseUp) props.onMouseUp(props.id);
 	  };
+
 	  return _react2.default.createElement(
 	    'label',
-	    { className: 'tab ' + activeClass, onMouseUp: selectTab },
+	    { className: 'tab ' + activeClass, onMouseUp: selectTab, onTouchEnd: selectTab },
 	    icon,
 	    _react2.default.createElement(
 	      'span',
@@ -27626,7 +27627,7 @@
 
 	  return _react2.default.createElement(
 	    'li',
-	    { className: 'listitem ' + selected, onMouseUp: handleSelected },
+	    { className: 'listitem ' + selected, onMouseUp: handleSelected, onTouchEnd: handleSelected },
 	    _react2.default.createElement(_buttons.Icon, { icon: icon }),
 	    _react2.default.createElement(
 	      'div',
@@ -28546,7 +28547,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'card-box', onMouseUp: this.handleCardSelected },
+	        { className: 'card-box', onMouseUp: this.handleCardSelected, onTouchEnd: this.handleCardSelected },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'card mui-panel' },

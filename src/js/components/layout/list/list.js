@@ -18,7 +18,7 @@ const ListItem = ({ id, title, subtitle, info, icon, children, selected, onSelec
   };
 
   return (
-    <li className={`listitem ${selected}`} onMouseUp={handleSelected}>
+    <li className={`listitem ${selected}`} onMouseUp={handleSelected} onTouchEnd={handleSelected}>
       <Icon icon={icon} />
       <div className="content">
         <div className="title">{title}</div>

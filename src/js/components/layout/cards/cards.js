@@ -12,7 +12,7 @@ class Card extends React.Component {
 
   render() {
     return (
-      <div className="card-box" onMouseUp={this.handleCardSelected}>
+      <div className="card-box" onMouseUp={this.handleCardSelected} onTouchEnd={this.handleCardSelected}>
         <div className="card mui-panel">
           <Image src="images/escaparate1.jpg" />
           <div className="card-info">
