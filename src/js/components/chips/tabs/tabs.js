@@ -13,7 +13,7 @@ const Tab = (props) => {
   };
 
   return (
-    <label className={`tab ${activeClass}`} onMouseUp={selectTab} onTouchEnd={selectTab}>
+    <label className={`tab ${activeClass}`} onClick={selectTab}>
       {icon}<span>{props.label}</span>
     </label>
   );

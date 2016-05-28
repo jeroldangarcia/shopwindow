@@ -166,7 +166,7 @@ class Dossier extends React.Component {
   renderContent() {
     switch (this.state.tab) {
       case 'checkin':
-        return (<div><DossierCheckin /><DossierReport /></div>);
+        return (<DossierCheckin />);
       case 'gallery':
         return (<DossierShopWindow onAddPhoto={this.handleAddPhoto}/>);
       case 'report':

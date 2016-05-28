@@ -26450,7 +26450,7 @@
 
 	  return _react2.default.createElement(
 	    'label',
-	    { className: 'tab ' + activeClass, onMouseUp: selectTab, onTouchEnd: selectTab },
+	    { className: 'tab ' + activeClass, onClick: selectTab },
 	    icon,
 	    _react2.default.createElement(
 	      'span',
@@ -27627,7 +27627,7 @@
 
 	  return _react2.default.createElement(
 	    'li',
-	    { className: 'listitem ' + selected, onMouseUp: handleSelected, onTouchEnd: handleSelected },
+	    { className: 'listitem ' + selected, onClick: handleSelected },
 	    _react2.default.createElement(_buttons.Icon, { icon: icon }),
 	    _react2.default.createElement(
 	      'div',
@@ -28075,12 +28075,7 @@
 	    value: function renderContent() {
 	      switch (this.state.tab) {
 	        case 'checkin':
-	          return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(DossierCheckin, null),
-	            _react2.default.createElement(DossierReport, null)
-	          );
+	          return _react2.default.createElement(DossierCheckin, null);
 	        case 'gallery':
 	          return _react2.default.createElement(DossierShopWindow, { onAddPhoto: this.handleAddPhoto });
 	        case 'report':
