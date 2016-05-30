@@ -26295,7 +26295,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size:62.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; margin: 0.5rem 0;}\nh2 { font-size: 1.75rem; margin: 0;}\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.center { justify-content: center; }\n.centred { align-items: center; }\n", ""]);
+	exports.push([module.id, "html {\n  font-size:62.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; margin: 0.5rem 0;}\nh2 { font-size: 1.75rem; margin: 0;}\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.center { justify-content: center; }\n.centred { align-items: center; }\n.vertical {flex-direction: column;}\n.right { justify-content: flex-end;}\n", ""]);
 
 	// exports
 
@@ -27830,7 +27830,17 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'article',
-	        { className: 'page checklist mui-panel' },
+	        { className: 'page checklist' },
+	        _react2.default.createElement(
+	          'center',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'DATOS ESCAPARATE'
+	          )
+	        ),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'line' },
@@ -28054,7 +28064,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'article',
-	        { className: 'page report mui-panel' },
+	        { className: 'page report' },
 	        _react2.default.createElement(
 	          'center',
 	          null,
@@ -28204,15 +28214,72 @@
 	    }, _this5.steps = {
 	      1: _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement(_fields.Field, { label: 'Name' }),
-	        _react2.default.createElement(_fields.Field, { label: 'Description' }),
-	        _react2.default.createElement(_fields.Select, { options: _dossiers2.default.centers }),
-	        _react2.default.createElement(_buttons.Button, { label: 'CANCEL', classes: 'raised' }),
-	        _react2.default.createElement(_buttons.Button, { label: 'OK' })
+	        { className: 'flex vertical expand center', style: { minHeight: '60rem', padding: '5rem' } },
+	        _react2.default.createElement(
+	          'center',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'DATOS ESCAPARATE'
+	          )
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          _fields.FieldGroup,
+	          { icon: 'folder_open' },
+	          _react2.default.createElement(_fields.Field, { icon: 'folder_open', label: 'Name' })
+	        ),
+	        _react2.default.createElement(
+	          _fields.FieldGroup,
+	          { icon: 'description' },
+	          _react2.default.createElement(_fields.Field, { label: 'Description' })
+	        ),
+	        _react2.default.createElement(
+	          _fields.FieldGroup,
+	          { icon: 'location_city' },
+	          _react2.default.createElement(_fields.Select, { options: _dossiers2.default.centers }),
+	          _react2.default.createElement(_fields.Field, { label: 'Date' })
+	        ),
+	        _react2.default.createElement('div', { style: { flex: '10' } })
 	      ),
-	      2: _react2.default.createElement(DossierCheckin, null),
-	      3: _react2.default.createElement(DossierReport, null)
+	      2: _react2.default.createElement(
+	        'div',
+	        { className: 'flex vertical expand center vertical', style: { minHeight: '60rem', padding: '5rem' } },
+	        _react2.default.createElement(
+	          'center',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'CHECK LIST'
+	          )
+	        ),
+	        _react2.default.createElement(DossierCheckin, null),
+	        _react2.default.createElement('div', { style: { flex: '10' } })
+	      ),
+	      3: _react2.default.createElement(
+	        'div',
+	        { className: 'flex vertical expand center', style: { minHeight: '60rem', padding: '5rem' } },
+	        _react2.default.createElement(
+	          'center',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'VALORACIONES Y OBSERVACIONES'
+	          )
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('textarea', { style: { minHeight: '40rem' } }),
+	        _react2.default.createElement('div', { style: { flex: '10' } }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex expand right' },
+	          _react2.default.createElement(_buttons.Button, { label: 'CANCEL' }),
+	          _react2.default.createElement(_buttons.Button, { label: 'OK' })
+	        )
+	      )
 	    }, _this5.handleStepChanged = function (newStep) {
 	      _this5.setState({ step: newStep });
 	    }, _temp4), _possibleConstructorReturn(_this5, _ret4);
@@ -28942,7 +29009,7 @@
 
 
 	// module
-	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #FFF;\n  color: rgba(255, 255, 255, 0.8);\n  background-color : #1B1B1B;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  margin-top: 0;\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 2rem;\n}\n\n.dossier main > * {\n  max-width: 90rem;\n  width:100%;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n  padding-top: 5rem;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n  min-width: 35rem;\n  align-self: center;\n}\n\n.checklist > .line > button, span {\n  min-width: 10rem;\n}\n\n.shopwindow {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1;\n  padding: 5rem;\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.report p {\n  font-size: 1.4rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n\n.dossier.printer > main {\n  display: block;\n}\n\n.dossier.printer   h1 {\n  margin-top: 0;\n}\n\n.dossier.printer   h2 {\n  margin-top: 0;\n}\n\n.dossier.printer main {\n  padding: 2rem 0rem;\n}\n\n.dossier.printer main  > * {\n  max-width: 100rem;\n  margin: auto;\n}\n\narticle {\n  min-height: 50rem;\n  background-color: #FFF;\n}\n\narticle.cover {\n  min-height: 60rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.cover-title {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  min-height: 20rem;\n  padding: 5rem;\n}\n\n.cover-foot {\n  border-top: solid 2px #888;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\narticle.printpage header {\n  background-color: #FFF;\n  color: #000;\n  color: rgba(0, 0, 0, 0.8);\n  border-bottom: 2px solid #888;\n}\n\narticle.printpage .mui-panel {\n  box-shadow: inherit;\n}\n\n@media (max-width: 960px) {\n  .dossier main {\n    padding-top: 0px;\n    background-color: #FFF;\n  }\n}\n\n@media print {\n\n  @page {\n    margin: 1cm;\n    size: landscape;\n  }\n\n  body * {\n      color : #000;\n      background-color: #FFF;\n  }\n\n  .drawer, .searchbar, .fab, .menu {\n    display: none;\n  }\n\n  .container, .dossier, .dossier main {\n    display: block;\n  }\n\n  .page .header {\n    display: none;\n  }\n\n  .dossier header {\n    background: #FFF;\n    border-bottom: solid 2px #000;\n  }\n\n  h2 {\n    margin-top: 0;\n  }\n\n  .mui-panel {\n    border: 0;\n    box-shadow: none;\n  }\n\n  article.printpage {\n    break-after: always;\n    page-break-after: always;\n    background-color: #EEE;\n  }\n\n\n\n}\n", ""]);
+	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #FFF;\n  color: rgba(255, 255, 255, 0.8);\n  background-color : #1B1B1B;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  margin-top: 0;\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 2rem;\n}\n\n.dossier main > * {\n  max-width: 90rem;\n  width:100%;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n  padding-top: 5rem;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n  min-width: 35rem;\n  align-self: center;\n}\n\n.checklist > .line > button, span {\n  min-width: 10rem;\n}\n\n.shopwindow {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1;\n  padding: 5rem;\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.report p {\n  font-size: 1.4rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n\n.dossier.printer > main {\n  display: block;\n}\n\n.dossier.printer   h1 {\n  margin-top: 0;\n}\n\n.dossier.printer   h2 {\n  margin-top: 0;\n}\n\n.dossier.printer main {\n  padding: 2rem 0rem;\n}\n\n.dossier.printer main  > * {\n  max-width: 100rem;\n  margin: auto;\n}\n\narticle {\n  min-height: 50rem;\n  background-color: #FFF;\n}\n\narticle.cover {\n  min-height: 60rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.cover-title {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  min-height: 20rem;\n  padding: 5rem;\n}\n\n.cover-foot {\n  border-top: solid 2px #888;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\narticle.printpage header {\n  background-color: #FFF;\n  color: #000;\n  color: rgba(0, 0, 0, 0.8);\n  border-bottom: 2px solid #888;\n}\n\narticle.printpage .mui-panel {\n  box-shadow: inherit;\n}\n\n@media (max-width: 960px) {\n  .dossier main {\n    padding: 0px;\n    background-color: #FFF;\n  }\n}\n\n@media (min-width: 960px) and (max-width: 1280px) {\n  .dossier main {\n    padding: 0px;\n    background-color: #FFF;\n  }\n}\n\n\n\n@media print {\n\n  @page {\n    margin: 1cm;\n    size: landscape;\n  }\n\n  body * {\n      color : #000;\n      background-color: #FFF;\n  }\n\n  .drawer, .searchbar, .fab, .menu {\n    display: none;\n  }\n\n  .container, .dossier, .dossier main {\n    display: block;\n  }\n\n  .page .header {\n    display: none;\n  }\n\n  .dossier header {\n    background: #FFF;\n    border-bottom: solid 2px #000;\n  }\n\n  h2 {\n    margin-top: 0;\n  }\n\n  .mui-panel {\n    border: 0;\n    box-shadow: none;\n  }\n\n  article.printpage {\n    break-after: always;\n    page-break-after: always;\n    background-color: #EEE;\n  }\n\n\n\n}\n", ""]);
 
 	// exports
 
