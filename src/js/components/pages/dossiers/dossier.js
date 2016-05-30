@@ -35,8 +35,6 @@ class DossierCheckin extends React.Component {
   render() {
     return (
       <article className="page checklist">
-        <center><h1>DATOS ESCAPARATE</h1></center>
-        <br />
         <div className="line">
           <label></label>
           <span className="flex center">SI/NO</span>
@@ -278,10 +276,8 @@ class PrintDossier extends React.Component {
   renderHeader() {
     return (
       <header>
-        <h1>Escaparates Primavera 75 Aniversario</h1>
-        <div className="flex expand" style={{ padding: '0 2rem' }}>
-          <span className="flex expand"><h2>3er Cambio</h2></span>
-          <span><h2>18 / 04 / 2016</h2></span>
+        <div className="flex expand center" style={{ padding: '2rem 2rem' }}>
+          <h2>18 - 04 - 2016&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Escaparates Primavera 75 Aniversario 3er Cambio</h2>
         </div>
       </header>
     );
@@ -290,34 +286,32 @@ class PrintDossier extends React.Component {
   renderFooter() {
     return (
       <div className="cover-foot">
-        <div>PROMOCIÓN PUNTO DE VENTA</div>
-        <div>0008 - Pintor Sorolla - Valencia</div>
+        <div className="negative-text">PROMOCIÓN PUNTO DE VENTA</div>
+        <div>0008&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;Pintor Sorolla&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;Valencia</div>
+        <br />
       </div>
     );
   }
 
   renderCover = () => {
     return (
-      <article className="printpage cover">
-
-        <h3>CHECK LIST</h3>
-
+      <article className="printpage cover" style={{backgroundColor:'#fff'}}>
+        <div>&nbsp;</div>
         <div className="cover-title">
-        <div className="cover-title" style={{border:'solid 1px #888', height:'10rem'}}>
-          <h1>Escaparates Primavera 75 Aniversario</h1>
-          <br />
-          <h1>3º Cambio</h1>
+          <h2>CHECK LIST</h2>
+          <div className="cover-title" style={{border:'solid 1px #888', height:'10rem'}}>
+            <h1>Escaparates Primavera 75 Aniversario
+            <br />
+            <center>3º Cambio</center></h1>
+          </div>
+          <div>
+            <center>
+              <div>FECHA IMPLANTACION</div>
+              <span>18 - 04 - 2016</span>
+            </center>
+          </div>
         </div>
-        <div>
-          <center>
-          <div>FECHA IMPLANTACION</div>
-          <span>18 - 04 - 2016</span>
-          </center>
-        </div>
-        </div>
-
         {this.renderFooter()}
-
       </article>
     );
   };
@@ -334,9 +328,8 @@ class PrintDossier extends React.Component {
 
   renderWindow = () => {
     return (
-      <article className="printpage" >
+      <article className="printpage" style={{backgroundColor:'#fff'}}>
         {this.renderHeader()}
-        <br />
         <table>
           <tr>
             <td>
@@ -364,9 +357,10 @@ class PrintDossier extends React.Component {
 
   renderReport = () => {
     return (
-      <article className="printpage">
+      <article className="printpage" style={{backgroundColor:'#fff'}}>
         {this.renderHeader()}
-        <DossierReport />
+          <DossierReport />
+          <br />
         {this.renderFooter()}
       </article>
     )

@@ -136,7 +136,6 @@ article.cover {
 }
 
 .cover-foot {
-  border-top: solid 2px #888;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -148,14 +147,32 @@ article.printpage header {
   background-color: #FFF;
   color: #000;
   color: rgba(0, 0, 0, 0.8);
-  border-bottom: 2px solid #888;
 }
 
 article.printpage .mui-panel {
   box-shadow: inherit;
 }
 
+article.printpage  .report {
+  border: solid 2px #888;
+  margin: 2rem;
+}
+
+article.printpage  .checklist {
+  border: solid 2px #888;
+  margin: 2rem;
+}
+
+article.printpage  .line {
+  min-width: 40rem;
+}
+
 @media (max-width: 960px) {
+
+  html {
+    font-size: 52%;
+  }
+
   .dossier main {
     padding: 0px;
     background-color: #FFF;
@@ -169,8 +186,6 @@ article.printpage .mui-panel {
   }
 }
 
-
-
 @media print {
 
   @page {
@@ -179,7 +194,7 @@ article.printpage .mui-panel {
   }
 
   body * {
-      color : #000;
+      color :  #000;
       background-color: #FFF;
   }
 
@@ -214,6 +229,8 @@ article.printpage .mui-panel {
     page-break-after: always;
     background-color: #EEE;
   }
+
+  .negative-text { color: #FFF !important; background-color: #000 !important; font-size: 1.25rem; font-weight: 600; padding:0rem 2rem; letter-spacing: 0.4rem;}
 
 
 

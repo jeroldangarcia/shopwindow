@@ -30,3 +30,4 @@ a:hover { text-decoration:none; }
 .centred { align-items: center; }
 .vertical {flex-direction: column;}
 .right { justify-content: flex-end;}
+.negative-text { color: #FFF; background-color: #000; font-size: 1.25rem; font-weight: 600; padding:0rem 2rem; letter-spacing: 0.4rem;}
