@@ -23,7 +23,6 @@ const auth = {
   },
 
   loggedIn() {
-    console.log(!!localStorage.token)
     return !!localStorage.token;
   },
 
@@ -70,6 +69,7 @@ class App extends React.Component {
           <Route path="/new" component={NewDossier} />
           <Route path="/shopwindow" component={ShopWindow} />
           <Route path="/print" component={PrintDossier} />
+          <Route path="/:id" component={Dossiers} />
         </Route>
       </Router>
     );

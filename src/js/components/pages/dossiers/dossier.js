@@ -37,11 +37,11 @@ class DossierCheckin extends React.Component {
       <article className="page checklist mui-panel">
         <div className="line">
           <label></label>
-          <span className="flex center">RECEIVED</span>
-          <span className="flex center">CORRECT</span>
+          <span className="flex center">SI/NO</span>
+          <span className="flex center">CORRECTO</span>
         </div>
         <div className="line">
-          <label>Recepcion Materiales Motivo / Ambientacion</label>
+          <label>Recepción Materiales<br /> Motivo / Ambientación</label>
           <CheckButton id="reception" value={this.state.reception} onValueChanged={this.handleChecked}/>
           <CheckButton id="receptionOK" value={this.state.receptionOK} onValueChanged={this.handleChecked}/>
         </div>
@@ -122,25 +122,25 @@ class DossierReport extends React.Component {
   render() {
     return (
       <article className="page report mui-panel">
-        <h5>Valoraciones y Observaciones</h5>
+        <center><h1>VALORACIONES Y OBSERVACIONES</h1></center>
         <div className="observations mui-textfield">
           <p>
 
-          PRODUCTO REFERENCIADO:
+          PRODUCTO REFERENCIADO:<br />
 
           EN ESTA OCASIÓN HEMOS TENIDO MÁS PROBLEMAS CON LOS COMPLEMENTOS QUE
           CON LA ROPA, O NO HAY, O NO HAY TALLAS, O NO HAY COLORES....
-          SE HA SUSTITUIDO POR PRODUCTOS SIMILARES.
+          SE HA SUSTITUIDO POR PRODUCTOS SIMILARES.<br />
 
-          A DESTACAR:
+          A DESTACAR:<br />
 
           EL VESTIDO BLANCO DE TINTORETTO DEL ESCAPARATE DE CHICA NO SE HA
           RECIBIDO EN NINGÚN CENTRO, SE HA SUSTITUIDO POR OTRO DE LA MISMA
-          COLECCIÓN.
+          COLECCIÓN.<br />
 
           EL SUJETADOR DE ES ESCAPARATE DE MUJER SÓLO SE HA PODIDO COLOCAR EN
           PINTOR SOROLLA Y AVENIDA FRANCIA Y EL TOP SEGUNDA OPCIÓN TAMPOCO SE
-          HABÍA RECIBIDO, SE HA SUSTITUÍDO POR UN PRODUCTO SIMILAR.
+          HABÍA RECIBIDO, SE HA SUSTITUÍDO POR UN PRODUCTO SIMILAR.<br />
 
           </p>
         </div>
@@ -255,7 +255,7 @@ class PrintDossier extends React.Component {
   renderHeader() {
     return (
       <header>
-        <h1>Primavera 75 Aniversario</h1>
+        <h1>Escaparates Primavera 75 Aniversario</h1>
         <div className="flex expand" style={{ padding: '0 2rem' }}>
           <span className="flex expand"><h2>3er Cambio</h2></span>
           <span><h2>18 / 04 / 2016</h2></span>
@@ -264,19 +264,57 @@ class PrintDossier extends React.Component {
     );
   }
 
+  renderFooter() {
+    return (
+      <div className="cover-foot">
+        <div>PROMOCIÓN PUNTO DE VENTA</div>
+        <div>0008 - Pintor Sorolla - Valencia</div>
+      </div>
+    );
+  }
+
   renderCover = () => {
     return (
-      <article className="flex center centred">
-        <h1>Primavera 75 Aniversario</h1>
+      <article className="printpage cover">
+
+        <h3>CHECK LIST</h3>
+
+        <div className="cover-title">
+        <div className="cover-title" style={{border:'solid 1px #888', height:'10rem'}}>
+          <h1>Escaparates Primavera 75 Aniversario</h1>
+          <br />
+          <h1>3º Cambio</h1>
+        </div>
+        <div>
+          <center>
+          <div>FECHA IMPLANTACION</div>
+          <span>18 - 04 - 2016</span>
+          </center>
+        </div>
+        </div>
+
+        {this.renderFooter()}
+
       </article>
     );
   };
 
+  renderCheckin = () => {
+    return (
+      <article className="printpage">
+        {this.renderHeader()}
+        <DossierCheckin />
+        {this.renderFooter()}
+      </article>
+    )
+  }
+
   renderWindow = () => {
     return (
-      <article >
+      <article className="printpage" >
         {this.renderHeader()}
-        <table className="mui-panel">
+        <br />
+        <table>
           <tr>
             <td>
               <img src="/images/escaparate1.jpg" width="99%" />
@@ -285,36 +323,46 @@ class PrintDossier extends React.Component {
               <h3 style={{ textTransform: 'uppercase' }}>
                 Observaciones
               </h3>
+              <p>
+                ESCAPARATE CHICA PRIMAVERA 75 ANIVERSARIO.
+                <br />
+                3º CAMBIO
+                <br />
+                CON DIN A4 GUIA DE LA MODA
+              </p>
             </td>
           </tr>
         </table>
+        <br />
+        {this.renderFooter()}
       </article>
     );
+  }
+
+  renderReport = () => {
+    return (
+      <article className="printpage">
+        {this.renderHeader()}
+        <DossierReport />
+        {this.renderFooter()}
+      </article>
+    )
   }
 
   render() {
     return (
       <Page title="Print Dossier" icon="printer" to="/">
         <div className="dossier printer">
-          <main>xxx
+          <main>
             {this.renderCover()}
             <br />
-            {this.renderHeader()}
-            <DossierCheckin />
+            {this.renderCheckin()}
             <br />
             {this.renderWindow()}
             <br />
-            {this.renderWindow()}
-            <br />
-            {this.renderWindow()}
-            <br />
-            {this.renderWindow()}
-            <br />
-            {this.renderHeader()}
-            <DossierReport />
+            {this.renderReport()}
             <br />
             <FAB icon="print" to="" onMouseUp={this.print} />
-
           </main>
         </div>
       </Page>

@@ -30,7 +30,11 @@ const DossierStore = {
   },
 
   byId(id) {
-    return Array.find(this.dossiers, (dossier) => dossier.id === id);
+    return this.dossiers.find(dossier => {
+      console.log(dossier.id)
+      console.log(id)
+      return dossier.id == id
+    });
   },
 
   byFilter(criteria, value) {

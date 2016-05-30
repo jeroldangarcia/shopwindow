@@ -7,6 +7,8 @@ import { Button, FAB } from '../../chips/buttons/buttons';
 
 import { Dossier } from './dossier';
 import DossierStore from '../../../stores/dossiers';
+import { browserHistory } from 'react-router';
+
 
 class Dossiers extends React.Component {
 
@@ -23,6 +25,10 @@ class Dossiers extends React.Component {
     },
   };
 
+  constructor(props) {
+    super();
+  }
+
   state = {
     dossiers: this.defaultProps.dossiers,
     dossier: this.defaultProps.dossier,
@@ -35,8 +41,16 @@ class Dossiers extends React.Component {
     { label: 'Date', value: 'DATE' },
   ]
 
-  handleDossierSelected = (id) => {
-    this.setState({ dossier: id });
+  componentDidMount() {
+    if (this.props.params.id) {
+      const d = DossierStore.byId(this.props.params.id);
+      console.log(d)
+      this.setState({ dossier: d});
+    }
+  }
+
+  handleDossierSelected = (selected) => {
+    browserHistory.push('' + selected.id);
   }
 
   filterDossiers = (criteria, value) => {
@@ -101,9 +115,9 @@ class Dossiers extends React.Component {
   }
 
   renderDossier = () => {
-    return this.state.dossier === null ? '' : (
+    return this.state.dossier ? (
       <Dossier id={this.state.dossier.id} done={this.handleDossierClosed} />
-    );
+    ) : '';
   }
 
   render() {
