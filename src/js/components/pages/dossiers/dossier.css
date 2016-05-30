@@ -193,7 +193,7 @@ article.printpage  .line {
     size: landscape;
   }
 
-  body * {
+  body > * {
       color :  #000;
       background-color: #FFF;
   }
@@ -212,7 +212,10 @@ article.printpage  .line {
 
   .dossier header {
     background: #FFF;
-    border-bottom: solid 2px #000;
+  }
+  
+  .dossier.printer main  > * {
+    background-color: #FFF;
   }
 
   h2 {
@@ -225,13 +228,12 @@ article.printpage  .line {
   }
 
   article.printpage {
+    background-color: #FFF;
     break-after: always;
     page-break-after: always;
     background-color: #EEE;
   }
 
   .negative-text { color: #FFF !important; background-color: #000 !important; font-size: 1.25rem; font-weight: 600; padding:0rem 2rem; letter-spacing: 0.4rem;}
-
-
 
 }
