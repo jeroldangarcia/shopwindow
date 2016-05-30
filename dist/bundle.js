@@ -20211,7 +20211,6 @@
 	    }
 	  },
 	  loggedIn: function loggedIn() {
-	    console.log(!!localStorage.token);
 	    return !!localStorage.token;
 	  },
 	  logout: function logout() {
@@ -20289,7 +20288,8 @@
 	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _dossiers2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/new', component: _dossier.NewDossier }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/shopwindow', component: _shopwindow2.default }),
-	          _react2.default.createElement(_reactRouter.Route, { path: '/print', component: _dossier.PrintDossier })
+	          _react2.default.createElement(_reactRouter.Route, { path: '/print', component: _dossier.PrintDossier }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/:id', component: _dossiers2.default })
 	        )
 	      );
 	    }
@@ -26295,7 +26295,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size:52.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; margin: 0.5rem 0;}\nh2 { font-size: 1.75rem; margin: 0;}\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.center { justify-content: center; }\n.centred { align-items: center; }\n", ""]);
+	exports.push([module.id, "html {\n  font-size:62.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; margin: 0.5rem 0;}\nh2 { font-size: 1.75rem; margin: 0;}\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.center { justify-content: center; }\n.centred { align-items: center; }\n", ""]);
 
 	// exports
 
@@ -27089,6 +27089,8 @@
 
 	var _dossiers2 = _interopRequireDefault(_dossiers);
 
+	var _reactRouter = __webpack_require__(169);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27100,49 +27102,59 @@
 	var Dossiers = function (_React$Component) {
 	  _inherits(Dossiers, _React$Component);
 
-	  function Dossiers() {
-	    var _Object$getPrototypeO;
-
-	    var _temp, _this, _ret;
-
+	  function Dossiers(props) {
 	    _classCallCheck(this, Dossiers);
 
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dossiers).call(this));
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Dossiers)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.defaultProps = {
+	    _this.defaultProps = {
 	      dossiers: _dossiers2.default.all(),
 	      dossier: null,
 	      filter: {
 	        criteria: 'center',
 	        value: ''
 	      }
-	    }, _this.state = {
+	    };
+	    _this.state = {
 	      dossiers: _this.defaultProps.dossiers,
 	      dossier: _this.defaultProps.dossier,
 	      filter: _this.defaultProps.filter
-	    }, _this.options = [{ label: 'Cent', value: 'CENTER' }, { label: 'Prov', value: 'PROV' }, { label: 'Date', value: 'DATE' }], _this.handleDossierSelected = function (id) {
-	      _this.setState({ dossier: id });
-	    }, _this.filterDossiers = function (criteria, value) {
+	    };
+	    _this.options = [{ label: 'Cent', value: 'CENTER' }, { label: 'Prov', value: 'PROV' }, { label: 'Date', value: 'DATE' }];
+
+	    _this.handleDossierSelected = function (selected) {
+	      _reactRouter.browserHistory.push('' + selected.id);
+	    };
+
+	    _this.filterDossiers = function (criteria, value) {
 	      return _dossiers2.default.byFilter(criteria, value);
-	    }, _this.handleFilterValueChanged = function (newValue) {
+	    };
+
+	    _this.handleFilterValueChanged = function (newValue) {
 	      var result = _this.filterDossiers(_this.state.filter.criteria, newValue);
 	      _this.setState({
 	        dossiers: result,
 	        filter: { criteria: _this.state.filter.criteria, value: newValue }
 	      });
-	    }, _this.handleFilterCriteriaChanged = function (newCriteria) {
+	    };
+
+	    _this.handleFilterCriteriaChanged = function (newCriteria) {
 	      var result = _this.filterDossiers(newcriteria, _this.state.filter.value);
 	      _this.setState({
 	        dossiers: result,
 	        filter: { criteria: newCriteria, value: _this.state.filter.value }
 	      });
-	    }, _this.handleDossierClosed = function () {
+	    };
+
+	    _this.handleDossierClosed = function () {
 	      _this.setState({ dossier: null });
-	    }, _this.handleClearFilter = function () {
+	    };
+
+	    _this.handleClearFilter = function () {
 	      _this.handleFilterValueChanged('');
-	    }, _this.renderDossierItem = function (dossier) {
+	    };
+
+	    _this.renderDossierItem = function (dossier) {
 
 	      /*const selected =
 	        this.state.dossier === null ?
@@ -27167,7 +27179,9 @@
 	          dossier.center
 	        )
 	      );
-	    }, _this.renderFilter = function () {
+	    };
+
+	    _this.renderFilter = function () {
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'filter flex' },
@@ -27175,12 +27189,25 @@
 	        _react2.default.createElement(_fields.Field, { label: 'Filter...', value: _this.state.filter.value, onChange: _this.handleFilterValueChanged }),
 	        _react2.default.createElement(_buttons.Button, { icon: 'close', onMouseUp: _this.handleClearFilter })
 	      );
-	    }, _this.renderDossier = function () {
-	      return _this.state.dossier === null ? '' : _react2.default.createElement(_dossier.Dossier, { id: _this.state.dossier.id, done: _this.handleDossierClosed });
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	    };
+
+	    _this.renderDossier = function () {
+	      return _this.state.dossier ? _react2.default.createElement(_dossier.Dossier, { id: _this.state.dossier.id, done: _this.handleDossierClosed }) : '';
+	    };
+
+	    return _this;
 	  }
 
 	  _createClass(Dossiers, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.params.id) {
+	        var d = _dossiers2.default.byId(this.props.params.id);
+	        console.log(d);
+	        this.setState({ dossier: d });
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27811,12 +27838,12 @@
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'flex center' },
-	            'RECEIVED'
+	            'SI/NO'
 	          ),
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'flex center' },
-	            'CORRECT'
+	            'CORRECTO'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -27825,7 +27852,9 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
-	            'Recepcion Materiales Motivo / Ambientacion'
+	            'Recepción Materiales',
+	            _react2.default.createElement('br', null),
+	            ' Motivo / Ambientación'
 	          ),
 	          _react2.default.createElement(_buttons.CheckButton, { id: 'reception', value: this.state.reception, onValueChanged: this.handleChecked }),
 	          _react2.default.createElement(_buttons.CheckButton, { id: 'receptionOK', value: this.state.receptionOK, onValueChanged: this.handleChecked })
@@ -28027,9 +28056,13 @@
 	        'article',
 	        { className: 'page report mui-panel' },
 	        _react2.default.createElement(
-	          'h5',
+	          'center',
 	          null,
-	          'Valoraciones y Observaciones'
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'VALORACIONES Y OBSERVACIONES'
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -28037,7 +28070,16 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'PRODUCTO REFERENCIADO: EN ESTA OCASIÓN HEMOS TENIDO MÁS PROBLEMAS CON LOS COMPLEMENTOS QUE CON LA ROPA, O NO HAY, O NO HAY TALLAS, O NO HAY COLORES.... SE HA SUSTITUIDO POR PRODUCTOS SIMILARES. A DESTACAR: EL VESTIDO BLANCO DE TINTORETTO DEL ESCAPARATE DE CHICA NO SE HA RECIBIDO EN NINGÚN CENTRO, SE HA SUSTITUIDO POR OTRO DE LA MISMA COLECCIÓN. EL SUJETADOR DE ES ESCAPARATE DE MUJER SÓLO SE HA PODIDO COLOCAR EN PINTOR SOROLLA Y AVENIDA FRANCIA Y EL TOP SEGUNDA OPCIÓN TAMPOCO SE HABÍA RECIBIDO, SE HA SUSTITUÍDO POR UN PRODUCTO SIMILAR.'
+	            'PRODUCTO REFERENCIADO:',
+	            _react2.default.createElement('br', null),
+	            'EN ESTA OCASIÓN HEMOS TENIDO MÁS PROBLEMAS CON LOS COMPLEMENTOS QUE CON LA ROPA, O NO HAY, O NO HAY TALLAS, O NO HAY COLORES.... SE HA SUSTITUIDO POR PRODUCTOS SIMILARES.',
+	            _react2.default.createElement('br', null),
+	            'A DESTACAR:',
+	            _react2.default.createElement('br', null),
+	            'EL VESTIDO BLANCO DE TINTORETTO DEL ESCAPARATE DE CHICA NO SE HA RECIBIDO EN NINGÚN CENTRO, SE HA SUSTITUIDO POR OTRO DE LA MISMA COLECCIÓN.',
+	            _react2.default.createElement('br', null),
+	            'EL SUJETADOR DE ES ESCAPARATE DE MUJER SÓLO SE HA PODIDO COLOCAR EN PINTOR SOROLLA Y AVENIDA FRANCIA Y EL TOP SEGUNDA OPCIÓN TAMPOCO SE HABÍA RECIBIDO, SE HA SUSTITUÍDO POR UN PRODUCTO SIMILAR.',
+	            _react2.default.createElement('br', null)
 	          )
 	        )
 	      );
@@ -28226,21 +28268,68 @@
 	    }, _this6.renderCover = function () {
 	      return _react2.default.createElement(
 	        'article',
-	        { className: 'flex center centred' },
+	        { className: 'printpage cover' },
 	        _react2.default.createElement(
-	          'h1',
+	          'h3',
 	          null,
-	          'Primavera 75 Aniversario'
-	        )
+	          'CHECK LIST'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'cover-title' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'cover-title', style: { border: 'solid 1px #888', height: '10rem' } },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'Escaparates Primavera 75 Aniversario'
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              '3º Cambio'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'center',
+	              null,
+	              _react2.default.createElement(
+	                'div',
+	                null,
+	                'FECHA IMPLANTACION'
+	              ),
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                '18 - 04 - 2016'
+	              )
+	            )
+	          )
+	        ),
+	        _this6.renderFooter()
+	      );
+	    }, _this6.renderCheckin = function () {
+	      return _react2.default.createElement(
+	        'article',
+	        { className: 'printpage' },
+	        _this6.renderHeader(),
+	        _react2.default.createElement(DossierCheckin, null),
+	        _this6.renderFooter()
 	      );
 	    }, _this6.renderWindow = function () {
 	      return _react2.default.createElement(
 	        'article',
-	        null,
+	        { className: 'printpage' },
 	        _this6.renderHeader(),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'table',
-	          { className: 'mui-panel' },
+	          null,
 	          _react2.default.createElement(
 	            'tr',
 	            null,
@@ -28256,10 +28345,29 @@
 	                'h3',
 	                { style: { textTransform: 'uppercase' } },
 	                'Observaciones'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                'ESCAPARATE CHICA PRIMAVERA 75 ANIVERSARIO.',
+	                _react2.default.createElement('br', null),
+	                '3º CAMBIO',
+	                _react2.default.createElement('br', null),
+	                'CON DIN A4 GUIA DE LA MODA'
 	              )
 	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement('br', null),
+	        _this6.renderFooter()
+	      );
+	    }, _this6.renderReport = function () {
+	      return _react2.default.createElement(
+	        'article',
+	        { className: 'printpage' },
+	        _this6.renderHeader(),
+	        _react2.default.createElement(DossierReport, null),
+	        _this6.renderFooter()
 	      );
 	    }, _temp5), _possibleConstructorReturn(_this6, _ret5);
 	  }
@@ -28273,7 +28381,7 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'Primavera 75 Aniversario'
+	          'Escaparates Primavera 75 Aniversario'
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -28300,6 +28408,24 @@
 	      );
 	    }
 	  }, {
+	    key: 'renderFooter',
+	    value: function renderFooter() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'cover-foot' },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          'PROMOCIÓN PUNTO DE VENTA'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          '0008 - Pintor Sorolla - Valencia'
+	        )
+	      );
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -28311,22 +28437,13 @@
 	          _react2.default.createElement(
 	            'main',
 	            null,
-	            'xxx',
 	            this.renderCover(),
 	            _react2.default.createElement('br', null),
-	            this.renderHeader(),
-	            _react2.default.createElement(DossierCheckin, null),
+	            this.renderCheckin(),
 	            _react2.default.createElement('br', null),
 	            this.renderWindow(),
 	            _react2.default.createElement('br', null),
-	            this.renderWindow(),
-	            _react2.default.createElement('br', null),
-	            this.renderWindow(),
-	            _react2.default.createElement('br', null),
-	            this.renderWindow(),
-	            _react2.default.createElement('br', null),
-	            this.renderHeader(),
-	            _react2.default.createElement(DossierReport, null),
+	            this.renderReport(),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(_buttons.FAB, { icon: 'print', to: '', onMouseUp: this.print })
 	          )
@@ -28771,8 +28888,10 @@
 	    return this.dossiers;
 	  },
 	  byId: function byId(id) {
-	    return Array.find(this.dossiers, function (dossier) {
-	      return dossier.id === id;
+	    return this.dossiers.find(function (dossier) {
+	      console.log(dossier.id);
+	      console.log(id);
+	      return dossier.id == id;
 	    });
 	  },
 	  byFilter: function byFilter(criteria, value) {
@@ -28823,7 +28942,7 @@
 
 
 	// module
-	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #FFF;\n  color: rgba(255, 255, 255, 0.8);\n  background-color : #1B1B1B;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  margin-top: 0;\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 2rem;\n}\n\n.dossier main > * {\n  max-width: 90rem;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n  padding-top: 3rem;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n  min-width: 50rem;\n  align-self: center;\n}\n\n.checklist > .line > button, span {\n  min-width: 10rem;\n}\n\n.shopwindow {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n\n.dossier.printer > main {\n  display: block;\n}\n\n.dossier.printer   h1 {\n  margin-top: 0;\n}\n\n.dossier.printer   h2 {\n  margin-top: 0;\n}\n\n.dossier.printer main {\n  padding: 2rem 0rem;\n}\n\n.dossier.printer main  > * {\n  max-width: 100rem;\n  margin: auto;\n}\n\n\narticle {\n  min-height: 55rem;\n  background-color: #FFF;\n}\n\n@media print {\n\n  @page {\n    margin: 1cm;\n    size: landscape;\n  }\n\n  body * {\n      color : #000;\n      background-color: #FFF;\n  }\n\n  .drawer, .searchbar, .fab, .menu {\n    display: none;\n  }\n\n  .container, .dossier, .dossier main {\n    display: block;\n  }\n\n  .page .header {\n    display: none;\n  }\n\n  .dossier header {\n    background: #FFF;\n    border-bottom: solid 2px #000;\n  }\n\n  h2 {\n    margin-top: 0;\n  }\n\n  .mui-panel {\n    border: 0;\n    box-shadow: none;\n  }\n\n  article {\n    break-after: always;\n    page-break-after: always;\n    background-color: #EEE;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".dossier {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n}\n\n.dossier header {\n  color: #FFF;\n  color: rgba(255, 255, 255, 0.8);\n  background-color : #1B1B1B;\n}\n\n.dossier header > h1 {\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier header > h2 {\n  margin-top: 0;\n  padding-left: 1.6rem;\n  padding-right: 1.6rem;\n}\n\n.dossier main {\n  flex:1;\n  overflow-y: auto;\n  display:flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 2rem;\n}\n\n.dossier main > * {\n  max-width: 90rem;\n  width:100%;\n}\n\n.checklist {\n  display: flex;\n  flex-direction: column;\n  padding-top: 5rem;\n}\n\n.checklist > .line {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1.2rem;\n  min-width: 35rem;\n  align-self: center;\n}\n\n.checklist > .line > button, span {\n  min-width: 10rem;\n}\n\n.shopwindow {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.shopwindow .fab {\n  position: absolute;\n  bottom: 12rem;\n  right: 4rem;\n}\n\n.report {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.report .observations {\n  flex:1;\n  padding: 5rem;\n}\n\n.report textarea {\n  min-height: 20rem;\n}\n\n.report p {\n  font-size: 1.4rem;\n}\n\n.line > label {\n  flex:1.5;\n}\n\n.line > .field {\n  min-width: 10rem;\n}\n\n.dossier.printer > main {\n  display: block;\n}\n\n.dossier.printer   h1 {\n  margin-top: 0;\n}\n\n.dossier.printer   h2 {\n  margin-top: 0;\n}\n\n.dossier.printer main {\n  padding: 2rem 0rem;\n}\n\n.dossier.printer main  > * {\n  max-width: 100rem;\n  margin: auto;\n}\n\narticle {\n  min-height: 50rem;\n  background-color: #FFF;\n}\n\narticle.cover {\n  min-height: 60rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.cover-title {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  min-height: 20rem;\n  padding: 5rem;\n}\n\n.cover-foot {\n  border-top: solid 2px #888;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\narticle.printpage header {\n  background-color: #FFF;\n  color: #000;\n  color: rgba(0, 0, 0, 0.8);\n  border-bottom: 2px solid #888;\n}\n\narticle.printpage .mui-panel {\n  box-shadow: inherit;\n}\n\n@media (max-width: 960px) {\n  .dossier main {\n    padding-top: 0px;\n    background-color: #FFF;\n  }\n}\n\n@media print {\n\n  @page {\n    margin: 1cm;\n    size: landscape;\n  }\n\n  body * {\n      color : #000;\n      background-color: #FFF;\n  }\n\n  .drawer, .searchbar, .fab, .menu {\n    display: none;\n  }\n\n  .container, .dossier, .dossier main {\n    display: block;\n  }\n\n  .page .header {\n    display: none;\n  }\n\n  .dossier header {\n    background: #FFF;\n    border-bottom: solid 2px #000;\n  }\n\n  h2 {\n    margin-top: 0;\n  }\n\n  .mui-panel {\n    border: 0;\n    box-shadow: none;\n  }\n\n  article.printpage {\n    break-after: always;\n    page-break-after: always;\n    background-color: #EEE;\n  }\n\n\n\n}\n", ""]);
 
 	// exports
 
