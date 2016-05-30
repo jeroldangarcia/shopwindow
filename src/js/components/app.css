@@ -28,3 +28,5 @@ a:hover { text-decoration:none; }
 .expand { flex:1; }
 .center { justify-content: center; }
 .centred { align-items: center; }
+.vertical {flex-direction: column;}
+.right { justify-content: flex-end;}

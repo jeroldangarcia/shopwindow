@@ -27,7 +27,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
+  padding: 2rem;
 }
 
 .dossier main > * {
@@ -157,10 +157,19 @@ article.printpage .mui-panel {
 
 @media (max-width: 960px) {
   .dossier main {
-    padding-top: 0px;
+    padding: 0px;
     background-color: #FFF;
   }
 }
+
+@media (min-width: 960px) and (max-width: 1280px) {
+  .dossier main {
+    padding: 0px;
+    background-color: #FFF;
+  }
+}
+
+
 
 @media print {
 

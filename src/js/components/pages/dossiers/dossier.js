@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page } from '../../layout/page/page';
-import { Field, Slider, Select } from '../../chips/fields/fields';
+import { FieldGroup, Field, Slider, Select } from '../../chips/fields/fields';
 import { Tabs, Tab } from '../../chips/tabs/tabs';
 import { Button, FAB, CheckButton } from '../../chips/buttons/buttons';
 import { Stepper, Step } from '../../chips/tabs/steps';
@@ -34,7 +34,9 @@ class DossierCheckin extends React.Component {
 
   render() {
     return (
-      <article className="page checklist mui-panel">
+      <article className="page checklist">
+        <center><h1>DATOS ESCAPARATE</h1></center>
+        <br />
         <div className="line">
           <label></label>
           <span className="flex center">SI/NO</span>
@@ -121,7 +123,7 @@ class DossierShopWindow extends React.Component {
 class DossierReport extends React.Component {
   render() {
     return (
-      <article className="page report mui-panel">
+      <article className="page report">
         <center><h1>VALORACIONES Y OBSERVACIONES</h1></center>
         <div className="observations mui-textfield">
           <p>
@@ -213,15 +215,36 @@ class NewDossier extends React.Component {
   }
 
   steps = {
-    1: <div>
-      <Field label="Name" />
-      <Field label="Description" />
-      <Select options={DossierStore.centers} />
-      <Button label="CANCEL" classes="raised"/>
-      <Button label="OK" />
+    1: <div className="flex vertical expand center" style={{minHeight:'60rem', padding:'5rem'}}>
+      <center><h1>DATOS ESCAPARATE</h1></center>
+      <br />
+      <FieldGroup icon="folder_open">
+        <Field icon="folder_open" label="Name" />
+      </FieldGroup>
+      <FieldGroup icon="description">
+        <Field label="Description" />
+      </FieldGroup>
+      <FieldGroup icon="location_city">
+        <Select options={DossierStore.centers} />
+        <Field label="Date" />
+      </FieldGroup>
+      <div style={{flex:'10'}} />
     </div>,
-    2: <DossierCheckin />,
-    3: <DossierReport />,
+    2: <div className="flex vertical expand center vertical" style={{minHeight:'60rem', padding:'5rem'}}>
+      <center><h1>CHECK LIST</h1></center>
+      <DossierCheckin />
+      <div style={{flex:'10'}} />
+    </div>,
+    3: <div className="flex vertical expand center" style={{minHeight:'60rem', padding:'5rem'}}>
+      <center><h1>VALORACIONES Y OBSERVACIONES</h1></center>
+      <br />
+      <textarea style={{ minHeight:'40rem'}}></textarea>
+      <div style={{flex:'10'}} />
+      <div className="flex expand right">
+        <Button label="CANCEL"/>
+        <Button label="OK" />
+      </div>
+    </div>,
   }
 
   handleStepChanged = (newStep) => {
