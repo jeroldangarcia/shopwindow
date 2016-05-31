@@ -27325,7 +27325,7 @@
 	  var drawerButton = props.to ? '' : _react2.default.createElement(_buttons.IconButton, { id: 'drawer-button', icon: 'menu', onMouseUp: props.toggleDrawer });
 	  var backButton = props.to ? _react2.default.createElement(_buttons.IconButton, { id: 'back-button', icon: 'arrow_back', onMouseUp: goBack }) : "";
 	  var logoutButton = _react2.default.createElement(_buttons.IconButton, { id: 'logout-button', icon: 'exit_to_app', onMouseUp: logout });
-	  var printButton = props.print ? _react2.default.createElement(_buttons.IconButton, { id: 'print-button', icon: 'print', onMouseUp: print }) : '';
+	  var printButton = _react2.default.createElement(_buttons.IconButton, { id: 'print-button', icon: 'print', onMouseUp: print });
 
 	  return _react2.default.createElement(
 	    'header',
@@ -29102,7 +29102,15 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'cinema-info' },
-	            'xxxxx'
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              'ESCAPARATE CHICA PRIMAVERA 75 ANIVERSARIO.',
+	              _react2.default.createElement('br', null),
+	              '3º CAMBIO',
+	              _react2.default.createElement('br', null),
+	              'CON DIN A4 GUIA DE LA MODA'
+	            )
 	          )
 	        )
 	      );
@@ -29149,7 +29157,7 @@
 
 
 	// module
-	exports.push([module.id, ".cinema {\n  display: flex;\n  flex-wrap: wrap;\n  background-color: rgba(0, 0, 0, 0.5);\n  flex: 1;\n  flex-direction: column;\n  align-items: center;\n}\n\n.screen-box {\n  min-width: 30rem;\n  width: 100%;\n  padding: 1rem;\n  display: flex;\n  border: solid 2px red;\n  overflow: auto;\n}\n\n.screen {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\n.screen > .image {\n  width:100%;\n  min-height: 18rem;\n  flex:1;\n}\n\n.cinema-info {\n  flex: 1;\n  padding: 1rem;\n  max-height: 10rem;\n}\n", ""]);
+	exports.push([module.id, ".cinema {\n  display: flex;\n  flex-wrap: wrap;\n  background-color: rgba(0, 0, 0, 0.5);\n  flex: 1;\n  flex-direction: column;\n  align-items: center;\n}\n\n.screen-box {\n  min-width: 30rem;\n  width: 100%;\n  padding: 1rem;\n  display: flex;\n  overflow: auto;\n}\n\n.screen {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin-top: 5rem;\n  max-height: 60rem;\n}\n\n.screen > .image {\n  width:100%;\n  min-height: 18rem;\n  flex:1;\n}\n\n.cinema-info{\n  flex: 1;\n  padding: 1rem;\n  max-height: 10rem;\n  width:100%;\n  padding: 0 1rem;\n}\n\n.cinema-info > p {\n  padding: 2rem;\n  background-color: #FFF;\n  font-size: 1.45rem;\n}\n", ""]);
 
 	// exports
 
