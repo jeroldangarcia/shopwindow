@@ -20188,6 +20188,10 @@
 
 	var _shopwindow2 = _interopRequireDefault(_shopwindow);
 
+	var _photoupload = __webpack_require__(278);
+
+	var _photoupload2 = _interopRequireDefault(_photoupload);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20289,6 +20293,7 @@
 	          _react2.default.createElement(_reactRouter.Route, { path: '/new', component: _dossier.NewDossier }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/shopwindow', component: _shopwindow2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/print', component: _dossier.PrintDossier }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/photos', component: _photoupload2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/:id', component: _dossiers2.default })
 	        )
 	      );
@@ -25877,32 +25882,16 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'overlay ' + overlayClass + ' centred', onClick: this.toggleOverlay },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'dialog ' + dialogClass },
-	            'dialog'
-	          )
+	          _react2.default.createElement('div', { className: 'dialog ' + dialogClass })
 	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'drawer ' + drawerClass },
-	          'menu'
-	        ),
+	        _react2.default.createElement('div', { className: 'drawer ' + drawerClass }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'container' },
-	          _react2.default.createElement(
-	            'div',
-	            { id: 'searchbar', onClick: this.toggleDialog },
-	            'searchbox'
-	          ),
+	          _react2.default.createElement('div', { id: 'searchbar', onClick: this.toggleDialog }),
 	          _react2.default.cloneElement(this.props.children, { toggleDrawer: this.toggleDrawer })
 	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'toolbar' },
-	          'toolbar'
-	        )
+	        _react2.default.createElement('div', { className: 'toolbar' })
 	      );
 	    }
 	  }]);
@@ -26295,7 +26284,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size:62.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; margin: 0.5rem 0;}\nh2 { font-size: 1.75rem; margin: 0;}\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.flex { display: flex; }\n.expand { flex:1; }\n.center { justify-content: center; }\n.centred { align-items: center; }\n.vertical {flex-direction: column;}\n.right { justify-content: flex-end;}\n.negative-text { color: #FFF; background-color: #000; font-size: 1.25rem; font-weight: 600; padding:0rem 2rem; letter-spacing: 0.4rem;}\n", ""]);
+	exports.push([module.id, "html {\n  font-size:62.5%;\n  box-sizing: border-box;\n}\n\nbody {\n  color: #000;\n  background-color: #C6C6C6;\n  font-size: 1.4rem;\n  font-family: 'Roboto', sans-serif !important;\n  text-rendering: geometricPrecision;\n}\n\nh1 { font-size: 2.25rem; margin: 0.5rem 0;}\nh2 { font-size: 1.75rem; margin: 0;}\nh3 { font-size: 1.5rem; }\nh4 { font-size: 1.25rem; }\nh5 { font-size: 1rem; }\nh6 { font-size: 0.875rem; }\np { font-size: 1rem; }\nsmall { font-size: 0.875rem; }\n\na { text-decoration:none; }\na:focus { text-decoration: none; }\na:hover { text-decoration:none; }\n\n.inputfile {\n\twidth: 0.1px;\n\theight: 0.1px;\n\topacity: 0;\n\toverflow: hidden;\n\tposition: absolute;\n\tz-index: -1;\n}\n\n.inputfile + label {\n    font-size: 1.25em;\n    font-weight: 700;\n    color: white;\n    background-color: black;\n    cursor: pointer;\n    padding: 2rem;\n}\n\n.inputfile:focus + label,\n.inputfile + label:hover {\n    background-color: red;\n}\n\n.flex { display: flex; }\n.expand { flex:1; }\n.center { justify-content: center; }\n.centred { align-items: center; }\n.vertical {flex-direction: column;}\n.right { justify-content: flex-end;}\n.negative-text { color: #FFF; background-color: #000; font-size: 1.25rem; font-weight: 600; padding:0rem 2rem; letter-spacing: 0.4rem;}\n.justified { justify-content: space-between; }\n", ""]);
 
 	// exports
 
@@ -26522,7 +26511,7 @@
 
 
 	// module
-	exports.push([module.id, ".tabbar {\n  min-height: 5rem;\n  display: flex;\n  background-color: inherit;\n  margin-bottom: 1px;\n  -webkit-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n  -moz-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n}\n\n.tab {\n  flex:1;\n  font-size: 1.3rem;\n  font-weight: 500;\n  text-transform: uppercase;\n  padding: 0 1.2rem 0 1.2rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.tab:active {\n  font-size:1.4rem;\n}\n\n.tab > label {\n  font-size: 1.4rem !important;\n}\n\n.tab.selected {\n  font-size: 1.5rem;\n  font-weight: 600;\n  border-bottom: solid 2px rgba(255, 255, 255, 0.8);\n}\n\n@media (min-width: 1280px) and (orientation: landscape) {\n  .tab {\n    flex:0;\n    min-width: 20rem;\n  }\n}\n", ""]);
+	exports.push([module.id, ".tabbar {\n  min-height: 5rem;\n  margin-bottom: 1px;\n\n  background-color: inherit;\n\n  -webkit-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n  -moz-box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n  box-shadow: 0 4px 3px 0 rgba(0,0,0,0.2);\n\n  display: flex;\n}\n\n.tab {\n  flex:1;\n\n  padding: 0 1.2rem 0 1.2rem;\n\n  font-size: 1.3rem;\n  font-weight: 500;\n  text-transform: uppercase;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.tab:active {\n  font-size:1.4rem;\n}\n\n.tab > label {\n  font-size: 1.4rem !important;\n}\n\n.tab.selected {\n  font-size: 1.5rem;\n  font-weight: 600;\n  border-bottom: solid 2px rgba(255, 255, 255, 0.8);\n}\n\n@media (min-width: 1280px) and (orientation: landscape) {\n  .tab {\n    flex:0.5;\n    min-width: 20rem;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -26734,6 +26723,10 @@
 	  return _react2.default.createElement(IconButton, { icon: icon, onMouseUp: handleValueChange });
 	};
 
+	CheckButton.propTypes = {
+	  id: _react2.default.PropTypes.string
+	};
+
 	exports.Icon = Icon;
 	exports.IconButton = IconButton;
 	exports.Button = Button;
@@ -26776,7 +26769,7 @@
 
 
 	// module
-	exports.push([module.id, ".icon {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  padding: 0.2rem 0.6rem 0.3rem 0.6rem;\n  border-radius: 4rem;\n  background-color: transparent;\n\n  align-self: center;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button {\n  box-sizing: border-box;\n  height: 4.811rem;\n  min-width: 8.8rem;\n  padding: 1rem;\n  border: 0;\n  border-radius: 0.2rem;\n  background-color: transparent;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button:hover {\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.button:focus {\n  outline: 0;\n}\n\n.button:active {\n  background-color: rgba(200, 200, 200, 0.7);\n}\n\n.button.disabled {\n  color: #CCC;\n  color: rgba(200, 200, 200, 0.7);\n}\n\n.button.raised {\n  box-shadow: 0 2px 3px rgba(0,0,0,.19),0 1px 1px rgba(0,0,0,.23);\n}\n\n.button.raised:active {\n  box-shadow: 0 4px 6px rgba(0,0,0,.19),0 3px 3px rgba(0,0,0,.23);\n}\n\n.ibutton {\n  background-color: transparent;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  border-radius: 5rem;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.ibutton:focus {\n  outline: 0;\n}\n\n.ibutton:active {\n  background-color: #CCC;\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.fab {\n  box-sizing: border-box;\n\n  color: #FFF;\n  background-color: #FF4081;\n\n  width: 5.5rem;\n  height: 5.5rem;\n  border: 0;\n  border-radius: 5rem;\n\n  position:absolute;\n  bottom: 4rem;\n  right: 4rem;\n  z-index: 3000;\n\n  box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.fab:active {\n  background-color: #ff5a92;\n  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);\n}\n\n.fab:focus {\n  outline: 0;\n}\n", ""]);
+	exports.push([module.id, ".icon {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  /*padding: 0.2rem 0.6rem 0.3rem 0.6rem;*/\n  border-radius: 4rem;\n  background-color: transparent;\n\n  align-self: center;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n\n.ibutton {\n  box-sizing: border-box;\n  width: 4.8rem;\n  height: 4.8rem;\n  border: 0;\n  border-radius: 5rem;\n  padding: 1rem;\n\n  background-color: transparent;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.ibutton:focus {\n  outline: 0;\n}\n\n.ibutton:active {\n  background-color: #CCC;\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n\n.button {\n  box-sizing: border-box;\n  height: 4.811rem;\n  min-width: 8.8rem;\n  padding: 1rem;\n  border: 0;\n  border-radius: 0.2rem;\n  background-color: transparent;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.button:hover {\n  background-color: rgba(200, 200, 200, 0.2);\n}\n\n.button:focus {\n  outline: 0;\n}\n\n.button:active {\n  background-color: rgba(200, 200, 200, 0.7);\n}\n\n.button.disabled {\n  color: #CCC;\n  color: rgba(200, 200, 200, 0.7);\n}\n\n.button.raised {\n  box-shadow: 0 2px 3px rgba(0,0,0,.19),0 1px 1px rgba(0,0,0,.23);\n}\n\n.button.raised:active {\n  box-shadow: 0 4px 6px rgba(0,0,0,.19),0 3px 3px rgba(0,0,0,.23);\n}\n\n.fab {\n  box-sizing: border-box;\n\n  color: #FFF;\n  background-color: #FF4081;\n\n  width: 5.5rem;\n  height: 5.5rem;\n  border: 0;\n  border-radius: 5rem;\n\n  position:absolute;\n  bottom: 4rem;\n  right: 4rem;\n  z-index: 3000;\n\n  box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);\n  -o-transition: all 0.4s;\n  -moz-transition: all 0.4s;\n  -webkit-transition: all 0.4s;\n  -webkit-transition-timming-function: ease-in-out;\n  transition: all 0.4s easy-in-out;\n}\n\n.fab:active {\n  background-color: #ff5a92;\n  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);\n}\n\n.fab:focus {\n  outline: 0;\n}\n", ""]);
 
 	// exports
 
@@ -26814,7 +26807,7 @@
 	    { className: 'fieldgroup' },
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'logo' },
+	      { className: 'icon' },
 	      _react2.default.createElement(
 	        'i',
 	        { className: 'material-icons' },
@@ -27012,7 +27005,7 @@
 
 
 	// module
-	exports.push([module.id, ".fieldgroup {\n  flex:1;\n  display: flex;\n}\n\n.fieldgroup > .logo {\n  max-width: 10rem;\n}\n\n.fieldgroup > .fields {\n  flex: 1;\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.fields > .field {\n  flex:1;\n  min-width: 15rem;\n  padding: 1rem;\n}\n\n.field {\n  flex:1;\n}\n\nh5 > i {\n  padding: 0px 15px 0px 15px;\n}\n\n\n.field > .checkbox {\n  display: flex;\n}\n\n.field > .checkbox > .label {\n  flex:1;\n}\n\n.slider {\n  background-color: #CCC;\n  border: solid 1px #DDD;\n  border-radius: 10rem;\n  min-width: 4rem;\n  max-height: 1rem;\n  justify-content: flex-start;\n  display: flex;\n}\n\n.slider-ball {\n  border-radius: 10rem;\n  width: 1.7rem;\n  height: 1.8rem;\n  border: solid 1px #CCA;\n  background-color: #99F;\n  position: relative;\n  top: -0.5rem;\n  margin-left:0.3rem;\n  margin-right:0.3rem;\n}\n\n.slider.selected {\n  justify-content: flex-end;\n}\n\n.slider.selected > .slider-ball {\n  background-color: green;\n}\n", ""]);
+	exports.push([module.id, ".fieldgroup {\n  flex:1;\n  display: flex;\n}\n\n.fieldgroup > .icon {\n  max-width: 10rem;\n}\n\n.fieldgroup > .fields {\n  flex: 1;\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.fieldgroup > .fields > .field {\n  flex:1;\n  min-width: 15rem;\n  padding: 1rem;\n}\n\nh5 > i {\n  padding: 0px 15px 0px 15px;\n}\n\n.field > .checkbox {\n  display: flex;\n}\n\n.field > .checkbox > .label {\n  flex:1;\n}\n\n.slider {\n  background-color: #CCC;\n  border: solid 1px #DDD;\n  border-radius: 10rem;\n  min-width: 4rem;\n  max-height: 1rem;\n  justify-content: flex-start;\n  display: flex;\n}\n\n.slider-ball {\n  border-radius: 10rem;\n  width: 1.7rem;\n  height: 1.8rem;\n  border: solid 1px #CCA;\n  background-color: #99F;\n  position: relative;\n  top: -0.5rem;\n  margin-left:0.3rem;\n  margin-right:0.3rem;\n}\n\n.slider.selected {\n  justify-content: flex-end;\n}\n\n.slider.selected > .slider-ball {\n  background-color: green;\n}\n", ""]);
 
 	// exports
 
@@ -27272,12 +27265,7 @@
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'page' },
-	    _react2.default.createElement(_header2.default, {
-	      title: props.title,
-	      icon: props.icon,
-	      to: props.to,
-	      toggleDrawer: props.toggleDrawer
-	    }),
+	    _react2.default.createElement(_header2.default, props),
 	    _react2.default.createElement(
 	      'main',
 	      null,
@@ -27337,7 +27325,7 @@
 	  var drawerButton = props.to ? '' : _react2.default.createElement(_buttons.IconButton, { id: 'drawer-button', icon: 'menu', onMouseUp: props.toggleDrawer });
 	  var backButton = props.to ? _react2.default.createElement(_buttons.IconButton, { id: 'back-button', icon: 'arrow_back', onMouseUp: goBack }) : "";
 	  var logoutButton = _react2.default.createElement(_buttons.IconButton, { id: 'logout-button', icon: 'exit_to_app', onMouseUp: logout });
-	  var printButton = _react2.default.createElement(_buttons.IconButton, { id: 'print-button', icon: 'print', onMouseUp: print });
+	  var printButton = props.print ? _react2.default.createElement(_buttons.IconButton, { id: 'print-button', icon: 'print', onMouseUp: print }) : '';
 
 	  return _react2.default.createElement(
 	    'header',
@@ -27353,7 +27341,6 @@
 	      { className: 'title' },
 	      props.title
 	    ),
-	    searchButton,
 	    printButton,
 	    logoutButton
 	  );
@@ -27436,7 +27423,7 @@
 
 
 	// module
-	exports.push([module.id, ".page {\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page > header {\n  min-height: 5.6rem;\n  max-height: 5.6rem;\n  padding: 0.4rem 1.6rem 0.4rem 1.6rem;\n  display: flex;\n  align-items: center;;\n\n  z-index: 1;\n\n}\n\n.page > header #header-icon {\n  display: none;\n}\n\n.page > main {\n  flex:1;\n  background-color: rgba(255, 255, 255, 0.6);\n  display:flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page .scrollpane {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  padding: 1rem;\n  overflow-y: auto;\n}\n\n\n\n@media (max-width: 960px) {\n\n  .inbox-list .fab {\n    position: absolute;\n    right: 4rem;\n    bottom: 4rem;\n  }\n\n  .inbox-list.selected .fab {\n    display: none;\n  }\n\n  .inbox-list.selected > .tabbar {\n    display:none;\n  }\n\n  .inbox-list.selected > .list > .textfield {\n    display:none;\n  }\n\n  .inbox-list.selected .listitem.unselected {\n    display: none;\n  }\n\n  .inbox-list.selected {\n    min-height: 12.5rem;\n    margin-bottom: 1rem;\n  }\n\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n\n  .page > header {\n    position: fixed;\n    z-index: 2000;\n    width: 100%;\n    left:0px;\n  }\n\n  .page > main {\n    z-index: 1999;\n    margin-top: 5.6rem;\n    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);\n    padding-left:0px;\n    padding-top: 0px;\n  }\n\n  .page .inbox {\n    flex-direction: row;\n  }\n\n  .page .inbox > .inbox-list{\n    max-width: 40rem;\n    box-shadow: 2px -3px 2px 1px rgba(0,0,0,0.3);\n    z-index: 500;\n  }\n\n  .page .inbox > .viewer {\n    padding: 10px;\n  }\n\n}\n\n\n@media (min-width: 1280px) {\n\n  .page > header {\n    position: relative;\n    z-index: auto;\n  }\n\n  .page > header #drawer-button {\n    display:none;\n  }\n\n  .page > header #header-icon {\n    display: flex;\n  }\n\n  .page > main {\n    margin-top: 0px;\n    z-index: auto;\n  }\n\n  .page .inbox > .inbox-list{\n    z-index: auto;\n  }\n\n}\n", ""]);
+	exports.push([module.id, ".page {\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page > header {\n  min-height: 5.6rem;\n  max-height: 5.6rem;\n  padding: 0.4rem 1.6rem 0.4rem 1.6rem;\n  display: flex;\n  align-items: center;;\n\n  z-index: 1;\n\n}\n\n.page > header #header-icon {\n  display: none;\n}\n\n.page > main {\n  flex:1;\n  background-color: rgba(255, 255, 255, 0.6);\n  display:flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.page .scrollpane {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  padding: 1rem;\n  overflow-y: auto;\n}\n\n\n\n@media (max-width: 960px) {\n\n\n\n}\n\n@media (min-width: 960px) and (orientation: landscape) {\n\n  .page > header {\n    position: fixed;\n    z-index: 2000;\n    width: 100%;\n    left:0px;\n  }\n\n  .page > main {\n    z-index: 1999;\n    margin-top: 5.6rem;\n    box-shadow: -1px 3px 2px 1px rgba(0,0,0,0.3);\n    padding-left:0px;\n    padding-top: 0px;\n  }\n\n  .page .inbox {\n    flex-direction: row;\n  }\n\n  .page .inbox > .inbox-list{\n    max-width: 40rem;\n    box-shadow: 2px -3px 2px 1px rgba(0,0,0,0.3);\n    z-index: 500;\n  }\n\n  .page .inbox > .viewer {\n    padding: 10px;\n  }\n\n}\n\n\n@media (min-width: 1280px) {\n\n  .page > header {\n    position: relative;\n    z-index: auto;\n  }\n\n  .page > header #drawer-button {\n    display:none;\n  }\n\n  .page > header #header-icon {\n    display: flex;\n  }\n\n  .page > main {\n    margin-top: 0px;\n    z-index: auto;\n  }\n\n  .page .inbox > .inbox-list{\n    z-index: auto;\n  }\n\n}\n", ""]);
 
 	// exports
 
@@ -27591,7 +27578,7 @@
 
 
 	// module
-	exports.push([module.id, ".inbox {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.inbox-list {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.inbox-list > .filter {\n  background-color: #FFF;\n  padding: 1rem;\n  min-height: 6rem;\n}\n\n.inbox-list > .filter > .select {\n  max-width: 6rem;\n  margin-left: 1rem;\n  margin-right: 2rem;\n}\n\n.inbox-list .fab {\n  position: absolute;\n  bottom: 4rem;\n}\n\n.inbox-viewer {\n  flex:1;\n  display:flex;\n}\n\n.page .inbox > .viewer {\n  padding: 0.8rem;\n  flex:1;\n  overflow-y: auto;\n}\n\n@media (max-width: 959px) {\n\n  .inbox-list {\n    display: none;\n  }\n\n  .inbox-list.open {\n    display:flex;\n  }\n\n  .inbox-viewer {\n    display: none;\n  }\n\n  .inbox-viewer.open {\n    display:flex;\n  }\n\n}\n\n@media (min-width: 960px) and (max-width:1279px) and (orientation: landscape) {\n  .inbox-list .fab {\n    left: 58rem;\n  }\n}\n@media (min-width: 1280px) {\n  .inbox-list .fab {\n    left: 52rem;\n  }\n}\n", ""]);
+	exports.push([module.id, ".inbox {\n  flex:1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.inbox-list {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  background-color: #FFF;\n}\n\n.inbox-list > .filter {\n  background-color: #FFF;\n  padding: 1rem;\n  min-height: 6rem;\n}\n\n.inbox-list > .filter > .select {\n  max-width: 6rem;\n  margin-left: 1rem;\n  margin-right: 2rem;\n}\n\n.inbox-list .fab {\n  position: absolute;\n  bottom: 4rem;\n}\n\n.inbox-viewer {\n  flex:1;\n  display:flex;\n}\n\n.page .inbox > .viewer {\n  padding: 0.8rem;\n  flex:1;\n  overflow-y: auto;\n}\n\n@media (max-width: 959px) {\n\n  .inbox-list {\n    display: none;\n  }\n\n  .inbox-list.open {\n    display:flex;\n  }\n\n  .inbox-list .fab {\n    right: 4rem;\n  }\n\n  .inbox-viewer {\n    display: none;\n  }\n\n  .inbox-viewer.open {\n    display:flex;\n  }\n\n}\n\n@media (min-width: 960px) and (max-width:1279px) and (orientation: landscape) {\n  .inbox-list .fab {\n    left: 40rem;\n  }\n}\n\n@media (min-width: 1280px) {\n  .inbox-list .fab {\n    left: 52rem;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -27738,7 +27725,7 @@
 
 
 	// module
-	exports.push([module.id, ".list {\n  height: 100vh;\n  display: flex;\n  flex-direction: column;\n  border-right: solid 1px #DDD;\n  border-left: solid 1px #DDD;\n}\n\n.list .button {\n  color: rgba(0, 0, 0, 0.5);\n}\n\n.list .fab {\n  position: absolute;\n  top: auto;\n  right: auto;\n  bottom:2rem;\n  left: 30rem;\n}\n\n.list > .textfield {\n  padding-top : 0.8rem;\n  padding-left: 1.4rem;\n  padding-right: 1.4rem;\n  padding-bottom: 1rem;\n  background-color: #FFF;\n  margin-bottom: 3px;\n  min-height: 6rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.list > ul {\n  flex:1;\n  overflow-y: auto;\n  list-style: none;\n  padding:0px;\n  margin: 0px;\n}\n\n.listitem:hover {\n  background-color: #EFEFEF;\n}\n\n.listitem.selected {\n  background-color: transparent;\n}\n\n@media all and (min-width:960px) and (orientation:landscape) {\n  .list .fab {\n    position: absolute;\n    bottom:2rem;\n    left: 38rem;\n  }\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n@media all and (min-width:1280px) {\n\n  .list .fab {\n    position: absolute;\n    bottom:2rem;\n    left: 38rem;\n  }\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n.listitem {\n  flex:1;\n  min-height: 9rem;\n  background-color: #FFF;\n  color: rgba(0, 0, 0, 0.8);\n  border-bottom: solid 1px #DDD;\n\n  display: flex;\n  align-items: center;\n  padding-left: 1.6rem;\n}\n\n.listitem .icon {\n  margin-top: 1.2rem;\n  margin-right: 1.2rem;\n  align-self: flex-start;\n}\n\n.listitem > .content {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n  padding-top: 1.6rem;\n  padding-bottom: 1rem;\n}\n\n.content > h4 {\n  margin: .5rem 0 0 0;\n}\n\n.listitem .title {\n  font-size: 1.6rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 2.4rem;\n  color: rgba(0, 0, 0, 0.8);\n}\n\n.listitem .subtitle {\n  font-size: 1.4rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 1.6rem;\n  color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  padding-right: 1.6rem;\n}\n\n.listitem .infoline {\n\n}\n", ""]);
+	exports.push([module.id, ".list {\n  height: 100vh;\n  display: flex;\n  flex-direction: column;\n  border-right: solid 1px #DDD;\n  border-left: solid 1px #DDD;\n}\n\n.list .button {\n  color: rgba(0, 0, 0, 0.5);\n}\n\n.list .fab {\n  position: absolute;\n  top: auto;\n  right: auto;\n  bottom:2rem;\n  left: 50rem;\n}\n\n.list > .textfield {\n  padding-top : 0.8rem;\n  padding-left: 1.4rem;\n  padding-right: 1.4rem;\n  padding-bottom: 1rem;\n  background-color: #FFF;\n  margin-bottom: 3px;\n  min-height: 6rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.list > ul {\n  flex:1;\n  overflow-y: auto;\n  list-style: none;\n  padding:0px;\n  margin: 0px;\n}\n\n.listitem:hover {\n  cursor: pointer;\n  background-color: #EFEFEF;\n}\n\n.listitem.selected {\n  background-color: transparent;\n}\n\n@media all and (min-width:960px) and (orientation:landscape) {\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n@media all and (min-width:1280px) {\n\n  .listitem.selected {\n    background-color: #EEF;\n  }\n}\n\n.listitem {\n  flex:1;\n  min-height: 9rem;\n  background-color: #FFF;\n  color: rgba(0, 0, 0, 0.8);\n  border-bottom: solid 1px #DDD;\n\n  display: flex;\n  align-items: center;\n  padding-left: 1.6rem;\n}\n\n.listitem .icon {\n  margin-top: 1.2rem;\n  margin-right: 1.2rem;\n  align-self: flex-start;\n}\n\n.listitem > .content {\n  flex:1;\n  display:flex;\n  flex-direction: column;\n  padding-top: 1.6rem;\n  padding-bottom: 1rem;\n}\n\n.content > h4 {\n  margin: .5rem 0 0 0;\n}\n\n.listitem .title {\n  font-size: 1.6rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 2.4rem;\n  color: rgba(0, 0, 0, 0.8);\n}\n\n.listitem .subtitle {\n  font-size: 1.4rem;\n  font-weight: 500;\n  letter-spacing: .01em;\n  line-height: 1.6rem;\n  color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  padding-right: 1.6rem;\n}\n\n.listitem .infoline {\n\n}\n", ""]);
 
 	// exports
 
@@ -28032,7 +28019,7 @@
 	            info
 	          )
 	        ),
-	        _react2.default.createElement(_buttons.FAB, { icon: 'add_a_photo', to: '/shopwindow', onMouseUp: this.handleAddShopWindow })
+	        _react2.default.createElement(_buttons.FAB, { icon: 'add_a_photo', to: '/photos', onMouseUp: this.handleAddShopWindow })
 	      );
 	    }
 	  }]);
@@ -28107,9 +28094,7 @@
 	      tab: 'checkin'
 	    }, _this4.handleChangeTab = function (id) {
 	      _this4.setState({ tab: id });
-	    }, _this4.handleAddPhoto = function () {
-	      alert();
-	    }, _temp3), _possibleConstructorReturn(_this4, _ret3);
+	    }, _this4.handleAddPhoto = function () {}, _temp3), _possibleConstructorReturn(_this4, _ret3);
 	  }
 
 	  _createClass(Dossier, [{
@@ -28165,9 +28150,9 @@
 	          _react2.default.createElement(
 	            _tabs.Tabs,
 	            { onChanged: this.handleChangeTab },
-	            _react2.default.createElement(_tabs.Tab, { id: 'checkin', label: 'Check-In', active: this.state.tab === 'checkin' }),
-	            _react2.default.createElement(_tabs.Tab, { id: 'gallery', label: 'Gallery', active: this.state.tab === 'gallery' }),
-	            _react2.default.createElement(_tabs.Tab, { id: 'report', label: 'Report', active: this.state.tab === 'report' })
+	            _react2.default.createElement(_tabs.Tab, { id: 'checkin', label: 'Check List', active: this.state.tab === 'checkin' }),
+	            _react2.default.createElement(_tabs.Tab, { id: 'gallery', label: 'IMG IMPLANTACIÓN', active: this.state.tab === 'gallery' }),
+	            _react2.default.createElement(_tabs.Tab, { id: 'report', label: 'VALORACIÓN y OBSERVACIONES', active: this.state.tab === 'report' })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -28257,6 +28242,26 @@
 	          _react2.default.createElement(
 	            'h1',
 	            null,
+	            'IMÁGENES IMPLANTACIÓN'
+	          )
+	        ),
+	        '3: ',
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex vertical expand', style: { minHeight: '60rem', padding: '5rem', overflow: 'auto' } },
+	          _react2.default.createElement(DossierShopWindow, null)
+	        ),
+	        _react2.default.createElement('div', { style: { flex: '10' } })
+	      ),
+	      4: _react2.default.createElement(
+	        'div',
+	        { className: 'flex vertical expand center', style: { minHeight: '60rem', padding: '5rem' } },
+	        _react2.default.createElement(
+	          'center',
+	          null,
+	          _react2.default.createElement(
+	            'h1',
+	            null,
 	            'VALORACIONES Y OBSERVACIONES'
 	          )
 	        ),
@@ -28280,7 +28285,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _page.Page,
-	        { title: 'New Dossier', icon: 'folder_open', to: '/' },
+	        { title: 'New Dossier', icon: 'folder_open', to: '/', print: 'print' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'dossier' },
@@ -28913,21 +28918,64 @@
 
 	var DossierStore = {
 
-	  dossiers: [],
+	  dossiers: [{
+	    id: 1,
+	    title: 'Escaparates Primavera 75 Aniversario',
+	    subtitle: '01/05/2016',
+	    date: '20/06/2016',
+	    center: '0008-Pintor Sorolla  (Valencia)'
+	  }, {
+	    id: 2,
+	    title: 'Escaparates Ocho Dias de Oro',
+	    subtitle: '01/06/2016',
+	    date: '20/06/2016',
+	    center: '0003-Goya  (Madrid)'
+	  }, {
+	    id: 3,
+	    title: 'Escaparates Summer Time',
+	    subtitle: '1/06/2016 ',
+	    date: '5/08/2016',
+	    center: '0008-Pintor Sorolla-Valencia'
+	  }, {
+	    id: 4,
+	    title: 'Escaparates Summer Time',
+	    subtitle: '01/06/2016',
+	    date: '15/08/2016',
+	    center: '0003-Goya  (Madrid)'
+	  }, {
+	    id: 5,
+	    title: 'Escaparates Secretos de Belleza',
+	    subtitle: '01/05/2016',
+	    date: '15/05/2016',
+	    center: '0008-Pintor Sorolla-Valencia'
+	  }, {
+	    id: 6,
+	    title: 'Escaparates Secretos de Belleza',
+	    subtitle: '01/05/2016',
+	    date: '15/05/2016',
+	    center: '0003-Goya  (Madrid)'
+	  }, {
+	    id: 7,
+	    title: 'Escaparate Avance Moda Verano',
+	    subtitle: '01/06/2016',
+	    date: '15/06/2016',
+	    center: '0008-Pintor Sorolla-Valencia'
+	  }],
 
 	  centers: [{ label: 'Hermosilla', value: '0008' }, { label: 'Castellana', value: '0009' }, { label: 'Valencia', value: '0010' }],
 
 	  init: function init() {
-	    for (var i = 0; i < 14; i++) {
-	      var dossier = {
+	    /*
+	    for (let i = 0; i < 14; i++) {
+	      const dossier = {
 	        id: i,
-	        title: 'Dossier Title ' + i,
-	        subtitle: 'Subtitle ' + i,
-	        center: Centers[i % 4],
-	        date: new Date().toLocaleDateString()
+	        title: `Dossier Title ${i}`,
+	        subtitle: `Subtitle ${i}`,
+	        center: Centers[i%4],
+	        date: new Date().toLocaleDateString(),
 	      };
 	      this.dossiers.push(dossier);
-	    }
+	    }*/
 	  },
 	  all: function all() {
 	    return this.dossiers;
@@ -29105,6 +29153,118 @@
 
 	// exports
 
+
+/***/ },
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _page = __webpack_require__(251);
+
+	var _buttons = __webpack_require__(242);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PhotoUpload = function (_React$Component) {
+	  _inherits(PhotoUpload, _React$Component);
+
+	  function PhotoUpload() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, PhotoUpload);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(PhotoUpload)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.readImage = function (file, callback) {
+	      var FR = new FileReader();
+	      FR.onload = callback;
+	      FR.readAsDataURL(file);
+	    }, _this.snapshot = function (event) {
+
+	      var file = event.target.files[0];
+	      var ctx = _this.canvas.getContext('2d');
+
+	      _this.readImage(file, function (event) {
+	        var img = new Image();
+	        img.onload = function () {
+	          ctx.drawImage(img, 0, 0, 800, 450);
+	        };
+	        img.src = event.target.result;
+	      });
+
+	      _this.setState({
+	        shooting: false,
+	        photo: _this.canvas.toDataURL('image/webp')
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(PhotoUpload, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        _page.Page,
+	        { title: 'Load Images', to: '/1' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'flex expand vertical dossier justified' },
+	          _react2.default.createElement(
+	            'header',
+	            { className: 'flex expand center centred', style: { maxHeight: '8rem' } },
+	            _react2.default.createElement('input', { type: 'file', name: 'file', id: 'file', accept: 'image/*;capture=camera', onChange: this.snapshot, className: 'inputfile' }),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'file' },
+	              _react2.default.createElement('input', { type: 'file', name: 'file', id: 'file', accept: 'image/*;capture=camera', onChange: this.snapshot, className: 'inputfile' }),
+	              'Choose a file...'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'flex expand vertical center centred', style: { maxHeight: '600px' } },
+	            _react2.default.createElement('canvas', { id: 'canvas', width: '800', height: '450', ref: function ref(_ref) {
+	                return _this2.canvas = _ref;
+	              } })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'flex vertical center centred' },
+	            _react2.default.createElement('textarea', { className: 'mui-textfield', placeholder: 'Observaciones...', style: { minWidth: '30rem', minHeight: '12rem', width: '60rem' } })
+	          ),
+	          _react2.default.createElement('header', { className: 'flex expand center centred', style: { maxHeight: '8rem' } }),
+	          _react2.default.createElement(_buttons.FAB, { icon: 'done', to: '/1' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return PhotoUpload;
+	}(_react2.default.Component);
+
+	exports.default = PhotoUpload;
 
 /***/ }
 /******/ ]);

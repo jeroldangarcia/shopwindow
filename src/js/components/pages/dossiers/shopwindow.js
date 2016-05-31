@@ -14,7 +14,15 @@ export default class ShopWindow extends React.Component {
               <img src="/images/escaparate1.jpg" width="100%" />
             </div>
           </div>
-          <div className="cinema-info">xxxxx</div>
+          <div className="cinema-info">
+            <p>
+              ESCAPARATE CHICA PRIMAVERA 75 ANIVERSARIO.
+              <br />
+              3º CAMBIO
+              <br />
+              CON DIN A4 GUIA DE LA MODA
+            </p>
+          </div>
         </div>
       </Page>
     );
