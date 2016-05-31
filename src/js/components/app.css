@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
+
 html {
   font-size:62.5%;
   box-sizing: border-box;
@@ -7,7 +9,7 @@ body {
   color: #000;
   background-color: #C6C6C6;
   font-size: 1.4rem;
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Roboto', sans-serif;
   text-rendering: geometricPrecision;
 }
 
@@ -34,17 +36,17 @@ a:hover { text-decoration:none; }
 }
 
 .inputfile + label {
-    font-size: 1.25em;
-    font-weight: 700;
-    color: white;
-    background-color: black;
-    cursor: pointer;
-    padding: 2rem;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+  padding: 2rem;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-    background-color: red;
+  background-color: red;
 }
 
 .flex { display: flex; }
@@ -53,5 +55,13 @@ a:hover { text-decoration:none; }
 .centred { align-items: center; }
 .vertical {flex-direction: column;}
 .right { justify-content: flex-end;}
-.negative-text { color: #FFF; background-color: #000; font-size: 1.25rem; font-weight: 600; padding:0rem 2rem; letter-spacing: 0.4rem;}
 .justified { justify-content: space-between; }
+
+.negative-text {
+  color: #FFF;
+  background-color: #000;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0 2rem;
+  letter-spacing: 0.4rem;
+}

@@ -4,9 +4,7 @@ import './page.css';
 
 const Page = (props) => (
   <div className="page">
-    <Header
-      {...props}
-    />
+    <Header {...props} />
     <main>{props.children}</main>
   </div>
 );
