@@ -235,8 +235,8 @@ class NewDossier extends React.Component {
     </div>,
     3: <div className="flex vertical expand center" style={{minHeight:'60rem', padding:'5rem'}}>
       <center><h1>IMÁGENES IMPLANTACIÓN</h1></center>
-      3: <div className="flex vertical expand" style={{minHeight:'60rem', padding:'5rem', overflow: 'auto'}}>
-      <DossierShopWindow />
+      <div className="flex vertical expand" style={{minHeight:'60rem', padding:'5rem', overflow: 'auto'}}>
+        <DossierShopWindow />
       </div>
       <div style={{flex:'10'}} />
     </div>,
@@ -264,7 +264,7 @@ class NewDossier extends React.Component {
             <Step>{this.steps[this.state.step]}</Step>
           </main>
           <Stepper
-            steps={[1, 2, 3]}
+            steps={[1, 2, 3, 4]}
             step={this.state.step}
             onStepChanged={this.handleStepChanged}
           />

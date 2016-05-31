@@ -28245,7 +28245,6 @@
 	            'IMÁGENES IMPLANTACIÓN'
 	          )
 	        ),
-	        '3: ',
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'flex vertical expand', style: { minHeight: '60rem', padding: '5rem', overflow: 'auto' } },
@@ -28299,7 +28298,7 @@
 	            )
 	          ),
 	          _react2.default.createElement(_steps.Stepper, {
-	            steps: [1, 2, 3],
+	            steps: [1, 2, 3, 4],
 	            step: this.state.step,
 	            onStepChanged: this.handleStepChanged
 	          })
