@@ -39,32 +39,7 @@
 
 @media (max-width: 960px) {
 
-  .inbox-list .fab {
-    position: absolute;
-    right: 4rem;
-    bottom: 4rem;
-  }
 
-  .inbox-list.selected .fab {
-    display: none;
-  }
-
-  .inbox-list.selected > .tabbar {
-    display:none;
-  }
-
-  .inbox-list.selected > .list > .textfield {
-    display:none;
-  }
-
-  .inbox-list.selected .listitem.unselected {
-    display: none;
-  }
-
-  .inbox-list.selected {
-    min-height: 12.5rem;
-    margin-bottom: 1rem;
-  }
 
 }
 

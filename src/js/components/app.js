@@ -8,6 +8,7 @@ import Login from './pages/login/login';
 import Dossiers from './pages/dossiers/dossiers';
 import { NewDossier, PrintDossier } from './pages/dossiers/dossier';
 import ShopWindow from './pages/dossiers/shopwindow';
+import PhotoUpload from './pages/media/photoupload';
 
 const auth = {
 
@@ -69,6 +70,7 @@ class App extends React.Component {
           <Route path="/new" component={NewDossier} />
           <Route path="/shopwindow" component={ShopWindow} />
           <Route path="/print" component={PrintDossier} />
+          <Route path="/photos" component={PhotoUpload} />
           <Route path="/:id" component={Dossiers} />
         </Route>
       </Router>

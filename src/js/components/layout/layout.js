@@ -32,18 +32,16 @@ class Layout extends React.Component {
     return (
       <div className="layout">
         <div className={`overlay ${overlayClass} centred`} onClick={this.toggleOverlay}>
-          <div className={`dialog ${dialogClass}`}>dialog</div>
+          <div className={`dialog ${dialogClass}`}></div>
         </div>
-        <div className={`drawer ${drawerClass}`}>
-        menu
-        </div>
+        <div className={`drawer ${drawerClass}`}></div>
         <div className="container">
-          <div id="searchbar" onClick={this.toggleDialog}>searchbox</div>
+          <div id="searchbar" onClick={this.toggleDialog}></div>
           {React.cloneElement(
             this.props.children, { toggleDrawer: this.toggleDrawer }
           )}
         </div>
-        <div className="toolbar">toolbar</div>
+        <div className="toolbar"></div>
       </div>
     );
   }

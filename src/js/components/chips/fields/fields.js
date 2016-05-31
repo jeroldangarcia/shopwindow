@@ -3,7 +3,7 @@ import './fields.css';
 
 const FieldGroup = (props) => (
   <div className="fieldgroup">
-    <div className="logo"><i className="material-icons">{props.icon}</i></div>
+    <div className="icon"><i className="material-icons">{props.icon}</i></div>
     <div className="fields">{props.children}</div>
   </div>
 );

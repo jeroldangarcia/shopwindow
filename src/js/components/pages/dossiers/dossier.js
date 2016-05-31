@@ -112,7 +112,7 @@ class DossierShopWindow extends React.Component {
           <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
           <Card onSelected={this.handleCardSelected} className="page">{info}</Card>
         </Cards>
-        <FAB icon="add_a_photo" to="/shopwindow" onMouseUp={this.handleAddShopWindow}/>
+        <FAB icon="add_a_photo" to="/photos" onMouseUp={this.handleAddShopWindow}/>
       </div>
     );
   }
@@ -160,7 +160,7 @@ class Dossier extends React.Component {
   }
 
   handleAddPhoto = () => {
-    alert();
+
   }
 
   renderContent() {
@@ -188,9 +188,9 @@ class Dossier extends React.Component {
           </div>
 
           <Tabs onChanged={this.handleChangeTab}>
-            <Tab id="checkin" label="Check-In" active={this.state.tab === 'checkin'} />
-            <Tab id="gallery" label="Gallery" active={this.state.tab === 'gallery'} />
-            <Tab id="report" label="Report" active={this.state.tab === 'report'} />
+            <Tab id="checkin" label="Check List" active={this.state.tab === 'checkin'} />
+            <Tab id="gallery" label="IMG IMPLANTACIÓN" active={this.state.tab === 'gallery'} />
+            <Tab id="report" label="VALORACIÓN y OBSERVACIONES" active={this.state.tab === 'report'} />
           </Tabs>
         </header>
         <main>
@@ -234,6 +234,13 @@ class NewDossier extends React.Component {
       <div style={{flex:'10'}} />
     </div>,
     3: <div className="flex vertical expand center" style={{minHeight:'60rem', padding:'5rem'}}>
+      <center><h1>IMÁGENES IMPLANTACIÓN</h1></center>
+      3: <div className="flex vertical expand" style={{minHeight:'60rem', padding:'5rem', overflow: 'auto'}}>
+      <DossierShopWindow />
+      </div>
+      <div style={{flex:'10'}} />
+    </div>,
+    4: <div className="flex vertical expand center" style={{minHeight:'60rem', padding:'5rem'}}>
       <center><h1>VALORACIONES Y OBSERVACIONES</h1></center>
       <br />
       <textarea style={{ minHeight:'40rem'}}></textarea>
@@ -251,7 +258,7 @@ class NewDossier extends React.Component {
 
   render() {
     return (
-      <Page title="New Dossier" icon="folder_open" to="/">
+      <Page title="New Dossier" icon="folder_open" to="/" print="print">
         <div className="dossier">
           <main className="flex">
             <Step>{this.steps[this.state.step]}</Step>

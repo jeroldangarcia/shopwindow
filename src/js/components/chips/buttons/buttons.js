@@ -83,4 +83,8 @@ const CheckButton = (props) => {
   );
 };
 
+CheckButton.propTypes = {
+  id: React.PropTypes.string,
+}
+
 export { Icon, IconButton, Button, CheckButton, FAB, materialIcon };
