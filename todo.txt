@@ -1,0 +1,32 @@
+// TODO: resolucion captura de foto 1600x1200
+
+Dada la respuesta del usuario, el tamaño de la imagen que yo creo que
+seria suficiente es el del dossier que te envie de ejemplo. Como siguen siendo
+"poco digitales"  lo que quieren es que la impresion sea de la suficiente
+calidad para apreciar los detalles de la implantación. Lo mejor será fijar una y
+ como vamos arealizar pilotos reales ajustarlo en función de dichas pruebas.
+Cambialo a 1600x1200, y en la impresion que acupe al area de impresion lo mas
+parecida posible al ejemplo de dossier que te envíe.
+
+ el peso del pdf con unas 10 fotos es de aprox 1,4 mb
+
+
+// TODO: uso: 300 usuarios, 20.000 publicaciones/año
+
+Buenos días Alberto
+Para que nos podamos hacer un número aproximado, publicamos desde central
+actualmente 1800 manuales al año, de los cuales, deberían reportar todos los
+centros la información de ejecución mediante dossier, más la información
+adicional que se les solicita, planos...
+
+Por lo tanto así a grosso modo 100 centros y dos personas por centro quedaría
+algo así...
+
+Usuarios 300 usuarios
+Publicaciones anuales totales 20.000 aprox
+
+Entiendo que habrá un tipo de usuario que únicamente podrá subir el dossier y
+ver el de los demás y otro tipo de usuario (Hermosilla) que podrá gestionar toda
+ la aplicación como administrador verdad?
+
+Espero haber resuelto tus dudas

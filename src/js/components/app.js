@@ -2,6 +2,7 @@ import React from 'react';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 import Layout from './layout/layout';
 import './app.css';
+import './palette-indigo.css';
 
 // Pages
 import Login from './pages/login/login';
