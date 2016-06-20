@@ -1,12 +1,14 @@
 import React from 'react';
-import { Page } from '../../layout/page/page';
+import { browserHistory } from 'react-router';
+
+import Filter from '../../chips/fields/filter';
+import { Page } from '../../chips/page/page';
 import { FieldGroup, Field, Slider, Select } from '../../chips/fields/fields';
 import { Tabs, Tab } from '../../chips/tabs/tabs';
 import { Button, FAB, CheckButton } from '../../chips/buttons/buttons';
 import { Stepper, Step } from '../../chips/tabs/steps';
 import { Cards, Card } from '../../layout/cards/cards';
 import Dialog from '../../layout/dialogs/dialogs';
-import { browserHistory } from 'react-router';
 
 import DossierStore from '../../../stores/dossiers';
 
@@ -213,19 +215,30 @@ class NewDossier extends React.Component {
   }
 
   steps = {
-    1: <div className="flex vertical expand center" style={{minHeight:'60rem', padding:'5rem'}}>
+    1: <div className="flex vertical expand center" style={{minHeight:'60rem', padding:'5rem', color: '#000'}}>
       <center><h1>DATOS ESCAPARATE</h1></center>
       <br />
-      <FieldGroup icon="folder_open">
-        <Field icon="folder_open" label="Name" />
-      </FieldGroup>
-      <FieldGroup icon="description">
-        <Field label="Description" />
-      </FieldGroup>
-      <FieldGroup icon="location_city">
-        <Select options={DossierStore.centers} />
-        <Field label="Date" />
-      </FieldGroup>
+      <article className="page " style={{padding: '5rem'}}>
+      <div>
+        <FieldGroup icon="folder_open">
+          <Field icon="folder_open" label="Tipo" />
+          <Field icon="folder_open" label="Nombre" />
+        </FieldGroup>
+        <FieldGroup icon="description">
+          <Field label="Description" />
+        </FieldGroup>
+        <FieldGroup icon="location_city">
+          <Field icon="folder_open" label="Empresa" />
+          <Field icon="folder_open" label="Region" />
+          <label>Centro</label>
+          <Select options={DossierStore.centers} />
+        </FieldGroup>
+        <FieldGroup icon="date_range">
+          <Field label="Fecha Implantacion" />
+        </FieldGroup>
+
+        </div>
+      </article>
       <div style={{flex:'10'}} />
     </div>,
     2: <div className="flex vertical expand center vertical" style={{minHeight:'60rem', padding:'5rem'}}>

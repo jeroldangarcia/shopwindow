@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from '../../layout/page/page';
+import { Page } from '../../chips/page/page';
 import Image from '../../chips/images/images';
 import './cinema.css';
 

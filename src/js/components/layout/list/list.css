@@ -1,5 +1,5 @@
 .list {
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
   border-right: solid 1px #DDD;

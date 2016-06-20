@@ -9,7 +9,7 @@ module.exports = {
     inline: true,
     contentBase: './dist',
     https: true,
-    host: '192.168.1.136',
+    host: '192.168.1.137',
     port: 4444,
   },
   module: {
@@ -26,6 +26,10 @@ module.exports = {
         test: /\.css$/,
         loader: 'style-loader!css-loader',
       },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
+      }
     ],
   },
 };

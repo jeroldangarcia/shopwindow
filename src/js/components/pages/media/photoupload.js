@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from '../../layout/page/page';
+import { Page } from '../../chips/page/page';
 import { FAB,  } from '../../chips/buttons/buttons';
 
 class PhotoUpload extends React.Component {
@@ -31,7 +31,7 @@ class PhotoUpload extends React.Component {
 
   render() {
     return (
-      <Page title="Load Images" to="/1">
+      <Page title="Load Images" to="/dossiers">
         <div className="flex expand vertical dossier justified" >
           <header className="flex expand center centred" style={{maxHeight:'8rem'}}>
             <input type="file" name="file" id="file" accept="image/*;capture=camera" onChange={this.snapshot} className="inputfile"/>

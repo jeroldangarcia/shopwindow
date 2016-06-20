@@ -1,117 +1,100 @@
 import React from 'react';
-import { Page } from '../../layout/page/page';
-import { Inbox, InboxList, InboxViewer } from '../../layout/inbox/inbox';
-import { List, ListItem } from '../../layout/list/list';
-import { Field, Select } from '../../chips/fields/fields';
-import { Button, FAB } from '../../chips/buttons/buttons';
-
-import { Dossier } from './dossier';
-import DossierStore from '../../../stores/dossiers';
+import store from '../../../stores/dossiers';
 import { browserHistory } from 'react-router';
 
+import Filter from '../../chips/fields/filter';
+import DatePicker from '../../chips/fields/datepicker';
+import { Page } from '../../chips/page/page';
+import { Paper } from '../../chips/papers/papers';
+import { Tabs, Tab } from '../../chips/tabs/tabs';
+import { Field, Select } from '../../chips/fields/fields';
+import { List, ListItem } from '../../chips/list/list';
+import { IconButton, Button, FAB } from '../../chips/buttons/buttons';
+import { Inbox, InboxList, InboxViewer } from '../../layout/inbox/inbox';
+
+import { Dossier } from './dossier';
+import './dossiers.scss';
 
 class Dossiers extends React.Component {
 
-  static propTypes = {
-    toggleDrawer: React.PropTypes.func,
-  }
-
   defaultProps = {
-    dossiers: DossierStore.all(),
-    dossier: null,
-    filter: {
-      criteria: 'center',
-      value: '',
-    },
+    tab: store.filter.tab,
+    filter: store.filter,
+    dossiers: store.dossiers,
+    dossier: store.dossier,
   };
-
-  constructor(props) {
-    super();
-  }
 
   state = {
+    tab: this.defaultProps.tab,
+    filter: this.defaultProps.filter,
     dossiers: this.defaultProps.dossiers,
     dossier: this.defaultProps.dossier,
-    filter: this.defaultProps.filter,
   };
 
-  options = [
-    { label: 'Cent', value: 'CENTER' },
-    { label: 'Prov', value: 'PROV' },
-    { label: 'Date', value: 'DATE' },
-  ]
+  showViewer: false;
 
-  componentDidMount() {
-    if (this.props.params.id) {
-      const d = DossierStore.byId(this.props.params.id);
-      console.log(d)
-      this.setState({ dossier: d});
-    }
+  componentWillMount() {
+    this.showViewer = this.props.params.id ? true : false;
   }
 
-  handleDossierSelected = (selected) => {
-    browserHistory.push('' + selected.id);
-  }
-
-  filterDossiers = (criteria, value) => {
-    return DossierStore.byFilter(criteria, value);
-  }
-
-  handleFilterValueChanged = (newValue) => {
-    const result = this.filterDossiers(this.state.filter.criteria, newValue);
-    this.setState({
-      dossiers: result,
-      filter: { criteria: this.state.filter.criteria, value: newValue },
+  handleTabChanged = (nextTab) => {
+    store.changeTab(nextTab, (nextStore) => {
+      this.setState({ tab: nextTab, dossiers: nextStore.dossiers });
     });
   }
 
-  handleFilterCriteriaChanged = (newCriteria) => {
-    const result = this.filterDossiers(newcriteria, this.state.filter.value);
-    this.setState({
-      dossiers: result,
-      filter: { criteria: newCriteria, value: this.state.filter.value },
+  handleFilterChanged = (nextFilter) => {
+    store.changeFilter(nextFilter, (nextStore) => {
+      this.setState({ filter: nextStore.filter, dossiers: nextStore.dossiers });
+    });
+  }
+
+  handleDossierSelected = (dossier) => {
+    store.selectDossier(dossier.id, (nextStore) => {
+      browserHistory.push(`/dossiers/${dossier.id}`);
     });
   }
 
   handleDossierClosed = () => {
-    this.setState({ dossier: null });
+    store.unselectDossier(() => {
+      browserHistory.push('/');
+    });
   }
 
   handleClearFilter = () => {
     this.handleFilterValueChanged('');
   }
 
+  handleToggleFilter = () => {
+    store.changeFilter({ hidden: !this.state.filter.hidden }, (nextStore) => {
+      this.setState({ filter: nextStore.filter });
+    });
+  }
+
   renderDossierItem = (dossier) => {
-
-    /*const selected =
-      this.state.dossier === null ?
-        '' : this.state.dossier === dossier ?
-          'selected' : '';*/
     const selected = '';
-
     return (
       <ListItem
+        key={dossier.id}
         id={dossier}
         icon="folder_open"
         title={dossier.title}
-        subtitle={dossier.subtitle}
-        info={dossier.date}
         selected={selected}
         onSelected={this.handleDossierSelected}
       >
-        <h4>{dossier.center}</h4>
+      <div className="line-info flex secondary-text-color">
+        <span className="flex expand">
+          <i className="material-icons small" style={{fontSize:'1.8rem', marginBottom:'2px'}}>location_city</i>
+          <span style={{minWidth:'8rem',alignSelf:'flex-end', marginRight:'1rem'}}>{dossier.center}</span>
+        </span>
+        <span>{dossier.subtitle + ' - ' +dossier.date}</span>
+      </div>
       </ListItem>
     );
   }
 
   renderFilter = () => {
-    return (
-      <div className="filter flex">
-        <Select options={this.options} onChange={this.handleFilterCriteriaChanged} />
-        <Field label="Filter..." value={this.state.filter.value} onChange={this.handleFilterValueChanged} />
-        <Button icon="close" onMouseUp={this.handleClearFilter} />
-      </div>
-    );
+    return this.state.filter.hidden ? '' : (<Filter filter={this.state.filter} onChange={this.handleFilterChanged}/>);
   }
 
   renderDossier = () => {
@@ -122,16 +105,27 @@ class Dossiers extends React.Component {
 
   render() {
     return (
-      <Page title="DOSSIERS" icon="content_copy" toggleDrawer={this.props.toggleDrawer}>
+      <Page title="DOSSIERS" icon="content_copy" toggleDrawer={this.props.toggleDrawer} toggleDialog={this.props.toggleDialog}>
         <Inbox>
-          <InboxList open={this.state.dossier == null}>
+          <InboxList open={!this.showViewer}>
+
+            <Tabs onChanged={this.handleTabChanged} className="shadow-bottom">
+              <Tab id="ESC" label="ESCAPARATES" active={this.state.tab === "ESC"}  />
+              <Tab id="AMB" label="AMBIENTACION" active={this.state.tab === "AMB"} />
+              <Tab id="PRO" label="PROMOCIONES" active={this.state.tab === "PRO"}  />
+            </Tabs>
+
             {this.renderFilter()}
+            <div className="filterButtonBar" style={{ maxHeight: '5rem', paddingRight: '1.6rem'}}>
+              <IconButton icon="filter_list" className="filterButton half shadow-bottom" onMouseUp={this.handleToggleFilter}/>
+            </div>
+
             <List selected={this.state.dossier}>
               {this.state.dossiers.map(this.renderDossierItem)}
             </List>
             <FAB icon="add" to="/new" />
           </InboxList>
-          <InboxViewer open={this.state.dossier != null}>
+          <InboxViewer open={this.showViewer}>
             {this.renderDossier()}
           </InboxViewer>
         </Inbox>

@@ -1,0 +1,30 @@
+.tabbar {
+  background-color: #3a3a3a;
+}
+
+.tab {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tab.selected {
+  color: #FFF;
+}
+
+.filter {
+  color: #FFF;
+  background-color: #EEE;
+}
+
+.filterButtonBar {
+  position: relative;
+}
+
+.filterButton {
+  color: #777;
+  position: absolute;
+  top: -1px;
+  border: solid 1px #B6B6B6;
+  border-top: solid 1px #EEE;
+  right: 1.6rem;
+  background-color: #EEE;
+}

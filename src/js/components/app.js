@@ -1,6 +1,7 @@
 import React from 'react';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
-import Layout from './layout/layout';
+import { Tatami, Drawer, Container, Toolbar, Overlay } from './tatami/tatami';
+
 import './app.css';
 import './palette-indigo.css';
 
@@ -62,21 +63,25 @@ class LoginRequired extends React.Component {
   }
 }
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router history={browserHistory}>
-        <Route path="/" component={LoginRequired}>
-          <IndexRoute component={Dossiers} />
-          <Route path="/new" component={NewDossier} />
-          <Route path="/shopwindow" component={ShopWindow} />
-          <Route path="/print" component={PrintDossier} />
-          <Route path="/photos" component={PhotoUpload} />
-          <Route path="/:id" component={Dossiers} />
-        </Route>
-      </Router>
-    );
-  }
-}
+const Layout = (props) => (
+  <Tatami>
+    <Container>{props.children}</Container>
+    <Overlay />
+  </Tatami>
+);
+
+const App = () => (
+  <Router history={browserHistory}>
+    <Route path="/" component={LoginRequired}>
+      <IndexRoute component={Dossiers} />
+      <Route path="/new" component={NewDossier} />
+      <Route path="/shopwindow" component={ShopWindow} />
+      <Route path="/print" component={PrintDossier} />
+      <Route path="/photos" component={PhotoUpload} />
+      <Route path="/dossiers" component={Dossiers} />
+      <Route path="/dossiers/:id" component={Dossiers} />
+    </Route>
+  </Router>
+);
 
 export default App;

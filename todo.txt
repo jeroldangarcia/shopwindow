@@ -13,7 +13,6 @@ parecida posible al ejemplo de dossier que te envíe.
 
 // TODO: uso: 300 usuarios, 20.000 publicaciones/año
 
-Buenos días Alberto
 Para que nos podamos hacer un número aproximado, publicamos desde central
 actualmente 1800 manuales al año, de los cuales, deberían reportar todos los
 centros la información de ejecución mediante dossier, más la información

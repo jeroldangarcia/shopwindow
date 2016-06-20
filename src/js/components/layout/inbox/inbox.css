@@ -11,7 +11,7 @@
   flex-direction: column;
 }
 .inbox-list > .filter {
-  background-color: #FFF;
+
   padding: 1rem;
   min-height: 6rem;
 }
